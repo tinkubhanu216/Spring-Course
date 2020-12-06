@@ -1,0 +1,449 @@
+0
+1
+00:00:01,670 --> 00:00:05,990
+In the previous step, we returned a hard-coded string back.
+1
+
+2
+00:00:06,110 --> 00:00:11,990
+We mapped GET request to this URI, to this method which was returning a simple string. In this
+2
+
+3
+00:00:11,990 --> 00:00:19,400
+step, we would actually create an object for hello-world-bean and try to return that back and see what
+3
+
+4
+00:00:19,400 --> 00:00:20,810
+would happen.
+4
+
+5
+00:00:20,840 --> 00:00:24,590
+One of the things you need to understand is the fact, there is a lot of things that are happening in
+5
+
+6
+00:00:24,590 --> 00:00:25,690
+the background.
+6
+
+7
+00:00:25,700 --> 00:00:30,330
+We used Spring Boot to create the project. Through the spring-boot-starter-projects,
+7
+
+8
+00:00:30,350 --> 00:00:34,520
+we are using frameworks like Spring, Spring MVC, and a lot of other things.
+8
+
+9
+00:00:34,520 --> 00:00:37,220
+So, there is a lot of magic which is happening in the background.
+9
+
+10
+00:00:37,430 --> 00:00:44,270
+Before we get there, we would focus on getting another simple GET request working. So, I would copy this
+10
+
+11
+00:00:44,510 --> 00:00:45,320
+method.
+11
+
+12
+00:00:45,320 --> 00:00:46,590
+There would be a compilation error.
+12
+
+13
+00:00:46,640 --> 00:00:48,520
+Let's not worry about it right now.
+13
+
+14
+00:00:48,620 --> 00:00:53,710
+What I want to do is to create a GetMapping to hello-world
+14
+
+15
+00:00:53,960 --> 00:00:58,970
+and this time I would want to create a bean and return it back.
+15
+
+16
+00:00:58,970 --> 00:01:04,840
+So, instead of creating a simple string, I would want to create a bean and return it back. The URI
+16
+
+17
+00:01:04,840 --> 00:01:05,370
+I would want to
+17
+
+18
+00:01:05,380 --> 00:01:10,260
+map is hello-world-bean. We would continue mapping the GetMapping request.
+18
+
+19
+00:01:10,700 --> 00:01:15,500
+However, instead of returning a string, we want to return a bean back. How do we do that? Let's quickly do that.
+19
+
+20
+00:01:15,860 --> 00:01:16,700
+So, we want to do
+20
+
+21
+00:01:16,760 --> 00:01:18,060
+hello-world-bean
+21
+
+22
+00:01:18,080 --> 00:01:21,690
+and I'll make the change in the method name.
+22
+
+23
+00:01:21,690 --> 00:01:28,790
+Now, you'd see that the entire thing compiles but instead of creating Hello World, what I would want
+23
+
+24
+00:01:28,790 --> 00:01:31,670
+to do is, to create a HelloWorld
+24
+
+25
+00:01:31,920 --> 00:01:36,980
+Bean. One more thing I'd want to do is, to make sure that this method is returning a Hello World Bean.
+25
+
+26
+00:01:37,270 --> 00:01:38,060
+So, instead of string,
+26
+
+27
+00:01:38,060 --> 00:01:39,020
+we want to return a
+27
+
+28
+00:01:39,170 --> 00:01:39,820
+Hello World
+28
+
+29
+00:01:39,840 --> 00:01:42,510
+Bean. Actually, the HelloWorldBean is not really there.
+29
+
+30
+00:01:42,590 --> 00:01:49,120
+So, let's go ahead and create that first. How do I create it? Control 1 or Command 1 and create class
+30
+
+31
+00:01:49,190 --> 00:01:50,290
+HelloWorldBean.
+31
+
+32
+00:01:50,360 --> 00:01:51,570
+Let's do that.
+32
+
+33
+00:01:52,010 --> 00:01:52,550
+HelloWorld
+33
+
+34
+00:01:52,550 --> 00:01:53,260
+Bean.
+34
+
+35
+00:01:53,450 --> 00:01:58,440
+I'll take the default and click Finish and I would want to create, next,
+35
+
+36
+00:01:58,520 --> 00:02:03,800
+if you'd see, there is a constructor which is present in here. So, let's go ahead and do a Control 1 and
+36
+
+37
+00:02:03,800 --> 00:02:04,880
+create constructor
+37
+
+38
+00:02:04,880 --> 00:02:10,510
+HelloWorld. I'd want to create a HelloWorldBean with a message.
+38
+
+39
+00:02:10,730 --> 00:02:17,270
+What I want to do with is, this.message = message. Now,
+39
+
+40
+00:02:17,300 --> 00:02:19,190
+I would get another compilation error.
+40
+
+41
+00:02:19,190 --> 00:02:22,730
+Now, I press Control 1 and I'm going to create a message in here.
+41
+
+42
+00:02:22,730 --> 00:02:25,100
+So, we have a private field called message.
+42
+
+43
+00:02:25,100 --> 00:02:32,660
+We have a Hello Bean accepting that in the constructor and setting it to itself. Let's create Getter, sorry a setter
+43
+
+44
+00:02:32,690 --> 00:02:34,100
+quickly.
+44
+
+45
+00:02:34,100 --> 00:02:35,580
+So, I'll say, Select Setters.
+45
+
+46
+00:02:35,760 --> 00:02:36,440
+OK.
+46
+
+47
+00:02:36,530 --> 00:02:44,030
+The easiest way to do that is right-click, Source and you can go and select Generate Getters and Setters.
+47
+
+48
+00:02:44,060 --> 00:02:49,860
+So, I generated setter and obviously, I would also want to generate a toString().
+48
+
+49
+00:02:49,880 --> 00:02:56,960
+So, let's generate a toString() as well. Right-click, Source, Generate toString(), I'll say, OK. So, we're creating
+49
+
+50
+00:02:56,960 --> 00:02:59,050
+a very simple bean, nothing complex in here.
+50
+
+51
+00:02:59,120 --> 00:03:04,820
+So, we're just creating a simple bean and now our HelloWorldController would compile
+51
+
+52
+00:03:04,820 --> 00:03:05,270
+fine.
+52
+
+53
+00:03:05,750 --> 00:03:12,650
+So, what we have done until now is very simple, right. We have defined a simple HelloWorldBean which accepts a message
+53
+
+54
+00:03:12,980 --> 00:03:16,840
+and we are actually returning it back in the controller method.
+54
+
+55
+00:03:16,850 --> 00:03:18,470
+Let's start the application up.
+55
+
+56
+00:03:18,620 --> 00:03:20,170
+Let's go to URI,
+56
+
+57
+00:03:20,300 --> 00:03:22,670
+hello-world-bean.
+57
+
+58
+00:03:22,980 --> 00:03:25,570
+You would see that there is an error.
+58
+
+59
+00:03:25,680 --> 00:03:27,740
+It was an unexpected error.
+59
+
+60
+00:03:27,770 --> 00:03:30,820
+No converter found for return value of type
+60
+
+61
+00:03:30,870 --> 00:03:31,580
+HelloWorldBean.
+61
+
+62
+00:03:31,590 --> 00:03:35,450
+This is one of the important things that you'd need to understand.
+62
+
+63
+00:03:35,450 --> 00:03:41,700
+Actually, it is not really a easy error to debug and that is the reason why I illustrated this first step.
+63
+
+64
+00:03:41,700 --> 00:03:45,690
+So, this HelloWorldBean does not have a Getter.
+64
+
+65
+00:03:46,220 --> 00:03:51,350
+So, if we don't create a Getter, then the automatic conversion will not work.
+65
+
+66
+00:03:51,350 --> 00:03:53,120
+So, let's go out and create the Getter.
+66
+
+67
+00:03:53,300 --> 00:04:01,120
+So, right-click, Source, Generate Getters and Setters, and select the Getter for that
+67
+
+68
+00:04:01,130 --> 00:04:04,990
+and now, you'd see that the Getter is present in here.
+68
+
+69
+00:04:05,030 --> 00:04:07,240
+Let's quickly restart the application.
+69
+
+70
+00:04:07,240 --> 00:04:11,900
+And now, if you launched the HelloWorldBean, you would see a JSON message back.
+70
+
+71
+00:04:11,900 --> 00:04:14,890
+You'd see that message: "Hello World".
+71
+
+72
+00:04:14,960 --> 00:04:19,250
+You can see that this message is adhering to a JSON structure.
+72
+
+73
+00:04:19,290 --> 00:04:21,350
+We're calling this GET URI
+73
+
+74
+00:04:21,890 --> 00:04:26,450
+and the HelloWorldBean is being returned with the value Hello World.
+74
+
+75
+00:04:26,780 --> 00:04:31,530
+And if you look at the structure, it's actually reflecting this structure in here. So,
+75
+
+76
+00:04:31,710 --> 00:04:35,860
+it's just returning message and Hello World.
+76
+
+77
+00:04:35,960 --> 00:04:38,070
+The name of the field here is message.
+77
+
+78
+00:04:38,120 --> 00:04:39,520
+So, that's exactly what is here
+78
+
+79
+00:04:39,740 --> 00:04:46,030
+and the text which is being set to the message is being presented as its value
+79
+
+80
+00:04:46,070 --> 00:04:53,110
+and this coming back as a JSON string. In this step, we added in one more simple method.
+80
+
+81
+00:04:53,110 --> 00:04:55,870
+However, this is returning a bean back.
+81
+
+82
+00:04:56,000 --> 00:04:58,220
+Earlier we returned a simple string back.
+82
+
+83
+00:04:58,220 --> 00:05:04,410
+Now, we are returning a bean back and this bean is being automatically converted into JSON and returned
+83
+
+84
+00:05:04,410 --> 00:05:08,020
+back. The first two steps were really simple, right.
+84
+
+85
+00:05:08,030 --> 00:05:14,100
+We just created a couple of simple methods. In the next step, we will understand what's happening in the
+85
+
+86
+00:05:14,100 --> 00:05:16,950
+background of these two steps.
+86
+
+87
+00:05:17,460 --> 00:05:20,580
+How is the request being handled,
+87
+
+88
+00:05:20,580 --> 00:05:22,180
+who is handling the request,
+88
+
+89
+00:05:22,290 --> 00:05:26,820
+and also, how is the HelloWorldBean content getting translated to a JSON.
+89
+
+90
+00:05:27,150 --> 00:05:29,880
+We'll look at all that in the next step.

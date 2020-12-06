@@ -1,0 +1,407 @@
+1
+00:00:02,060 --> 00:00:09,200
+Welcome back! In the previous two steps, we created a couple of simple methods. In this step we’ll try and understand
+
+2
+00:00:09,500 --> 00:00:12,020
+what's happening in the background.
+
+3
+00:00:12,110 --> 00:00:17,990
+You’d see the mappings that we have created. So we created a mapping from Hello world get.
+
+4
+00:00:18,140 --> 00:00:26,830
+We also created a Hello World bean get but there are additional mappings also present in here
+
+5
+00:00:26,840 --> 00:00:30,400
+for example, slash error. When we look at the log,
+
+6
+00:00:30,440 --> 00:00:33,410
+There are a few important questions that would come up.
+
+7
+00:00:33,470 --> 00:00:35,550
+What is dispatcher servlet?
+
+8
+00:00:35,570 --> 00:00:40,460
+Actually we have not been anything about dispatcher servlet so who is configuring dispatcher servlet? What does
+
+9
+00:00:40,460 --> 00:00:42,200
+dispatcher servlet do?
+
+10
+00:00:42,200 --> 00:00:46,050
+How does the hello world bean object get converted to JSON?
+
+11
+00:00:46,220 --> 00:00:48,570
+And who is configuring the error mapping?
+
+12
+00:00:48,580 --> 00:00:53,420
+So there are a lot of questions that you'd have based on what we have done in the previous two steps
+
+13
+00:00:53,780 --> 00:01:00,090
+and whatever was in the log. In this step, we will slowly look at all these questions.
+
+14
+00:01:00,230 --> 00:01:07,180
+I would want to actually start running this application in something called debug mode and the way
+
+15
+00:01:07,190 --> 00:01:15,370
+we can do that is by going to applications dot properties and configuring logging dot level.
+
+16
+00:01:15,380 --> 00:01:21,850
+I would only configure the Spring Framework. So org dot Spring Framework is equal to
+
+17
+00:01:21,890 --> 00:01:29,720
+I would say debug. So I'm setting the logging level for org dot spring framework to debug and let’s restart. When
+
+18
+00:01:29,720 --> 00:01:30,410
+you restart now,
+
+19
+00:01:30,420 --> 00:01:34,330
+you'd see a lot more log than previously.
+
+20
+00:01:34,520 --> 00:01:40,910
+Because now we are at debug, logging Spring boot is outputting a lot of stuff and all that is being shown
+
+21
+00:01:40,910 --> 00:01:42,380
+in the log right now.
+
+22
+00:01:42,680 --> 00:01:50,210
+One of the important things that you’d see in here is something called an auto configuration report. The
+
+23
+00:01:50,270 --> 00:01:56,060
+auto configuration report consists of a lot of details.
+
+24
+00:01:56,210 --> 00:02:02,900
+If you look at the auto configuration log, one of the important things is configuration of dispatcher
+
+25
+00:02:03,020 --> 00:02:05,620
+servlet auto configuration.
+
+26
+00:02:05,750 --> 00:02:12,670
+It says dispatcher servlet auto configuration matched because it found a class called dispatcher servlet
+
+27
+00:02:12,680 --> 00:02:14,470
+on the classpath.
+
+28
+00:02:14,530 --> 00:02:22,460
+What is happening here is we added in a starter on spring boot starter web and Spring Boot
+
+29
+00:02:22,490 --> 00:02:27,320
+starter web has a dependency on spring web MVC framework.
+
+30
+00:02:27,560 --> 00:02:32,410
+Therefore we get the dispatcher servlet class in our classpath.
+
+31
+00:02:32,540 --> 00:02:34,660
+So Spring Boot Auto configuration says,
+
+32
+00:02:34,760 --> 00:02:42,120
+I found dispatcher servlet on the classpath. So let's go ahead and configure a dispatcher
+
+33
+00:02:42,320 --> 00:02:46,990
+servlet. The other thing you'd see is also the error MVC auto configuration.
+
+34
+00:02:47,030 --> 00:02:54,240
+So it says, “OK! these classes are found the classpath. So so we would need to configure a error page.”
+
+35
+00:02:54,410 --> 00:02:56,770
+So it's configuring a basic error controller.
+
+36
+00:02:56,810 --> 00:03:03,950
+A few error attributes and also a default error view resolver. The error page which we looked at earlier
+
+37
+00:03:04,190 --> 00:03:06,420
+was the white label error page.
+
+38
+00:03:06,440 --> 00:03:09,460
+This was the thing which was generating that error page.
+
+39
+00:03:09,500 --> 00:03:16,110
+In summary all this configuration is getting fired because of something called spring boot auto
+
+40
+00:03:16,130 --> 00:03:17,040
+configuration.
+
+41
+00:03:17,030 --> 00:03:23,210
+Spring boot looks at all the classes, all the jars which are available on the classpath and based on
+
+42
+00:03:23,220 --> 00:03:29,160
+whatever is in the classpath, it tries to auto configure different things like dispatcher servlet.
+
+43
+00:03:29,360 --> 00:03:32,370
+In addition to whatever we have discussed earlier,
+
+44
+00:03:32,390 --> 00:03:38,400
+the other things which are auto configured are things called HTTP message converters.
+
+45
+00:03:38,540 --> 00:03:47,390
+So we had the bean automatically converted to JSON, right? So these HTTP message converters were responsible
+
+46
+00:03:47,390 --> 00:03:49,040
+for doing that.
+
+47
+00:03:49,040 --> 00:03:52,620
+So what is happening is something called Jackson to object mapper.
+
+48
+00:03:52,820 --> 00:04:01,610
+So this actually does the conversion from JSON to beans and beans to JSON. Who is configuring dispatcher
+
+49
+00:04:01,610 --> 00:04:04,330
+servlet? Spring boot auto configuration.
+
+50
+00:04:04,400 --> 00:04:06,360
+How does the hello world bean
+
+51
+00:04:06,370 --> 00:04:08,780
+get converted to JSON? It’s
+
+52
+00:04:08,810 --> 00:04:12,240
+also because of Spring Boot auto configuration because the message convertors
+
+53
+00:04:12,320 --> 00:04:19,240
+and the Jackson beans are getting initialized. Who's configuring the error mapping? Again spring boot auto
+
+54
+00:04:19,280 --> 00:04:20,240
+configuration.
+
+55
+00:04:20,240 --> 00:04:23,450
+It creates a default error page for us.
+
+56
+00:04:23,490 --> 00:04:27,730
+Now the last thing we would want to understand is the dispatcher servlet.
+
+57
+00:04:27,890 --> 00:04:33,680
+If you look at the log you would see something like this - mapping servlet dispatches servlet to slash.
+
+58
+00:04:33,950 --> 00:04:38,380
+what is happening here is dispatcher servlet is handling all the requests.
+
+59
+00:04:38,390 --> 00:04:44,290
+So this is the root of the web application, right? So it’s handling all the requests.
+
+60
+00:04:44,330 --> 00:04:45,280
+Whenever you type a
+
+61
+00:04:45,320 --> 00:04:49,720
+URL into the browser, whenever I type hello world bean into the browser,
+
+62
+00:04:49,910 --> 00:04:56,000
+What would happen is the request would go to Dispatcher servlet. Dispatcher servlet would be the one which
+
+63
+00:04:56,000 --> 00:04:59,030
+would be handling that request first.
+
+64
+00:04:59,390 --> 00:05:06,300
+This is following a pattern called front controller. Dispatcher servlet is the front controller  for
+
+65
+00:05:06,310 --> 00:05:08,910
+spring web MVC framework.
+
+66
+00:05:09,160 --> 00:05:12,430
+So the request goes to dispatcher servlet.
+
+67
+00:05:12,430 --> 00:05:18,280
+Dispatcher servlet knows all the different mappings which are present in the application. So
+
+68
+00:05:18,280 --> 00:05:18,750
+it knows
+
+69
+00:05:18,880 --> 00:05:22,330
+hello world get method is mapped to this method.
+
+70
+00:05:22,330 --> 00:05:28,360
+Dispatcher servlet knows that hello world bean get request is mapped to this specific method.
+
+71
+00:05:28,510 --> 00:05:35,580
+So once it gets to request, it determines which is the right controller to execute that request.
+
+72
+00:05:35,590 --> 00:05:43,300
+So it looks at the URI and the request method. When we type a URL in the browser, we’re
+
+73
+00:05:43,300 --> 00:05:48,210
+sending a get request. The dispatcher servlet says, 
+
+74
+00:05:48,220 --> 00:05:52,570
+“Ok! there's a get request to Hello World bean. Which is the right controller that would be able to execute
+
+75
+00:05:52,570 --> 00:05:53,380
+it for me?”
+
+76
+00:05:53,380 --> 00:05:56,160
+It will find this specific method.
+
+77
+00:05:56,230 --> 00:06:02,070
+It would see that hello world controller dot hello world bean is the right one to execute.
+
+78
+00:06:02,080 --> 00:06:08,380
+So it would execute that, so it would make sure that this method is executed and this bean is returned
+
+79
+00:06:08,380 --> 00:06:15,070
+back. Once the bean is returned back then dispatches servlet looks at how do I send the response back.
+
+80
+00:06:15,070 --> 00:06:16,000
+I have bean.
+
+81
+00:06:16,030 --> 00:06:18,850
+Now how do I send the message back?
+
+82
+00:06:18,850 --> 00:06:23,150
+We have a at restcontroller annotation in here.
+
+83
+00:06:23,380 --> 00:06:29,430
+Part of the at restcontroller annotation, if you look at it is something called response body
+
+84
+00:06:29,430 --> 00:06:30,470
+annotation.
+
+85
+00:06:30,610 --> 00:06:35,980
+One of the important annotations which is present in restcontroller is response body.
+
+86
+00:06:36,220 --> 00:06:43,780
+What would happen when I put response body on a controller, is the response from that would be mapped
+
+87
+00:06:43,960 --> 00:06:48,360
+by a message convertor into some other format.
+
+88
+00:06:48,460 --> 00:06:53,120
+So here the message convertor which is going to be used is Jackson.
+
+89
+00:06:53,140 --> 00:06:59,630
+So dispatcher servlet would say, “OK! do the Jackson conversion. Do the conversion to JSON.”
+
+90
+00:06:59,710 --> 00:07:04,390
+It would actually convert Hello World bean, whatever content is there in there.
+
+91
+00:07:04,390 --> 00:07:11,170
+It converts it into JSON and sends the response back. The hello world bean request goes to a dispatcher
+
+92
+00:07:11,170 --> 00:07:17,000
+servlet, dispatcher servlet finds the hello world controller, the specific method hello world bean. It calls
+
+93
+00:07:17,050 --> 00:07:24,400
+it, gets the bean, invoke the conversion on it, converts it into JSON and returns the response back.
+
+94
+00:07:24,400 --> 00:07:30,520
+Whether you're working with web applications or with spring rest services, dispatcher servlet plays a
+
+95
+00:07:30,610 --> 00:07:31,700
+key role.
+
+96
+00:07:31,830 --> 00:07:38,000
+We will further discuss about dispatcher servlet when we talk about other things like security. In this
+
+97
+00:07:38,000 --> 00:07:45,580
+step, we tried to take a quick look at the world behind this hello world controller. We looked at dispatcher servlet
+
+98
+00:07:45,850 --> 00:07:48,670
+and how it controls the entire flow.
+
+99
+00:07:48,790 --> 00:07:54,970
+Also, we looked at some of the things which are configured by default by spring boot auto configuration
+
+100
+00:07:55,650 --> 00:07:58,150
+If a few of these things are not really clear to you,
+
+101
+00:07:58,210 --> 00:07:59,620
+not a problem at all.
+
+102
+00:07:59,620 --> 00:08:04,930
+We'll discuss about this a lot more in the subsequent steps. Until then, bye-bye.

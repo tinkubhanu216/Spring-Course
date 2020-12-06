@@ -1,0 +1,279 @@
+1
+00:00:01,470 --> 00:00:09,100
+Welcome to this step where we would set up a project using spring initialiser. We’d want to build our RESTful
+
+2
+00:00:09,140 --> 00:00:16,340
+web services. What we’ll do is, we’ll use start dot spring dot io to initialize
+
+3
+00:00:16,350 --> 00:00:20,880
+our spring project. We would want to generate a Maven project because Maven is the build tool
+
+4
+00:00:20,900 --> 00:00:28,280
+that we're going to use. Language is Java and we would want to use a Spring Boot version greater than 2.0.0
+
+5
+00:00:28,350 --> 00:00:32,130
+So, select anything which is greater than 2.0.0 snapshot.
+
+6
+00:00:32,250 --> 00:00:33,390
+You should be fine.
+
+7
+00:00:33,450 --> 00:00:35,950
+The other things we want to specify is the group Id.
+
+8
+00:00:36,090 --> 00:00:38,400
+I would want to use the group Id com in28minutes 
+
+9
+00:00:38,430 --> 00:00:46,230
+rest web services and I would put an artifact restful web services. For any Maven project we’d
+
+10
+00:00:46,290 --> 00:00:49,410
+need to give a group Id and an artifact Id.
+
+11
+00:00:49,920 --> 00:00:56,230
+You can kind of compare this like a class name and package.
+
+12
+00:00:56,360 --> 00:00:59,330
+We would also want to add a few dependencies.
+
+13
+00:00:59,370 --> 00:01:02,920
+The way you can select the dependencies is by typing them in.
+
+14
+00:01:02,940 --> 00:01:08,560
+So, I would want to select a web. That’s this spring boot start web dependency.
+
+15
+00:01:08,640 --> 00:01:11,270
+We're going to build RESTFul web services.
+
+16
+00:01:11,490 --> 00:01:17,580
+And if you remember the things from our starter projects, you'd remember that spring boot starter web is
+
+17
+00:01:17,690 --> 00:01:20,930
+the starter for developing restful Web services.
+
+18
+00:01:21,090 --> 00:01:24,510
+It is also the starter for developing web applications.
+
+19
+00:01:24,540 --> 00:01:32,870
+Now I would want to also add in dev tools. Dev tools make it easy for developing application. So I’ll add tools in.
+
+20
+00:01:33,030 --> 00:01:37,050
+And I would want to use JPA at a later point in this course.
+
+21
+00:01:37,270 --> 00:01:41,230
+JPA and I would want to use H2 as in-memory database.
+
+22
+00:01:41,430 --> 00:01:44,180
+Let's add it in as well.
+
+23
+00:01:44,220 --> 00:01:48,040
+Once you do that, you can click generate project.
+
+24
+00:01:48,450 --> 00:01:52,590
+What Spring initialiser does is it would create a Maven project.
+
+25
+00:01:52,590 --> 00:01:57,110
+Put it in a zip and that’s what is downloaded to your downloads folder.
+
+26
+00:01:57,120 --> 00:02:04,110
+What I recommend you to do is to unzip the zip file to some folder on your hard disk.
+
+27
+00:02:04,160 --> 00:02:06,570
+Zip file is downloaded. You can take this,
+
+28
+00:02:06,610 --> 00:02:13,050
+unzip the file to some folder on your local hard disk and launch up Eclipse.
+
+29
+00:02:13,110 --> 00:02:14,310
+Once Eclipse lanches up,
+
+30
+00:02:14,460 --> 00:02:22,590
+You can import the project by using file, import, existing Maven projects and you can browse through
+
+31
+00:02:22,650 --> 00:02:27,050
+to the directory where you unzipped your zip file.
+
+32
+00:02:27,060 --> 00:02:34,080
+This is the root directory to which I unzipped my zip file too and I can see a pom dot xml coming
+
+33
+00:02:34,080 --> 00:02:43,200
+up with a RESTful web service. You can also use browse to browse through to your folder. Once I click finish
+
+34
+00:02:43,200 --> 00:02:43,950
+button,
+
+35
+00:02:43,950 --> 00:02:51,850
+what Maven does is, it would actually download all the dependencies which are listed in the pom dot xml.
+
+36
+00:02:52,050 --> 00:02:55,830
+And it would also set up the entire project for us.
+
+37
+00:02:55,830 --> 00:02:57,950
+So let's go ahead and click the finish button.
+
+38
+00:02:58,260 --> 00:02:59,940
+This might take a little while.
+
+39
+00:02:59,940 --> 00:03:05,850
+If this is the first time you are using this specific version of spring boot because this downloads a
+
+40
+00:03:05,850 --> 00:03:14,010
+lot of Maven dependencies. What is happening in the background is the complete setup of our RESTful Web services
+
+41
+00:03:14,040 --> 00:03:15,090
+projects.
+
+42
+00:03:15,120 --> 00:03:20,390
+Once the project is set up, you’d see a folder structure like this.
+
+43
+00:03:20,400 --> 00:03:27,390
+This is typical Maven project structure. Source main Java, source main resources, source test Java
+
+44
+00:03:27,390 --> 00:03:32,120
+Source main Java contains all our Java code and there's not a lot in here right now.
+
+45
+00:03:32,190 --> 00:03:38,310
+We have source main resources with the properties file so there is application dot properties which is the
+
+46
+00:03:38,310 --> 00:03:45,710
+spring boot properties file and we have the test which can be written down in source test java.
+
+47
+00:03:45,960 --> 00:03:53,680
+We also have a pom dot xml which contains the dependencies which we have chosen. The pom dot xml contains
+
+48
+00:03:53,690 --> 00:03:56,110
+the dependencies starter data JPA,
+
+49
+00:03:56,250 --> 00:04:03,900
+starter web, dev tools, H2 and starter test. These four…the first four dependencies
+
+50
+00:04:04,020 --> 00:04:09,450
+are what we have chosen on the start dot spring dot io website. Web,
+
+51
+00:04:09,610 --> 00:04:11,780
+dev tools, JPA and H2.
+
+52
+00:04:11,850 --> 00:04:15,610
+That's what we chose and those were the dependencies which were in here.
+
+53
+00:04:15,870 --> 00:04:22,940
+And by default spring boot would add in…spring initialiser would add in a dependency on spring boot
+
+54
+00:04:23,020 --> 00:04:23,600
+starter test.
+
+55
+00:04:23,610 --> 00:04:27,420
+This is the one to write your unit test and integration test.
+
+56
+00:04:27,460 --> 00:04:34,110
+If you go and look at your Maven dependencies, you should see a lot of dependencies which are
+
+57
+00:04:34,110 --> 00:04:40,680
+coming in because of this starters we are using. Now that we have an overview of the project that we
+
+58
+00:04:40,800 --> 00:04:42,090
+are looking at,
+
+59
+00:04:42,090 --> 00:04:52,120
+let's start up the spring boot application class. Right click, run as Java application. We have not really written
+
+60
+00:04:52,360 --> 00:04:54,300
+any code as of now.
+
+61
+00:04:54,640 --> 00:04:55,590
+But that's fine.
+
+62
+00:04:55,630 --> 00:04:57,820
+We will write a lot of code in the next steps.
+
+63
+00:04:57,820 --> 00:05:04,150
+For now, what we wanted to check is if the application is launching up fine. If the application launches
+
+64
+00:05:04,150 --> 00:05:06,690
+up fine then we are good to go.
+
+65
+00:05:06,820 --> 00:05:13,330
+You can see that there is a lot of log being generated and you would see by the end of the thing that
+
+66
+00:05:13,340 --> 00:05:15,940
+the Tomcat server has started up.
+
+67
+00:05:15,940 --> 00:05:20,220
+So you can see that Tomcat has started on ports 8080.
+
+68
+00:05:20,320 --> 00:05:23,080
+There’s a lot of magic which is happening in the background.
+
+69
+00:05:23,200 --> 00:05:31,480
+We will uncover all that magic in the subsequent steps as we develop more and more restful services
+
+70
+00:05:32,020 --> 00:05:33,490
+Until the next step, bye-bye
