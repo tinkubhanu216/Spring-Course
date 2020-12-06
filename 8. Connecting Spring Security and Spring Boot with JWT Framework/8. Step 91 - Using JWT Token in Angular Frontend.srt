@@ -1,0 +1,399 @@
+0
+1
+00:00:01,990 --> 00:00:06,460
+Welcome back. In the previous few steps, we learned a lot about JWT and how to configure it in the
+1
+
+2
+00:00:06,460 --> 00:00:07,320
+back end.
+2
+
+3
+00:00:07,420 --> 00:00:14,090
+And now let's shift out to the front end, the front end that's when it's done. Let me log in.
+3
+
+4
+00:00:14,220 --> 00:00:14,920
+Whoops.
+4
+
+5
+00:00:15,040 --> 00:00:16,480
+Invalid credentials.
+5
+
+6
+00:00:16,480 --> 00:00:20,170
+The reason is, because we have turned off basic authentication.
+6
+
+7
+00:00:20,170 --> 00:00:23,890
+We are now using JWT token based authentication.
+7
+
+8
+00:00:23,890 --> 00:00:29,230
+We need to upgrade our front end to react to that. Let's  look at how to do that, in this specific step.
+8
+
+9
+00:00:29,530 --> 00:00:38,560
+Let's go to the basic authentication service. we would need to create a new method to execute the Jott
+9
+
+10
+00:00:38,560 --> 00:00:39,810
+authentication.
+10
+
+11
+00:00:39,820 --> 00:00:43,030
+What I'll do, is I'll take a shortcut and create a simple method in here.
+11
+
+12
+00:00:43,090 --> 00:00:46,480
+Let's extend the method which is present in here.
+12
+
+13
+00:00:46,630 --> 00:00:49,880
+Copy the execute so we use which we wrote earlier.
+13
+
+14
+00:00:49,900 --> 00:00:58,710
+So you do authentication service call execute jott authentication service instead of the basic string.
+14
+
+15
+00:00:58,750 --> 00:01:00,740
+What we'll have with the jott...
+15
+
+16
+00:01:01,120 --> 00:01:02,070
+What do we need to do?
+16
+
+17
+00:01:02,230 --> 00:01:07,840
+Well we have a basic authentication is that Jott . What was the first request that we sent with jott? The
+17
+
+18
+00:01:07,840 --> 00:01:16,270
+first request that we sent to get the token was a POST request to /authenticate.
+18
+
+19
+00:01:16,540 --> 00:01:22,690
+So we don't really need to worry about the basic authentication, and the headers in it.
+19
+
+20
+00:01:22,780 --> 00:01:28,660
+So what do we need to do is to send an authenticate.
+20
+
+21
+00:01:28,760 --> 00:01:39,120
+We don't really need the headers. We would want to do a POST. Actually,  we want to do a POST, and we would
+21
+
+22
+00:01:39,120 --> 00:01:44,540
+not be getting the authentication bean, So make it any.  to work with any object.
+22
+
+23
+00:01:44,690 --> 00:01:52,080
+We would not be having the headers here, so we'd want to do a post to /authenticate. Usually with
+23
+
+24
+00:01:52,080 --> 00:01:58,320
+POST, you would need to send a number of parameters So what would we do, things that we would need to
+24
+
+25
+00:01:58,320 --> 00:02:07,850
+send over here? You need to send the user name and the password.
+25
+
+26
+00:02:08,160 --> 00:02:11,400
+So this would create another object with username:
+26
+
+27
+00:02:11,400 --> 00:02:13,580
+What the user name is present, password,
+27
+
+28
+00:02:13,630 --> 00:02:17,280
+And what is present in. The body would be containing the user name and password.
+28
+
+29
+00:02:17,460 --> 00:02:23,130
+So if you're sending a post request to /authenticate with the user name and password, and once the
+29
+
+30
+00:02:23,140 --> 00:02:30,130
+response comes back, what can be the token? Would be inside the response right.
+30
+
+31
+00:02:30,270 --> 00:02:40,480
+So that you would want to store is bearer space... let's create a variable so as the double quotes with ticks
+31
+
+32
+00:02:40,600 --> 00:02:48,050
+So the variable that replace tick,  and from the response response,
+32
+
+33
+00:02:48,100 --> 00:02:50,510
+I do want to pick up the token, right?
+33
+
+34
+00:02:50,550 --> 00:02:55,310
+Let's look at a sample in the restlet client.
+34
+
+35
+00:02:55,440 --> 00:03:01,310
+So we want to send a post request to /authenticate, with the username and password, and what you would
+35
+
+36
+00:03:01,320 --> 00:03:04,240
+get back is the token in the body.
+36
+
+37
+00:03:04,320 --> 00:03:06,310
+And that's exactly what we are doing in here.
+37
+
+38
+00:03:06,510 --> 00:03:11,640
+So we are sending a request to authenticate, the body is you that name and password.
+38
+
+39
+00:03:11,880 --> 00:03:13,880
+This is kind of a javascript shortcut.
+39
+
+40
+00:03:13,890 --> 00:03:20,240
+If you create an object with a list of variables, what it does is it would create a proper structure
+40
+
+41
+00:03:20,250 --> 00:03:26,560
+So it would create user the name of the variable name and password.
+41
+
+42
+00:03:26,590 --> 00:03:31,740
+: value. Your script makes it easy to create json requests.
+42
+
+43
+00:03:31,760 --> 00:03:34,640
+And once we get the response back, we are picking up the token.
+43
+
+44
+00:03:34,950 --> 00:03:40,970
+And we are creating the Bearer string, and setting it as the token. Let't see what would happen when I saved
+44
+
+45
+00:03:40,970 --> 00:03:41,470
+this.
+45
+
+46
+00:03:41,570 --> 00:03:50,950
+And when I go to our application and try and logging in with it with dummy login... ops! Invalid credentials!
+46
+
+47
+00:03:51,020 --> 00:03:52,870
+Let's inspect and see what the error this.
+47
+
+48
+00:03:55,650 --> 00:04:04,270
+the request basic auth. You know the reason why it's going to go up, because we have not tied up to execute
+48
+
+49
+00:04:04,390 --> 00:04:10,560
+JWT authentications. We see it. From the login component and what is called handle basic auth login. So
+49
+
+50
+00:04:10,560 --> 00:04:19,680
+let's go to login component.ts. This is what is being called. What we want to do now is in the handle
+50
+
+51
+00:04:19,680 --> 00:04:23,800
+basic auth login, we would want to call a different thing. So what I'll do
+51
+
+52
+00:04:23,950 --> 00:04:35,040
+is change the basic login thing. I'll create a JWT auth login and change this method to call
+52
+
+53
+00:04:35,310 --> 00:04:38,440
+execute JWT login.
+53
+
+54
+00:04:38,440 --> 00:04:42,090
+So let's go to JWT authentication service.
+54
+
+55
+00:04:42,350 --> 00:04:44,480
+Rest of this stuff would remain as it is.
+55
+
+56
+00:04:44,670 --> 00:04:49,610
+All that I need to do is change the login.html to call this specific thing.
+56
+
+57
+00:04:49,860 --> 00:04:59,000
+I would need to get the copy of this button. Comment this out, and change the method call to this.
+57
+
+58
+00:04:59,200 --> 00:05:05,380
+So let's remove the commented lines of code, which are present inside this method, and let's save this.
+58
+
+59
+00:05:05,980 --> 00:05:07,790
+Refresh the page.
+59
+
+60
+00:05:07,810 --> 00:05:14,760
+Close this and enter in28minutes, dummy and login.
+60
+
+61
+00:05:14,780 --> 00:05:15,640
+Cool.
+61
+
+62
+00:05:15,890 --> 00:05:16,490
+There you go.
+62
+
+63
+00:05:16,490 --> 00:05:20,860
+You see the welcome message, get welcome message to this page.
+63
+
+64
+00:05:20,990 --> 00:05:29,880
+Update, delete and add a new todo.
+64
+
+65
+00:05:29,880 --> 00:05:30,410
+Right.
+65
+
+66
+00:05:30,540 --> 00:05:36,390
+So what we are now using is JWT or token based authentication.
+66
+
+67
+00:05:36,390 --> 00:05:46,500
+So if you look at any of the requests which are going out on the network... go to home, come back to and
+67
+
+68
+00:05:46,950 --> 00:05:49,170
+then do.. request goes out.
+68
+
+69
+00:05:49,280 --> 00:05:52,840
+You'll see that all the request headers would contain a Bearer.
+69
+
+70
+00:05:53,150 --> 00:05:58,240
+So if you just go for that, you would see that authorization bearer and the token.
+70
+
+71
+00:05:58,520 --> 00:06:03,270
+First of all I would really love to congratulate you on your journey.
+71
+
+72
+00:06:03,290 --> 00:06:10,560
+We have talked about AngularJS, we have talked about Spring Boot, REST API. We connected a full stack
+72
+
+73
+00:06:10,580 --> 00:06:17,270
+application from the back end to the front end, following a number of best practices. And now, we also
+73
+
+74
+00:06:17,270 --> 00:06:22,850
+learned authentication and JWT, and we're able to connect everything up.
+74
+
+75
+00:06:22,910 --> 00:06:29,870
+This is an awesome journey which took me a lot of effort to set up. These are a wide range of technologies
+75
+
+76
+00:06:30,200 --> 00:06:33,200
+and standards which we are bringing together,
+76
+
+77
+00:06:33,380 --> 00:06:34,880
+during this course
+77
+
+78
+00:06:35,030 --> 00:06:37,820
+I'm sure you also had a wonderful time.
+78
+
+79
+00:06:37,880 --> 00:06:41,810
+There are still a lot of things that we would want to learn in the next few steps.
+79
+
+80
+00:06:41,870 --> 00:06:44,920
+So don't go anywhere and I'll see you in the next step.

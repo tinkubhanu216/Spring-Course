@@ -1,0 +1,355 @@
+0
+1
+00:00:01,970 --> 00:00:11,000
+Welcome back. In the previous step we enabled JWT authentication on our project. And this step.
+1
+
+2
+00:00:11,090 --> 00:00:13,530
+Let's look at how to execute requests.
+2
+
+3
+00:00:13,700 --> 00:00:19,880
+When I do a GET request in the restlet client to localhost/users  in28minutes todo, and
+3
+
+4
+00:00:19,910 --> 00:00:24,300
+do enter, and what I get back is a 401 response.
+4
+
+5
+00:00:24,300 --> 00:00:28,140
+It says you are not authorized to get a get out of here.
+5
+
+6
+00:00:28,290 --> 00:00:35,810
+And if you go for that, you need to provide a JWT token to access this resource.
+6
+
+7
+00:00:35,820 --> 00:00:38,590
+How do I get a JWT token?
+7
+
+8
+00:00:39,090 --> 00:00:46,040
+The way we have designed it, is you need to send a GET request to get request.
+8
+
+9
+00:00:46,040 --> 00:00:47,330
+Think about it.
+9
+
+10
+00:00:47,360 --> 00:00:57,650
+So at localhost:8080/ authenticate . And to this you are then you need to say POST request, and the POST
+10
+
+11
+00:00:57,650 --> 00:01:01,930
+request needs to contain the following information.
+11
+
+12
+00:01:01,940 --> 00:01:12,910
+The first one is the user name. The user name for us is in28minutes, and we need to have the password.
+12
+
+13
+00:01:13,130 --> 00:01:18,190
+What this would help us to do is get JWT.
+13
+
+14
+00:01:18,460 --> 00:01:24,880
+So a password is dummy, and close it out.
+14
+
+15
+00:01:24,880 --> 00:01:33,930
+So username and we did  password dummy,  and saved see if they succeed. It still gives me.
+15
+
+16
+00:01:34,070 --> 00:01:40,740
+401. I'm getting an error, and when I go and look at it this , was expecting a comma
+16
+
+17
+00:01:40,860 --> 00:01:42,110
+That's the problem.
+17
+
+18
+00:01:42,120 --> 00:01:47,070
+You need to have a comma here to separate these out. 
+I click this and again and you'll see that there.
+18
+
+19
+00:01:47,070 --> 00:01:52,920
+is something green at the bottom, you'd see that I'm getting a response back with the token. what I'll do is
+19
+
+20
+00:01:52,950 --> 00:01:56,040
+I'll copy this token out. So copy the token out.
+20
+
+21
+00:01:56,070 --> 00:02:02,460
+I'm lifting everything and copy the token out. Make sure that you're copying the entire thing and I'll
+21
+
+22
+00:02:02,460 --> 00:02:05,080
+put it into my eclipse.
+22
+
+23
+00:02:05,250 --> 00:02:06,590
+The reason I'm doing this.
+23
+
+24
+00:02:06,630 --> 00:02:08,770
+Let's comment this old code. control-/.
+24
+
+25
+00:02:08,790 --> 00:02:14,880
+The reason I'm doing this, is because the token is really large, and there's every chance that you might make
+25
+
+26
+00:02:14,880 --> 00:02:15,830
+a mistake.
+26
+
+27
+00:02:15,990 --> 00:02:21,060
+So it's better to copy it into a text editor, and make sure that you're copying everything in between
+27
+
+28
+00:02:21,060 --> 00:02:22,200
+the double quote.
+28
+
+29
+00:02:22,320 --> 00:02:26,430
+So everything in between the quote forms the token.
+29
+
+30
+00:02:26,790 --> 00:02:30,420
+And this is the token which is most important for us.
+30
+
+31
+00:02:30,660 --> 00:02:36,750
+If you go to the Web site, you can find out what is present in this token.
+31
+
+32
+00:02:36,930 --> 00:02:42,690
+I'm pasting it in here and you can see what is present in this token, and what it is whether it's token
+32
+
+33
+00:02:43,080 --> 00:02:47,670
+the algorithm which is used is HS512, the subject is in28minutes.
+33
+
+34
+00:02:47,670 --> 00:02:50,670
+There is the expiration date token as well.
+34
+
+35
+00:02:50,730 --> 00:02:52,630
+What does the date on token?
+35
+
+36
+00:02:52,710 --> 00:02:55,340
+It says until number 17.
+36
+
+37
+00:02:55,460 --> 00:02:56,800
+And today is november 10.
+37
+
+38
+00:02:56,810 --> 00:03:00,520
+So the expiration time of the token is a week from now.
+38
+
+39
+00:03:00,570 --> 00:03:05,910
+One week from now, but it says Invalid signature.
+39
+
+40
+00:03:05,970 --> 00:03:16,840
+The reason why it says invalid signature, is because JWT does not know what my secret key is. My secret
+40
+
+41
+00:03:16,840 --> 00:03:18,880
+key is. My secret.
+41
+
+42
+00:03:18,880 --> 00:03:21,070
+It's not really a good secret.
+42
+
+43
+00:03:21,070 --> 00:03:26,020
+Actually the real secret if you are really using this in a production kind of application, should at
+43
+
+44
+00:03:26,020 --> 00:03:27,760
+least be 64 bit in length.
+44
+
+45
+00:03:27,760 --> 00:03:31,110
+This is a very small secret.
+45
+
+46
+00:03:31,120 --> 00:03:33,700
+One interesting thing is signature is very fair.
+46
+
+47
+00:03:33,730 --> 00:03:38,390
+You can see that this token contains all the information you would want to use.
+47
+
+48
+00:03:38,390 --> 00:03:42,510
+Now let's go back to the rest client. Now I would want execute the.
+48
+
+49
+00:03:42,610 --> 00:03:46,650
+URL. the service which we were looking at.
+49
+
+50
+00:03:46,660 --> 00:03:52,900
+Let's pick up in28minutes / todos, and I would want to send a get request to it by default. If
+50
+
+51
+00:03:52,900 --> 00:03:55,200
+I send it, 401.
+51
+
+52
+00:03:55,360 --> 00:04:00,630
+What I would want to do is, I would want to add a header whatever authorization happened.
+52
+
+53
+00:04:00,640 --> 00:04:05,680
+So I would want by the authorization header and the value. Be careful with typing it.
+53
+
+54
+00:04:05,680 --> 00:04:12,930
+It should be bearer, so it bearer be followed by the token.
+54
+
+55
+00:04:14,610 --> 00:04:20,090
+Now, you'd be able to see that I'm able to execute the requests. I'm getting that is on response back
+55
+
+56
+00:04:20,330 --> 00:04:21,330
+properly.
+56
+
+57
+00:04:21,590 --> 00:04:25,900
+So again we ask for a token.
+57
+
+58
+00:04:26,100 --> 00:04:31,460
+Once we get the token, we use it for continuous requests.
+58
+
+59
+00:04:31,610 --> 00:04:38,450
+The  token has an expiration date. The expiration date for our application is quoted in here, it's
+59
+
+60
+00:04:39,020 --> 00:04:40,200
+about a week's time.
+60
+
+61
+00:04:40,260 --> 00:04:46,160
+But if you'd want the first token. what you can do is you can send a get request do the refresh. you
+61
+
+62
+00:04:46,310 --> 00:04:53,900
+can say localhost 8080 refresh and you can send the authorization in the same way.
+62
+
+63
+00:04:53,930 --> 00:04:59,960
+So just like any other request, you would send the authorization with the token to authorization header
+63
+
+64
+00:05:00,140 --> 00:05:10,980
+and the token. And now you click send and you see that the token, the generated token is now refreshed.
+64
+
+65
+00:05:11,050 --> 00:05:18,400
+So you are getting a new refreshed token out. So you can use this and execute the subsequent requests.
+65
+
+66
+00:05:18,400 --> 00:05:21,590
+And this quick step, we look at the entire flow.
+66
+
+67
+00:05:21,600 --> 00:05:26,200
+We saw how to get a token by sending a request to the authenticator URL.
+67
+
+68
+00:05:26,290 --> 00:05:33,020
+And then how do we use the token to make a request to the server, and after that we look at have get
+68
+
+69
+00:05:33,070 --> 00:05:37,350
+the refresh URL works, how we can refresh our token.
+69
+
+70
+00:05:37,530 --> 00:05:38,160
+In the next step,
+70
+
+71
+00:05:38,230 --> 00:05:44,540
+Let's look at what's in the code, what's behind the services that we have created.

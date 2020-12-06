@@ -1,0 +1,494 @@
+0
+1
+00:00:02,590 --> 00:00:08,460
+Welcome back. In this step, let's implement the Server side for jott.
+1
+
+2
+00:00:08,530 --> 00:00:13,960
+One of the things about Jott is, while there are good frameworks available to create the Jott token, how
+2
+
+3
+00:00:13,990 --> 00:00:20,140
+we're integrating Jott into an application is very very tedious job.
+3
+
+4
+00:00:20,140 --> 00:00:27,200
+It's almost like 400 to 500 lines of code, before you would be able to integrate Jott into an application.
+4
+
+5
+00:00:27,370 --> 00:00:33,340
+What I've done is I've made a custom framework available on the GitHub repository of the course. If
+5
+
+6
+00:00:33,340 --> 00:00:39,040
+you'd search for JWT component if you'd just search for JWT space component.
+6
+
+7
+00:00:39,050 --> 00:00:42,650
+You'll be able to get to this specific bite of the code.
+7
+
+8
+00:00:42,910 --> 00:00:45,890
+What I would recommend you to do is go to your eclipse
+8
+
+9
+00:00:45,970 --> 00:00:47,850
+Start with stopping the server.
+9
+
+10
+00:00:48,100 --> 00:00:55,400
+And what I'll do is I would start with refactoring the basic authentication package, and I will move it
+10
+
+11
+00:00:55,440 --> 00:01:01,600
+to a package something like com in28minutes rest Basic auth
+11
+
+12
+00:01:01,660 --> 00:01:11,650
+The idea is because, the idea is basically that only the components which are present inside the subdirectories
+12
+
+13
+00:01:11,850 --> 00:01:16,810
+of the spring Boot application are picked up by the spring boot application.
+13
+
+14
+00:01:16,810 --> 00:01:21,880
+So what we're doing is effectively disabling basic authentication configuration.
+14
+
+15
+00:01:22,000 --> 00:01:22,830
+So I will do this.
+15
+
+16
+00:01:22,870 --> 00:01:23,570
+OK.
+16
+
+17
+00:01:25,370 --> 00:01:33,310
+So what happens now is only the packages... only the components in packages which are in the sub package
+17
+
+18
+00:01:33,310 --> 00:01:36,140
+of restful web services are picked up.
+18
+
+19
+00:01:36,170 --> 00:01:44,060
+The first thing I will do is go to the repository, and search for JWT components, and you can pick up
+19
+
+20
+00:01:44,060 --> 00:01:47,730
+the application that properties configuration from there.
+20
+
+21
+00:01:47,960 --> 00:01:50,060
+So what I'm doing is copying a few things.
+21
+
+22
+00:01:50,060 --> 00:01:55,150
+Let's set this up first, and we'll understand what is involved in each of these.
+22
+
+23
+00:01:55,310 --> 00:02:03,770
+Very soon there is a jott utility that we would need to import into this. I'll go to the pom.xml  and import standard
+23
+
+24
+00:02:03,910 --> 00:02:05,310
+Jwt library.
+24
+
+25
+00:02:05,680 --> 00:02:08,380
+It's dependencies I'd be needing
+25
+
+26
+00:02:08,610 --> 00:02:14,410
+Spring security and the group ID for it is
+26
+
+27
+00:02:14,520 --> 00:02:21,850
+io.Jasonwebtoken. And the artifact id for it is .
+27
+
+28
+00:02:22,120 --> 00:02:27,720
+JJWT,  and the version which you'd want to use of that component 0.
+28
+
+29
+00:02:27,760 --> 00:02:31,680
+9.1. Or  0.9.1
+29
+
+30
+00:02:31,840 --> 00:02:38,710
+Let's configure this, and as soon as we configure this, you can go to the repository, copy all the code
+30
+
+31
+00:02:38,750 --> 00:02:46,200
+to make sure that you are copying it from the top to the bottom. Copy the entire thing until the last
+31
+
+32
+00:02:46,200 --> 00:02:48,870
+class, which is JWT token response.
+32
+
+33
+00:02:49,080 --> 00:02:56,520
+What you'll see when you try and copy this in, is you would see a lot of compilation errors we'll fix
+33
+
+34
+00:02:56,520 --> 00:02:57,600
+them very soon.
+34
+
+35
+00:02:58,630 --> 00:03:01,960
+Before that I'll create a new package.
+35
+
+36
+00:03:01,990 --> 00:03:04,590
+I want to create a package specifically for it.
+36
+
+37
+00:03:04,760 --> 00:03:08,600
+I call this .jwt , and say finish.
+37
+
+38
+00:03:08,650 --> 00:03:16,090
+There is a package which is created here just now. I can go here and paste these stuff. You'd see that
+38
+
+39
+00:03:16,710 --> 00:03:20,250
+the paste would create a number of java files.
+39
+
+40
+00:03:20,250 --> 00:03:25,930
+This is Eclipse magic which you are seeing in here. Eclipse creates all these files magically.
+40
+
+41
+00:03:26,060 --> 00:03:30,850
+And what you do is click source organizes import.
+41
+
+42
+00:03:30,850 --> 00:03:31,660
+So just do it.
+42
+
+43
+00:03:31,710 --> 00:03:35,300
+So it's organized import on that and just say continue.
+43
+
+44
+00:03:35,320 --> 00:03:37,840
+When you face it we fix all that stuff
+44
+
+45
+00:03:37,840 --> 00:03:42,580
+very soon. There are still compilation errors in some of the components. One of the things which we will
+45
+
+46
+00:03:42,580 --> 00:03:51,230
+do right now, is we create a new package. So we create a new package, and we call this dot jwt dot resource.
+46
+
+47
+00:03:51,440 --> 00:03:56,800
+So dot jwt dot resource. So we have a new package.
+47
+
+48
+00:03:57,370 --> 00:04:03,920
+Now I do it I click refresh some of the times, it keeps gives me a problem when I don't really do refresh.
+48
+
+49
+00:04:03,990 --> 00:04:07,140
+Now I see a lot of resources in here.
+49
+
+50
+00:04:07,290 --> 00:04:13,500
+There are a few resources that we are exposing. What I would want to do is I would want to
+50
+
+51
+00:04:13,500 --> 00:04:16,590
+move all of those to that specific package.
+51
+
+52
+00:04:16,590 --> 00:04:18,680
+So let's start with the rest controller.
+52
+
+53
+00:04:18,700 --> 00:04:23,840
+We can request the token response, and the authentication exception.
+53
+
+54
+00:04:23,850 --> 00:04:28,690
+Those are all the things that I would want to move to the jott resource.
+54
+
+55
+00:04:28,770 --> 00:04:30,770
+These are related to the first resource.
+55
+
+56
+00:04:30,780 --> 00:04:38,190
+That's the reason why I would want to move them to this package. Select these for whatever I click fact
+56
+
+57
+00:04:39,090 --> 00:04:41,670
+move and move it to the package.
+57
+
+58
+00:04:41,730 --> 00:04:50,420
+JWT resource.
+58
+
+59
+00:04:50,540 --> 00:04:58,940
+Now again I would go here and right click, sort, organize imports. That's OK.  I have problems and I click
+59
+
+60
+00:05:00,560 --> 00:05:01,370
+the defect.
+60
+
+61
+00:05:02,600 --> 00:05:08,220
+I clock source problems... and say continue. I'll close file.
+61
+
+62
+00:05:08,580 --> 00:05:11,160
+And let's open one of each one, one by one.
+62
+
+63
+00:05:11,190 --> 00:05:15,890
+All that I need to do is do a control shift, or organized import and select the right ones.
+63
+
+64
+00:05:16,020 --> 00:05:20,780
+So I choose org.slf4j.logger factory
+64
+
+65
+00:05:21,030 --> 00:05:25,010
+And now you'll see that this file is compiling.
+65
+
+66
+00:05:25,020 --> 00:05:26,100
+Cool.
+66
+
+67
+00:05:26,130 --> 00:05:30,490
+Now the next one is our token utility. control shift.
+67
+
+68
+00:05:30,520 --> 00:05:35,550
+Or say command shift. I'll impoort java util function
+68
+
+69
+00:05:36,050 --> 00:05:43,160
+Use JWT clock which is the first one. In most of the things I'm choosing the first one I usually map
+69
+
+70
+00:05:43,830 --> 00:05:47,350
+Java utility in,  and this compiles.
+70
+
+71
+00:05:47,460 --> 00:05:49,630
+This might be an interesting exercise actually.
+71
+
+72
+00:05:49,760 --> 00:05:56,010
+Like how do I really get somebody to set up a project without really importing it completely.
+72
+
+73
+00:05:56,020 --> 00:05:58,790
+Now I've opened up this resource which is present in the here.
+73
+
+74
+00:05:58,800 --> 00:06:02,220
+JWT unauthorized response authentication. This compiles
+74
+
+75
+00:06:02,220 --> 00:06:05,630
+This is one of the important ones.
+75
+
+76
+00:06:05,880 --> 00:06:12,270
+What happens is by default, the authorisation exception, the authentication exception that we have created
+76
+
+77
+00:06:12,270 --> 00:06:18,840
+in the application, would be imported in. Actually what we want to do is we don't want to use this authentication
+77
+
+78
+00:06:18,840 --> 00:06:24,700
+exception, but we would want to use the authentication exception from the spring framework. Tat is like
+78
+
+79
+00:06:24,930 --> 00:06:30,620
+whenever we went out, we say import eclipse data and use something which is inside the project key.
+79
+
+80
+00:06:31,100 --> 00:06:32,510
+So we don't want that.
+80
+
+81
+00:06:32,760 --> 00:06:37,700
+I remove that and I would do a control shift, and now it suggests all the other ones.
+81
+
+82
+00:06:37,800 --> 00:06:39,750
+So this was imported earlier.
+82
+
+83
+00:06:39,750 --> 00:06:45,180
+I don't want to use that. I would want to use the one which is developed, in the one which is used in
+83
+
+84
+00:06:45,540 --> 00:06:47,300
+security code authentication exception.
+84
+
+85
+00:06:47,310 --> 00:06:50,380
+Once you use that you'd see that this code would compile.
+85
+
+86
+00:06:50,580 --> 00:06:54,170
+I think this was one of the trickiest ones to import properly.
+86
+
+87
+00:06:54,180 --> 00:06:56,790
+The other ones would all be very straightforward.
+87
+
+88
+00:06:56,910 --> 00:07:00,410
+You just need to make sure that you are putting the first ones.
+88
+
+89
+00:07:00,450 --> 00:07:05,810
+So jsonIgnore faster xml jackson annotation
+89
+
+90
+00:07:05,960 --> 00:07:07,380
+At least, that's it.
+90
+
+91
+00:07:08,250 --> 00:07:10,360
+Save. And the last one.
+91
+
+92
+00:07:10,540 --> 00:07:14,260
+Control shift log : Java.util objects.
+92
+
+93
+00:07:14,620 --> 00:07:15,680
+That's it.
+93
+
+94
+00:07:15,720 --> 00:07:20,510
+Now we have the entire JWT stuff set up. In the next step,
+94
+
+95
+00:07:20,540 --> 00:07:21,900
+We'll try and execute.
+95
+
+96
+00:07:21,920 --> 00:07:26,450
+This code. We'll try and run this code,  and try and understand what's happening in the background. And
+96
+
+97
+00:07:26,450 --> 00:07:31,380
+the step after that, we will get to looking at this code  again.
+97
+
+98
+00:07:31,670 --> 00:07:33,740
+I'll see you in the next step. Until then,
+98
+
+99
+00:07:33,830 --> 00:07:34,180
+Bye Bye!

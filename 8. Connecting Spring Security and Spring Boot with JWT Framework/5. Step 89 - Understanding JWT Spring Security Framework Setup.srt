@@ -1,0 +1,799 @@
+0
+1
+00:00:00,090 --> 00:00:05,420
+Welcome back. In this step, let's review the code that is set up for the JWT framework.
+1
+
+2
+00:00:05,520 --> 00:00:13,500
+We saw that there were a number of resources that are being exposed, when you do a post to /authenticate
+2
+
+3
+00:00:13,830 --> 00:00:21,420
+The http request was with a user name and password, and we got a response with the token JWT token
+3
+
+4
+00:00:21,420 --> 00:00:21,920
+value.
+4
+
+5
+00:00:21,930 --> 00:00:27,390
+This really is a very big value. When we want to refresh what we would need to do?
+5
+
+6
+00:00:27,570 --> 00:00:34,860
+We would need to send a request to the refresh, you are that would help us in refreshing the token. The
+6
+
+7
+00:00:34,870 --> 00:00:40,980
+additional thing that you need to send along with the get request, is the authorization header bearer
+7
+
+8
+00:00:41,340 --> 00:00:45,890
+and the JWT token, and for all the other kind of requests.
+8
+
+9
+00:00:45,890 --> 00:00:52,530
+Let's say I want to request a resource. I want to get request on a post, or put, or delete, what we would
+9
+
+10
+00:00:52,530 --> 00:00:53,250
+need to do?
+10
+
+11
+00:00:53,490 --> 00:01:00,040
+We will need to head header that the JWT token. We need to send the authorization header with the
+11
+
+12
+00:01:00,060 --> 00:01:01,220
+bearer space.
+12
+
+13
+00:01:01,230 --> 00:01:06,450
+The JWT token. This is what we saw in the previous step.
+13
+
+14
+00:01:06,450 --> 00:01:12,510
+One of the important things to understand, is JWT tokens are very very complex to handle, like if you
+14
+
+15
+00:01:12,510 --> 00:01:13,290
+see this one.
+15
+
+16
+00:01:13,350 --> 00:01:14,650
+It's so huge.
+16
+
+17
+00:01:14,760 --> 00:01:18,950
+This is one of the tokens which we used in our application, and this is huge.
+17
+
+18
+00:01:19,110 --> 00:01:21,900
+And that's the reason for doing all the processing.
+18
+
+19
+00:01:21,900 --> 00:01:25,860
+We have a file called JWT token util.
+19
+
+20
+00:01:26,160 --> 00:01:28,560
+This helps us in creating the tokens.
+20
+
+21
+00:01:28,560 --> 00:01:33,360
+It helps us in getting details out of the token. You would want to find out what is the username, what
+21
+
+22
+00:01:33,360 --> 00:01:36,840
+are the todos that are allowed for a specific user?
+22
+
+23
+00:01:36,870 --> 00:01:39,300
+What are the permissions that he has?
+23
+
+24
+00:01:39,300 --> 00:01:46,470
+So there are different claims, and the JWT token util helps you to get details from a token as well
+24
+
+25
+00:01:46,500 --> 00:01:50,730
+as it helps you to create a token when needed.
+25
+
+26
+00:01:50,730 --> 00:01:54,990
+It also takes care of all the expiration date, and that kind of stuff.
+26
+
+27
+00:01:55,050 --> 00:01:57,220
+So you need to calculate when I'm creating a token
+27
+
+28
+00:01:57,270 --> 00:02:01,830
+OK what should with the expiration date? when I get the token, what is the expiration date on it? And
+28
+
+29
+00:02:01,830 --> 00:02:03,860
+is it past the expiration date?
+29
+
+30
+00:02:03,960 --> 00:02:06,290
+So all that kind of logic is built in.
+30
+
+31
+00:02:06,340 --> 00:02:11,790
+In JET, can you tell this is the file, and you'd see that there are a number of methods which
+31
+
+32
+00:02:11,820 --> 00:02:16,980
+up in here, to get user name ,get expiration date, is token  expired.
+32
+
+33
+00:02:17,030 --> 00:02:23,100
+Generate a token, and refresh a token, to validate the token:  whether it's valid or not.
+33
+
+34
+00:02:23,100 --> 00:02:28,040
+So that kind of stuff is done inside the JWT token util. util.data.
+34
+
+35
+00:02:28,080 --> 00:02:32,670
+token util is extensively used across the JWT framework.
+35
+
+36
+00:02:32,670 --> 00:02:39,660
+The interesting thing is the JWT token makes use of the data the class extensively.
+36
+
+37
+00:02:39,650 --> 00:02:43,580
+This is from the library that we had imported.
+37
+
+38
+00:02:43,990 --> 00:02:51,300
+If I do think you would see that this is coming from the JET token util,   which we added  into our
+38
+
+39
+00:02:51,400 --> 00:02:52,510
+as well.
+39
+
+40
+00:02:52,600 --> 00:02:56,430
+Now the next ones are the resources themselves.
+40
+
+41
+00:02:56,790 --> 00:03:02,850
+You want to expose these tqwo URLs, the input for this or the request for this is this, user name and
+41
+
+42
+00:03:02,850 --> 00:03:03,560
+password.
+42
+
+43
+00:03:03,660 --> 00:03:05,050
+And the response is token
+43
+
+44
+00:03:05,340 --> 00:03:09,230
+So this is like any other RESTful service that you would want to create.
+44
+
+45
+00:03:09,230 --> 00:03:12,770
+So a localhost:8080 / authenticate what would we typically do.
+45
+
+46
+00:03:12,810 --> 00:03:15,170
+You'd create a resource for that right.
+46
+
+47
+00:03:15,180 --> 00:03:18,110
+Same thing with the / refresh.
+47
+
+48
+00:03:18,150 --> 00:03:25,140
+But for this is the token and the output again is a token value, and now you need to put the response in here
+48
+
+49
+00:03:25,290 --> 00:03:29,930
+but the refreshed token would also return a response containing the token.
+49
+
+50
+00:03:29,940 --> 00:03:32,370
+How are these resources implemented?
+50
+
+51
+00:03:32,370 --> 00:03:37,040
+There are four important files which we call for these resources.
+51
+
+52
+00:03:37,180 --> 00:03:43,100
+The JWT token request, and response represent this request and this response.
+52
+
+53
+00:03:43,320 --> 00:03:48,520
+So you would see that token request , that the user name and password and in response, has the token.
+53
+
+54
+00:03:48,700 --> 00:03:49,960
+Simple as that.
+54
+
+55
+00:03:50,310 --> 00:03:56,700
+And you'd see that the authentication controller contains the important method to be able to handle
+55
+
+56
+00:03:56,790 --> 00:03:58,240
+our resources.
+56
+
+57
+00:03:58,260 --> 00:04:02,060
+So we want a refresh and create authentication token.
+57
+
+58
+00:04:02,250 --> 00:04:05,370
+So you would see the request mappings for them.
+58
+
+59
+00:04:05,370 --> 00:04:08,430
+You can see that these are being picked up from the property file.
+59
+
+60
+00:04:08,430 --> 00:04:13,270
+So if you look at application properties, that's where these two arrows are coming from /.token
+60
+
+61
+00:04:13,490 --> 00:04:16,360
+refresh, to refresh the authenticate request.
+61
+
+62
+00:04:16,390 --> 00:04:22,850
+What it does, is it first uses spring security to check if the user name and password is right.
+62
+
+63
+00:04:22,860 --> 00:04:24,900
+These are names and passwords right.
+63
+
+64
+00:04:24,900 --> 00:04:29,270
+Then we go ahead load the details, create the token and return it back.
+64
+
+65
+00:04:29,280 --> 00:04:30,880
+Now what does the 
+65
+
+66
+00:04:30,900 --> 00:04:32,900
+refresh do? refresh checks if the token is valid.
+66
+
+67
+00:04:32,940 --> 00:04:37,880
+If everything is fine then it gets the user details, and it takes the expiration date.
+67
+
+68
+00:04:37,920 --> 00:04:42,780
+And if it all matching, then it would create the token and return it back whenever there's an exception.
+68
+
+69
+00:04:42,810 --> 00:04:47,490
+We have a specific exception for authentication, which is present in here which should be on.
+69
+
+70
+00:04:47,490 --> 00:04:52,720
+So these are the important files which are corresponding to the implementation of the Get token and
+70
+
+71
+00:04:52,730 --> 00:04:54,850
+that the refresh token resources.
+71
+
+72
+00:04:54,960 --> 00:04:57,640
+Let's consider all the other requests.
+72
+
+73
+00:04:57,690 --> 00:04:59,110
+What should we do?
+73
+
+74
+00:04:59,310 --> 00:05:06,710
+Whenever you send any request or get, a post, or put, or delete to any of the resources, what do you want
+74
+
+75
+00:05:06,710 --> 00:05:07,380
+to do?
+75
+
+76
+00:05:07,400 --> 00:05:13,670
+We want to check if there is a valid token on it, that there is an authorization header with the bearer
+76
+
+77
+00:05:13,670 --> 00:05:15,640
+of token containing the JWT.
+77
+
+78
+00:05:15,800 --> 00:05:18,170
+And if the JWT token is valid?
+78
+
+79
+00:05:18,170 --> 00:05:20,410
+Think of that application experience.
+79
+
+80
+00:05:20,420 --> 00:05:22,820
+How do we implement such kind of requirements?
+80
+
+81
+00:05:22,820 --> 00:05:26,310
+I want to do something for every request.
+81
+
+82
+00:05:26,540 --> 00:05:29,450
+What we do is we use something called a filter.
+82
+
+83
+00:05:29,810 --> 00:05:35,540
+So what we do is we implement something called a token authorization once per request filter.
+83
+
+84
+00:05:35,710 --> 00:05:42,590
+So for every request, we would want to authorize the JWT token, and that's what the specific filter helps
+84
+
+85
+00:05:42,590 --> 00:05:48,280
+us to do. All that this filter will do is check if the user is valid. If the user is the user.
+85
+
+86
+00:05:48,290 --> 00:05:49,640
+JWT token is valid.
+86
+
+87
+00:05:49,670 --> 00:05:50,790
+The token is valid.
+87
+
+88
+00:05:50,900 --> 00:05:57,540
+It would load the user details, and it would set it in the security context holder target context.
+88
+
+89
+00:05:57,560 --> 00:06:03,290
+This is one of the places which is most important. So once a user is authenticated and authorized, you
+89
+
+90
+00:06:03,290 --> 00:06:10,980
+put his details into the security context. To get context so that all the other servers let all the other
+90
+
+91
+00:06:11,040 --> 00:06:16,570
+resources controllers would be able to access the user details, as they would be needing them.
+91
+
+92
+00:06:16,590 --> 00:06:24,790
+Now let's say the user details, that the user id password what did all of the user are stored in a database.
+92
+
+93
+00:06:24,860 --> 00:06:30,590
+Or they are stored in their lab, or they are stored in in memory. What spring security says is
+93
+
+94
+00:06:30,860 --> 00:06:33,260
+I don't really want to worry about where you are.
+94
+
+95
+00:06:33,270 --> 00:06:40,040
+The details are stored in  here.  What you need to do is give you an interface you implement the interface, and
+95
+
+96
+00:06:40,040 --> 00:06:43,330
+make sure that you provide the right implementation.
+96
+
+97
+00:06:43,490 --> 00:06:49,640
+I'll tell you what is a signature, and what should be written while you implement it, provided to me and
+97
+
+98
+00:06:49,670 --> 00:06:55,280
+I'll take care of using these user details to authenticate the user.
+98
+
+99
+00:06:55,280 --> 00:06:59,230
+So our role in providing the user details.
+99
+
+100
+00:06:59,360 --> 00:07:02,350
+What is that service? That service is the user details.
+100
+
+101
+00:07:02,420 --> 00:07:08,920
+So we use this as an interface which is defined inside the security code framework.
+101
+
+102
+00:07:09,080 --> 00:07:15,980
+And what we're doing with the in memory user details, is implementing the user details is the important
+102
+
+103
+00:07:16,040 --> 00:07:19,390
+method in the user details service, is load user by username.
+103
+
+104
+00:07:19,400 --> 00:07:25,930
+So give given a user name, what you need to do is to provide an implementation of this interface.
+104
+
+105
+00:07:26,000 --> 00:07:33,560
+User details. The implementation of the user details that we have created is the JWT user details.
+105
+
+106
+00:07:33,740 --> 00:07:38,210
+So what do we do on here in this specific user details service,
+106
+
+107
+00:07:38,210 --> 00:07:40,770
+Is even Spring Security gives us a user name.
+107
+
+108
+00:07:41,040 --> 00:07:49,760
+We find the details of that user from the static list, and return it back in the format of JWT user details.
+108
+
+109
+00:07:49,760 --> 00:07:57,230
+So we just adhere to the contract which is provided by spring security, sprint. user details service
+109
+
+110
+00:07:57,710 --> 00:08:00,150
+and return the user details back.
+110
+
+111
+00:08:00,350 --> 00:08:06,260
+What happens is spring security would start using this everywhere, whenever it's because the world wants to
+111
+
+112
+00:08:06,260 --> 00:08:11,680
+find out the details of a user. Let's say I would want to authenticate if the user's password is right.
+112
+
+113
+00:08:11,810 --> 00:08:18,050
+What spring security does is, it would first give us the user name, ask for the details and once we provide
+113
+
+114
+00:08:18,050 --> 00:08:24,380
+the right details, Springs security would take care of validating the password, and all that kind of stuff.
+114
+
+115
+00:08:24,380 --> 00:08:28,780
+Now the last part is actually to bring it all together.
+115
+
+116
+00:08:28,840 --> 00:08:33,440
+There are a wide variety of stuff that we are configuring, like we are saying we want to configure our
+116
+
+117
+00:08:33,470 --> 00:08:36,620
+own custom user detailed service, which has user details.
+117
+
+118
+00:08:36,860 --> 00:08:40,470
+And in addition to that we use something called a password encoder.
+118
+
+119
+00:08:40,630 --> 00:08:45,160
+We are not going to steal the password, as it is we would want to encode it and store it.
+119
+
+120
+00:08:45,260 --> 00:08:53,270
+And thats why we use a big password, and call the next one statelessness we dont want a session created
+120
+
+121
+00:08:53,270 --> 00:08:56,450
+for us in the application. We are creating a test API.
+121
+
+122
+00:08:56,450 --> 00:09:02,180
+We dont want to have any session on this so the next thing is something called authentication, entry
+122
+
+123
+00:09:02,180 --> 00:09:10,660
+point authentication. Entry point is all about handling an authenticated users is going to come into
+123
+
+124
+00:09:10,670 --> 00:09:16,700
+the application. It is not indicated what should be the response that we send back in the case of a virus
+124
+
+125
+00:09:16,700 --> 00:09:22,850
+application. In the authentication entry point, you would want to configure from a log in page indicator
+125
+
+126
+00:09:22,850 --> 00:09:30,820
+for test API or, in the case of a JWT authentication Step, what we would need to do is we would send an
+126
+
+127
+00:09:30,880 --> 00:09:31,760
+error response.
+127
+
+128
+00:09:31,790 --> 00:09:38,610
+We will send a response saying:  your request does not have JWT Token, and that token is implemented as
+128
+
+129
+00:09:38,610 --> 00:09:45,590
+part of the JWT unauthorized response authentication entry point. That's one of the classes which is present
+129
+
+130
+00:09:45,590 --> 00:09:46,380
+in here.
+130
+
+131
+00:09:46,580 --> 00:09:53,190
+And you would see that it would just send unauthorized response and these details.
+131
+
+132
+00:09:53,360 --> 00:09:55,730
+So you need to configure that.
+132
+
+133
+00:09:55,730 --> 00:09:59,510
+The other thing we would need to configure is the Filter which we have created we had created. A filter
+133
+
+134
+00:09:59,940 --> 00:10:03,980
+is not really tied it up with this spring security framework.
+134
+
+135
+00:10:04,080 --> 00:10:08,860
+The last thing is at the end of the course, we would be using something called H-2 console.
+135
+
+136
+00:10:08,940 --> 00:10:13,330
+So there is an in memory database, and we would be using hash to control to look at the data in the database.
+136
+
+137
+00:10:13,540 --> 00:10:17,210
+So we do want to make sure that this is not secure.
+137
+
+138
+00:10:17,340 --> 00:10:24,480
+What we do, is we implement all these inside the JWT web security config.
+138
+
+139
+00:10:24,660 --> 00:10:29,330
+There is a default configuration which is already provided by setting security. Web security configure
+139
+
+140
+00:10:29,330 --> 00:10:30,310
+adapter.
+140
+
+141
+00:10:30,390 --> 00:10:36,510
+We extended this even when we were implementing basic and basic authentication, and we extend that for
+141
+
+142
+00:10:36,510 --> 00:10:38,130
+JWT as well.
+142
+
+143
+00:10:38,370 --> 00:10:43,890
+So if you look at the important part, this is the in-memory user detail services configuration, and we are
+143
+
+144
+00:10:43,890 --> 00:10:48,560
+saying it to use the secret password encoder.
+144
+
+145
+00:10:48,660 --> 00:10:51,010
+The next important piece of code is this.
+145
+
+146
+00:10:51,010 --> 00:10:53,820
+We are saying authentication and the point is this.
+146
+
+147
+00:10:54,090 --> 00:10:59,960
+So whenever a user is not authorized, just send him an error response you are not authorized you will
+147
+
+148
+00:10:59,970 --> 00:11:03,480
+want to create a stateless application.
+148
+
+149
+00:11:03,570 --> 00:11:06,250
+The next piece is where we are configuring in the filter.
+149
+
+150
+00:11:06,420 --> 00:11:14,430
+Every request every request should go through the JWT authentication token filter.
+150
+
+151
+00:11:14,580 --> 00:11:21,540
+In this Long video, we went  over the JWT framework, over the jott framework that was set up for us. What are the
+151
+
+152
+00:11:21,540 --> 00:11:22,300
+important things?
+152
+
+153
+00:11:22,340 --> 00:11:25,960
+Everything that you are seeing is just one time set up for the most part.
+153
+
+154
+00:11:25,980 --> 00:11:29,350
+You would not need to modify any of these files.
+154
+
+155
+00:11:29,350 --> 00:11:33,850
+So it will give you a High-Level view all of us of what's happening.
+155
+
+156
+00:11:33,870 --> 00:11:38,190
+You don't really need to understand every detail of what's happening in here.
+156
+
+157
+00:11:38,460 --> 00:11:45,490
+We have different resources that are related to JWT. I implemented the http token request or the get
+157
+
+158
+00:11:45,540 --> 00:11:53,250
+token request and the refresh token request, and we saw have we are filtering every request to make sure
+158
+
+159
+00:11:53,250 --> 00:11:58,440
+that every request is authenticated. I'll see you in the next step. Until then,
+159
+
+160
+00:11:58,470 --> 00:11:58,940
+Bye bye!

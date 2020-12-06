@@ -1,0 +1,359 @@
+0
+1
+00:00:02,670 --> 00:00:04,230
+Welcome back.
+1
+
+2
+00:00:04,230 --> 00:00:06,680
+Welcome to the section on J.
+2
+
+3
+00:00:06,690 --> 00:00:07,790
+W.T..
+3
+
+4
+00:00:08,250 --> 00:00:13,230
+Json Web token.. JWT is also called Jott.
+4
+
+5
+00:00:13,230 --> 00:00:19,750
+So that's what we would be using to refer to this from here on. We call it jott. before we start the Jott,
+5
+
+6
+00:00:19,830 --> 00:00:25,010
+Let's start with basic authentication. We have been using basic authentication until now.
+6
+
+7
+00:00:25,320 --> 00:00:34,200
+And we saw that as part of basic authentication, what we send is a basic 64 encoded username and password.
+7
+
+8
+00:00:34,200 --> 00:00:39,180
+The important thing about basic authentication is there is no expiration.
+8
+
+9
+00:00:39,450 --> 00:00:41,470
+What happens if there is no expiration time?
+9
+
+10
+00:00:41,490 --> 00:00:47,580
+If somebody is able to get access to the basic authentication token, or the header value, then
+10
+
+11
+00:00:47,730 --> 00:00:49,610
+he can use it for unlimited time.
+11
+
+12
+00:00:49,740 --> 00:00:54,930
+And the other thing is basic authentication token doesn't have any user details on them, does not have
+12
+
+13
+00:00:54,930 --> 00:00:59,160
+any authorization details on them it's pure user id and password.
+13
+
+14
+00:00:59,160 --> 00:00:59,860
+That's it.
+14
+
+15
+00:00:59,980 --> 00:01:00,910
+And that's right.
+15
+
+16
+00:01:01,020 --> 00:01:09,330
+There were a number of attempts to extend and create custom token based authentication systems.
+16
+
+17
+00:01:09,330 --> 00:01:15,810
+The thing is that these custom token based authentication systems, the final output is that it's some
+17
+
+18
+00:01:15,810 --> 00:01:19,520
+kind of a hash to value some tokenize do you.
+18
+
+19
+00:01:19,590 --> 00:01:26,760
+Typically these tokens contain the user details, the user authorizations and any other details which
+19
+
+20
+00:01:27,150 --> 00:01:30,120
+the systems which are talking to each other might need.
+20
+
+21
+00:01:30,150 --> 00:01:36,570
+The problem with the custom authentication systems is the custom structure, and because of it there might be security
+21
+
+22
+00:01:36,570 --> 00:01:38,710
+flaws over a period of time.
+22
+
+23
+00:01:38,730 --> 00:01:46,490
+What happened was we wanted a common token standard, which is called Jott.
+23
+
+24
+00:01:46,640 --> 00:01:53,490
+Json Web token. The awesome thing about Jott is that it can contain user authorisations and a number
+24
+
+25
+00:01:53,490 --> 00:01:54,810
+of other details.
+25
+
+26
+00:01:55,030 --> 00:02:03,270
+There is a standard by which it is defined, and there is a part where you can extend and add custom information
+26
+
+27
+00:02:03,570 --> 00:02:05,700
+if you go to the website JWT.
+27
+
+28
+00:02:05,760 --> 00:02:06,480
+.io
+28
+
+29
+00:02:06,510 --> 00:02:09,280
+This is built by the authO team.
+29
+
+30
+00:02:09,390 --> 00:02:10,910
+You'd see that just on a laptop.
+30
+
+31
+00:02:11,130 --> 00:02:19,200
+An open industry standard method for representing claims between two parties talking to each
+31
+
+32
+00:02:19,200 --> 00:02:26,910
+other. And you don't want to know what are the claims what are the authorizations that a specific user
+32
+
+33
+00:02:26,940 --> 00:02:27,630
+has.
+33
+
+34
+00:02:27,660 --> 00:02:29,360
+You can use.
+34
+
+35
+00:02:29,640 --> 00:02:36,450
+Now you might be wondering what is present in the JWT?what is present in the jar? And let's look at it
+35
+
+36
+00:02:36,810 --> 00:02:37,610
+right now.
+36
+
+37
+00:02:37,920 --> 00:02:43,590
+So what you are seeing on the left hand side, is the encoded final token, and on the right hand side
+37
+
+38
+00:02:43,590 --> 00:02:52,120
+what is present is the information which is present in that specific token, and it contains a header
+38
+
+39
+00:02:52,340 --> 00:02:58,610
+a payload and a signature part. The things which are present in the header are typically the 
+39
+
+40
+00:02:58,620 --> 00:02:59,130
+algorithm.
+40
+
+41
+00:02:59,200 --> 00:03:03,300
+What are you using for the hashing.
+41
+
+42
+00:03:03,300 --> 00:03:08,370
+So if you look at here, there are a number of them to represent. In the example that we'll build we'll
+42
+
+43
+00:03:08,370 --> 00:03:10,270
+be using HS512.
+43
+
+44
+00:03:10,890 --> 00:03:18,060
+And you would see that this header contains the algorithm HS512, and it contains a type, it's a standard
+44
+
+45
+00:03:18,210 --> 00:03:18,850
+jott,
+45
+
+46
+00:03:18,930 --> 00:03:20,230
+So it's JWT.
+46
+
+47
+00:03:20,280 --> 00:03:27,190
+The payload contains a few predefined elements, that is most of these are not really mandatory.
+47
+
+48
+00:03:27,310 --> 00:03:30,340
+The subject is Who are we talking about.
+48
+
+49
+00:03:30,360 --> 00:03:32,810
+The name is the name of the person.
+49
+
+50
+00:03:32,850 --> 00:03:34,620
+You can have additional things.
+50
+
+51
+00:03:34,620 --> 00:03:38,110
+This admin to indicate that this guy is an admin.
+51
+
+52
+00:03:38,190 --> 00:03:45,240
+The 80 here indicates the creation time of the token. In addition to this, you can add custom defined
+52
+
+53
+00:03:45,240 --> 00:03:46,500
+stuff as well.
+53
+
+54
+00:03:46,590 --> 00:03:51,700
+You might add what are the authorizations that a specific user has.
+54
+
+55
+00:03:51,720 --> 00:04:02,190
+The last part of the JWT is the verify signature. It contains the base 64 encoded payload. The
+55
+
+56
+00:04:02,190 --> 00:04:02,830
+last.
+56
+
+57
+00:04:02,910 --> 00:04:08,710
+And also one of the most important part of it is your 512  bit secret.
+57
+
+58
+00:04:08,790 --> 00:04:14,370
+This is kind of what secret string is provided in the JWT.
+58
+
+59
+00:04:14,370 --> 00:04:21,960
+They can have a secret string, which should not be revealed to anyone and that makes sure that when you
+59
+
+60
+00:04:22,090 --> 00:04:29,560
+decoded it, those guys who know the secret would be able to decode it properly. And you can also base
+60
+
+61
+00:04:29,580 --> 00:04:34,300
+64 encoding on the secret key as well.
+61
+
+62
+00:04:34,380 --> 00:04:39,760
+So what you're seeing in here are the most important part of the job.
+62
+
+63
+00:04:40,020 --> 00:04:48,030
+Typically what we would do in web applications, is for example application, management application. What
+63
+
+64
+00:04:48,030 --> 00:04:56,250
+we would do is when user logs in with a user ID password, we would send a request to the server and we
+64
+
+65
+00:04:56,250 --> 00:05:04,830
+would get JWT token back, and for all the subsequent requests we would using Jott, or the JWT token
+65
+
+66
+00:05:05,040 --> 00:05:10,960
+and we will be positioning it as part of the header. There would be an expiration time also on the jar
+66
+
+67
+00:05:11,130 --> 00:05:17,040
+tokens and when the expiration date is coming near, you have to send the request to something called
+67
+
+68
+00:05:17,140 --> 00:05:19,700
+refresh token request.
+68
+
+69
+00:05:19,740 --> 00:05:23,270
+So you are asking basically for and you took them in next steps.
+69
+
+70
+00:05:23,310 --> 00:05:27,500
+Let's look at how to implement it and how to get different .
+70
+
+71
+00:05:27,510 --> 00:05:28,590
+I'll see you in the next step.
+71
+
+72
+00:05:28,630 --> 00:05:29,410
+Until then,  bye!
