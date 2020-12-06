@@ -1,0 +1,311 @@
+1
+00:00:01,410 --> 00:00:06,510
+Welcome back! In the step, will get the big picture of Spring Boot. What are the goals,
+
+2
+00:00:06,800 --> 00:00:13,960
+What's Spring Boot is not and what are the features. Today world moving toward Micro Services
+
+3
+00:00:14,360 --> 00:00:17,560
+Instead of developing large monolithic applications.
+
+4
+00:00:17,590 --> 00:00:20,290
+We're building a lot of micro services.
+
+5
+00:00:20,350 --> 00:00:27,860
+So instead of building one big application, we are building 20-25 maybe 50 smaller micro services.
+
+6
+00:00:27,860 --> 00:00:33,180
+One of the important things with these micro services is you would want to be able to build them quickly.
+
+7
+00:00:33,200 --> 00:00:36,120
+That's where Spring Boot comes in.
+
+8
+00:00:36,230 --> 00:00:39,870
+In the last couple of years Spring Boot has gained a lot of ground.
+
+9
+00:00:39,950 --> 00:00:45,350
+It has quickly become the number one framework to develop micro services in the Java world.
+
+10
+00:00:45,350 --> 00:00:47,860
+How did sping boot achieved this?
+
+11
+00:00:47,960 --> 00:00:52,430
+That's where we would discuss about the goals and the important features.
+
+12
+00:00:52,460 --> 00:00:56,790
+What are the most important goals of Spring Boot.
+
+13
+00:00:56,930 --> 00:01:03,500
+The most important goal of Spring Boot is to enable building production ready applications quickly.
+
+14
+00:01:03,500 --> 00:01:11,180
+The other important goal is to provide all the common non functional features. embedded servers, metrics
+
+15
+00:01:11,870 --> 00:01:15,100
+health checks and externalised configuration.
+
+16
+00:01:15,140 --> 00:01:17,870
+We'll talk about these features a little later.
+
+17
+00:01:17,870 --> 00:01:27,320
+These are the two important goals of Spring Boot - A) To enable you to quickly build applications and also provide
+
+18
+00:01:27,350 --> 00:01:29,900
+common non functional features.
+
+19
+00:01:29,960 --> 00:01:36,840
+Before we go more in depth into Spring Boot you also need to understand what Spring Boot is not. What
+
+20
+00:01:36,860 --> 00:01:37,300
+Spring Boot is
+
+21
+00:01:37,310 --> 00:01:40,380
+not is there is no code generation at all.
+
+22
+00:01:40,400 --> 00:01:46,130
+Some of the people call Spring Boot as a code generation framework. Actually Spring Boot does zero code
+
+23
+00:01:46,130 --> 00:01:50,240
+generation and that's what makes this concept really great.
+
+24
+00:01:50,240 --> 00:01:56,000
+The second thing, Spring Boot is neither an application not a web. Spring Boot
+
+25
+00:01:56,000 --> 00:02:05,570
+provides great integration with embedded servers like Tomcat, Jetty but by itself Spring Boot is not a web
+
+26
+00:02:05,570 --> 00:02:06,110
+server.
+
+27
+00:02:06,110 --> 00:02:09,740
+It's not a application server. These are two things that you would need to remember.
+
+28
+00:02:09,740 --> 00:02:14,780
+There is no code generation in Spring Boot and Spring Boot is neither an application server nor a web
+
+29
+00:02:14,780 --> 00:02:15,170
+server.
+
+30
+00:02:15,180 --> 00:02:20,580
+Now that we understood the goals and also understood what Spring Boot is not.
+
+31
+00:02:20,810 --> 00:02:25,170
+Let's look at how Spring Boot achieved these things.
+
+32
+00:02:25,250 --> 00:02:31,450
+The most important part of Spring  Boot is this concept called Starter projects.
+
+33
+00:02:31,610 --> 00:02:34,690
+Consider example of developing a web application.
+
+34
+00:02:34,730 --> 00:02:38,800
+If let's say I want to develop a web application I would need Spring MVC.
+
+35
+00:02:39,020 --> 00:02:40,360
+I would need Spring core.
+
+36
+00:02:40,640 --> 00:02:42,780
+I would need some validation framework.
+
+37
+00:02:43,010 --> 00:02:48,530
+I would need some logging framework. In addition to that, I would need to configure all this stuff that
+
+38
+00:02:48,530 --> 00:02:49,610
+is needed.
+
+39
+00:02:49,670 --> 00:02:54,380
+For example, if I'm using Spring	MVC, I would need to configure dispatcher servlet. I would need to configure
+
+40
+00:02:54,550 --> 00:03:00,470
+view resolveser and a lot of things like that. However, with Spring Boot starter project
+
+41
+00:03:00,500 --> 00:03:02,840
+it becomes very easy.
+
+42
+00:03:02,900 --> 00:03:08,780
+All that you need to do is to add a starter called Spring boot starter web into your project and that's
+
+43
+00:03:08,780 --> 00:03:10,850
+it. You'll get to Spring	MVC for free.
+
+44
+00:03:10,850 --> 00:03:12,230
+You get Spring core for free.
+
+45
+00:03:12,230 --> 00:03:17,150
+You get a validation framework for free and also a logging framework for free.
+
+46
+00:03:17,150 --> 00:03:22,370
+Similarly, for JPA there is a starter called Spring Boot starter JPA.
+
+47
+00:03:22,460 --> 00:03:23,740
+Once we use this starter.
+
+48
+00:03:23,780 --> 00:03:29,900
+You would not only get JPA but also a default implementation of JPA with Hibernate and also auto
+
+49
+00:03:29,900 --> 00:03:31,410
+configuration of that.
+
+50
+00:03:31,430 --> 00:03:37,560
+So you would not need to worry about the framework part and you can directly start creating your entities.
+
+51
+00:03:37,560 --> 00:03:41,810
+Another important feature we already talked about is embedded servers.
+
+52
+00:03:41,950 --> 00:03:48,940
+Let's say I am developing a web application I would want to deploy it on to a Linux box.
+
+53
+00:03:49,040 --> 00:03:54,890
+In the olden days the way it used to work is first I would need to install the Linux box.
+
+54
+00:03:54,890 --> 00:04:00,230
+Then I would install java on it and then I would need to install a web server. So I would need to install either
+
+55
+00:04:00,230 --> 00:04:07,060
+Tomcat, weblogic or webspher and then I would take my application war and deploy it.
+
+56
+00:04:07,070 --> 00:04:12,620
+This is the usual way we use to deploy stuff. With Spring Boot, comes a concept called embedded
+
+57
+00:04:12,620 --> 00:04:18,830
+server. What you can do is you can package your server. So you can package Tomcat along with your
+
+58
+00:04:18,830 --> 00:04:28,070
+application jar. So I can include the Tomcat server in my application jar. So I don't need to install it
+
+59
+00:04:28,340 --> 00:04:29,910
+on the Linux box.
+
+60
+00:04:29,990 --> 00:04:35,020
+So all that I need to do, on the Linux box is if I have Java installed that's sufficient.
+
+61
+00:04:35,030 --> 00:04:37,440
+I can go ahead and run my application.
+
+62
+00:04:37,550 --> 00:04:43,920
+I don't need any other server installed on the linux box. In the world of Micro services,
+
+63
+00:04:44,000 --> 00:04:46,320
+this makes a huge difference.
+
+64
+00:04:46,580 --> 00:04:53,630
+And also, Spring Boot	 provides a number of production ready features. Spring Boot provides monitoring
+
+65
+00:04:53,630 --> 00:04:57,770
+for your application through something called Spring Boot actuator.
+
+66
+00:04:57,830 --> 00:05:04,800
+For example, you can find out how many times a particular service is called. You can find out how many times a particular
+
+67
+00:05:04,800 --> 00:05:10,840
+service failed and also you can check whether the application is up and running or not.
+
+68
+00:05:10,860 --> 00:05:14,110
+All these features come built in.
+
+69
+00:05:14,370 --> 00:05:21,420
+And another important feature that Spring Boot provide is externalised configuration. The configuration
+
+70
+00:05:21,420 --> 00:05:27,660
+of applications varies between different environments. Your configuration from dev different from your
+
+71
+00:05:27,660 --> 00:05:29,830
+configuration in production.
+
+72
+00:05:29,850 --> 00:05:33,740
+Spring Boot provides these features built in.
+
+73
+00:05:33,780 --> 00:05:41,340
+You can simply create property files matching a simple naming convention and that's it. You're ready
+
+74
+00:05:41,340 --> 00:05:48,030
+with externalised configuration. Spring Boot also provides support for different profiles.
+
+75
+00:05:48,030 --> 00:05:52,670
+These are some of the important goals and features of Spring Boot.
+
+76
+00:05:52,740 --> 00:06:00,350
+The idea behind this step is to understand the big picture of Spring Boot. What it is, what it is not
+
+77
+00:06:00,630 --> 00:06:07,680
+and what are the important features. In the next steps, we will dig deeper into each one of these things.
+
+78
+00:06:08,130 --> 00:06:09,540
+Until the next step, bye-bye.

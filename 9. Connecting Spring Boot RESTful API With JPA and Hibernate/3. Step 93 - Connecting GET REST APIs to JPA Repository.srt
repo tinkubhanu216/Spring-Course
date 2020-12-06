@@ -1,0 +1,549 @@
+0
+1
+00:00:02,000 --> 00:00:08,840
+Welcome back. In the last  step, we made to do an entity, and insert some data into the table. In this step,
+1
+
+2
+00:00:08,840 --> 00:00:12,660
+Let's start creating the todo resources. To be able to access the data.
+2
+
+3
+00:00:12,920 --> 00:00:19,220
+What I do is I'll stop the server again. What I want to do is I would want to create a copy of this todo
+3
+
+4
+00:00:19,220 --> 00:00:19,910
+resource.
+4
+
+5
+00:00:20,120 --> 00:00:22,970
+So I'll copy this and paste it right here.
+5
+
+6
+00:00:22,970 --> 00:00:29,290
+Completely control me and you can call this to be a resource.
+6
+
+7
+00:00:29,420 --> 00:00:32,860
+And one of the things I would do over here, is this resource
+7
+
+8
+00:00:32,930 --> 00:00:38,510
+All the URLs I would add in something called JPA at the start.
+8
+
+9
+00:00:38,960 --> 00:00:42,770
+So we will have both the services available all the time.
+9
+
+10
+00:00:42,800 --> 00:00:45,020
+So now I would slash / JPA.
+10
+
+11
+00:00:45,530 --> 00:00:47,790
+This is still talking to the hardcoded service.
+11
+
+12
+00:00:47,870 --> 00:00:48,720
+But that's OK.
+12
+
+13
+00:00:48,860 --> 00:00:53,680
+So make sure that you're copying five times / JPA in here.
+13
+
+14
+00:00:53,690 --> 00:00:58,450
+That's basically the five resource methods that are exposed from the root.
+14
+
+15
+00:00:58,470 --> 00:01:03,380
+JPA. So what we do is we create a new repository.
+15
+
+16
+00:01:03,480 --> 00:01:09,620
+Once you have an entity in JPA, where you can talk to the entity to save data and get information from
+16
+
+17
+00:01:09,620 --> 00:01:16,730
+it, is by using a repository. And spring data to be able to write and or something called JPA repository
+17
+
+18
+00:01:17,060 --> 00:01:24,590
+which provides all the features. To be able to add, delete, update and get the details of an entity pretty
+18
+
+19
+00:01:24,590 --> 00:01:25,250
+easy.
+19
+
+20
+00:01:25,460 --> 00:01:28,480
+So let's start with creating that resource in here.
+20
+
+21
+00:01:28,580 --> 00:01:33,830
+So I'll take control-N, and create a new class and this class over here. What we would want to call it
+21
+
+22
+00:01:34,040 --> 00:01:37,010
+you would want to call it has todo.
+22
+
+23
+00:01:37,010 --> 00:01:37,610
+JPA
+23
+
+24
+00:01:42,610 --> 00:01:50,840
+and inside this class .. actually I should have created an interface, a public interface todo JPA repository
+24
+
+25
+00:01:51,300 --> 00:01:53,990
+control-N, and I would go out to implement
+25
+
+26
+00:01:57,180 --> 00:02:01,350
+JPA repository: control-space, and you'd be able to
+26
+
+27
+00:02:04,240 --> 00:02:12,310
+actually I should say extends, because you have to extend the repository, and control-space, and you'd be able
+27
+
+28
+00:02:12,310 --> 00:02:18,330
+to say see the JPA repository class, and import that in. And the first thing I would need to tell the
+28
+
+29
+00:02:18,340 --> 00:02:21,510
+JPA repositories which entity is managing todo.
+29
+
+30
+00:02:21,850 --> 00:02:23,650
+And what is the primary key?
+30
+
+31
+00:02:23,780 --> 00:02:27,450
+Long not as easy as this.
+31
+
+32
+00:02:27,630 --> 00:02:31,340
+Now you can start creating instances of this specific thing.
+32
+
+33
+00:02:31,380 --> 00:02:34,780
+For that I'll say this is repository class.
+33
+
+34
+00:02:34,870 --> 00:02:38,120
+So this is picked up by screen components.
+34
+
+35
+00:02:38,560 --> 00:02:40,780
+So let's add the repository on this.
+35
+
+36
+00:02:41,150 --> 00:02:49,500
+And let's go over here and now if I can add that auto wired on the JPA repositories are true.
+36
+
+37
+00:02:49,510 --> 00:02:56,790
+JPA Repository. and I call this todo JPA Repository.
+37
+
+38
+00:02:57,190 --> 00:03:01,780
+So what we have now is we have todo JPA repository in here.
+38
+
+39
+00:03:02,050 --> 00:03:09,200
+So we would building use todo JPA repository to talk to the JPA entity todo.
+39
+
+40
+00:03:09,290 --> 00:03:15,140
+If you go here if I take the JPA repository, and present thought you would see that there are a number
+40
+
+41
+00:03:15,140 --> 00:03:21,650
+of that which are coming up. How many rows are present in that specific entity? delete method to delete
+41
+
+42
+00:03:22,010 --> 00:03:28,250
+delete all to delete everything which is present inside the todo tables, and so on and so forth. If you
+42
+
+43
+00:03:28,250 --> 00:03:34,280
+look at it there are a wide variety of methods which are exposed by the todo repository by default.
+43
+
+44
+00:03:34,380 --> 00:03:42,810
+We've been up focus on just the basic method todo, to get all todos,  and get todos.
+44
+
+45
+00:03:42,830 --> 00:03:44,710
+Should be easy to do.
+45
+
+46
+00:03:44,720 --> 00:03:52,030
+There is a corresponding direct method related to this. All that you need to do is this: todo repository.
+46
+
+47
+00:03:53,420 --> 00:04:02,730
+to JPA repository. so it should be todo JPA repository . find by ID,  to find ID and passing
+47
+
+48
+00:04:02,750 --> 00:04:03,670
+the ID.
+48
+
+49
+00:04:03,680 --> 00:04:10,950
+The interesting about the fine by id JPA repository that is it would return optional back.
+49
+
+50
+00:04:11,210 --> 00:04:16,080
+And if you want to get the actual value from the optional, you need todo. get.
+50
+
+51
+00:04:16,080 --> 00:04:18,590
+So that the first method done.
+51
+
+52
+00:04:18,590 --> 00:04:26,390
+So now we would be able to get the data based on an ID from the database table.
+52
+
+53
+00:04:26,390 --> 00:04:28,640
+Now how do I find all?
+53
+
+54
+00:04:28,640 --> 00:04:37,400
+The thing is here we want to get all the todos for a specific username. So we would need to do a search
+54
+
+55
+00:04:37,910 --> 00:04:39,290
+on the new entity.
+55
+
+56
+00:04:39,290 --> 00:04:45,040
+So when I look at the data, all the data is presented for in28minutes.
+56
+
+57
+00:04:45,200 --> 00:04:50,950
+But typically this data would contain data for more number of people.
+57
+
+58
+00:04:50,960 --> 00:04:58,980
+In that case I would want to search by the username, and only get the todos for that username.
+58
+
+59
+00:04:59,080 --> 00:05:08,800
+The way I can create a search method is very simply by saying find by the column name, the column name we
+59
+
+60
+00:05:08,800 --> 00:05:09,890
+would want to search for.
+60
+
+61
+00:05:09,890 --> 00:05:12,760
+It's username.
+61
+
+62
+00:05:12,990 --> 00:05:14,990
+So fine by use that name.
+62
+
+63
+00:05:14,990 --> 00:05:21,170
+Actually you have to make the first letter get todo. find that name and the that which you would want to
+63
+
+64
+00:05:21,170 --> 00:05:25,140
+search for, and what username, username what would it be?
+64
+
+65
+00:05:25,520 --> 00:05:32,460
+List of todos which are associated with the user control space here.
+65
+
+66
+00:05:32,530 --> 00:05:33,960
+Import java.
+66
+
+67
+00:05:34,340 --> 00:05:39,770
+.util, and you would see that the repository now. exports are fine, but your certain method. If you go to
+67
+
+68
+00:05:39,770 --> 00:05:44,750
+the JPA resource, now I can use Return todo.
+68
+
+69
+00:05:44,750 --> 00:05:55,700
+JPA repository . find by username, and pass the username in and they can come into this.
+69
+
+70
+00:05:55,990 --> 00:06:00,500
+Now what we have done is we just implemented these two methods.
+70
+
+71
+00:06:00,710 --> 00:06:03,210
+There are still other stuff that we would want to do.
+71
+
+72
+00:06:03,410 --> 00:06:08,520
+But before we go any further with the rest of the stuff I would recommend you do.
+72
+
+73
+00:06:08,670 --> 00:06:11,200
+The front-end, these two methods.
+73
+
+74
+00:06:11,420 --> 00:06:13,670
+The population of the todos should work.
+74
+
+75
+00:06:13,850 --> 00:06:19,910
+And also I should be able to look at it, and see the details of the todo. save and the update of the
+75
+
+76
+00:06:19,910 --> 00:06:22,310
+todo will not really work for now.
+76
+
+77
+00:06:22,430 --> 00:06:24,620
+Let's start this again.
+77
+
+78
+00:06:24,650 --> 00:06:27,090
+I already have different than running in the background.
+78
+
+79
+00:06:27,140 --> 00:06:34,430
+Could there be a console out, and look at the data I would just present in here.
+79
+
+80
+00:06:36,060 --> 00:06:36,530
+Connect
+80
+
+81
+00:06:39,900 --> 00:06:44,370
+run will have three tools which are present in here.
+81
+
+82
+00:06:44,370 --> 00:06:47,410
+Let's go to the my application.
+82
+
+83
+00:06:47,430 --> 00:06:54,330
+It does not really big changes, because we have not really made a change in that, so angular has no way to
+83
+
+84
+00:06:54,330 --> 00:07:03,070
+figure that you have to get it back into its own todos. Now, you would see that there are todos
+84
+
+85
+00:07:03,090 --> 00:07:04,180
+populated in here.
+85
+
+86
+00:07:04,180 --> 00:07:08,060
+Learn to dance,  and learn about Microservices about angular.
+86
+
+87
+00:07:08,460 --> 00:07:12,450
+It's still picking up data from the original services.
+87
+
+88
+00:07:12,450 --> 00:07:13,490
+Why?
+88
+
+89
+00:07:13,530 --> 00:07:21,450
+Because we have not change the todos in the front end. What we'll do is we'll go to the app. constants.ts
+89
+
+90
+00:07:21,720 --> 00:07:26,620
+and create a new URL todo.
+90
+
+91
+00:07:26,910 --> 00:07:36,130
+JPA API URL.  This would be seen as JPA, so if you are creating a new constant todo JPA API URL.
+91
+
+92
+00:07:36,320 --> 00:07:44,720
+And what I do is now, in the let's say the above constant and in the todo.
+92
+
+93
+00:07:44,730 --> 00:07:54,660
+services. In the retrieve all the todos, and the data we have todo, is that this out I need to do a control-
+93
+
+94
+00:07:54,700 --> 00:07:56,440
+space to import this in.
+94
+
+95
+00:07:56,850 --> 00:08:03,030
+And no let's see the magic unfold. Now, you see the new todo, with the todos are coming from where?
+95
+
+96
+00:08:03,750 --> 00:08:07,630
+they are coming from the h2 in memory database.
+96
+
+97
+00:08:07,640 --> 00:08:13,160
+And if you do update of this, I'll be able to see the details don't do a save yet.
+97
+
+98
+00:08:13,210 --> 00:08:17,300
+I've no idea what would happen, and I'm not really interested to find that out as well.
+98
+
+99
+00:08:17,580 --> 00:08:21,650
+But the interesting thing is now, we are able to show the data from the database.
+99
+
+100
+00:08:21,670 --> 00:08:30,140
+You'd see that if you insert a new row in here. Let's copy one of the things from here let's go to the
+100
+
+101
+00:08:30,140 --> 00:08:38,740
+data.sql, pick up a new row here and Microservices, say 15 times let's say.
+101
+
+102
+00:08:39,200 --> 00:08:45,680
+And the todo ID is 10004. I'll do a run, oops! it is  getting the error.
+102
+
+103
+00:08:45,800 --> 00:08:50,280
+Oh no it's not giving me an error.  It actually went through successfully, so the data is inserted in.
+103
+
+104
+00:08:50,630 --> 00:08:52,490
+And we have auto-commit on.
+104
+
+105
+00:08:52,580 --> 00:08:54,450
+So it automatically committed.
+105
+
+106
+00:08:54,680 --> 00:08:59,430
+And now if I go to home and come back to Todos, I have for todo which I present here.
+106
+
+107
+00:08:59,580 --> 00:09:04,280
+Well other things that you need to remember, is this data which we inserted would be lost as soon as
+107
+
+108
+00:09:04,280 --> 00:09:07,990
+we restart the application, because this is the in-memory database.
+108
+
+109
+00:09:08,270 --> 00:09:15,830
+In this quick step, we connected the todos page to the back end. There are a few more things that we need
+109
+
+110
+00:09:15,830 --> 00:09:18,270
+to connect to the back end. I'll see you in the next step. Until then, Bye!

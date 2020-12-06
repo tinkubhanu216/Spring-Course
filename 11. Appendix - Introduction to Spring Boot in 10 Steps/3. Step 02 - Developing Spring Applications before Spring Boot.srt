@@ -1,0 +1,159 @@
+1
+00:00:01,290 --> 00:00:08,010
+One of the best things to do to understand the beauty of Spring Boot is to understand how things were
+
+2
+00:00:08,010 --> 00:00:14,410
+done before Spring Boot. In this step, we'll look at one of the projects which we developed in our Spring MVC
+
+3
+00:00:14,490 --> 00:00:21,330
+course. Before we start with any project, we need to decide what frameworks and dependencies to use.
+
+4
+00:00:21,330 --> 00:00:26,720
+This was a web project, so we would want to use Spring MVC and things like that.
+
+5
+00:00:26,850 --> 00:00:33,200
+So we needed to make decisions on what frameworks and what version of them to use.
+
+6
+00:00:33,350 --> 00:00:41,640
+We needed to decide, I would want to use Spring MVC and Spring security web, Spring security config.
+
+7
+00:00:41,790 --> 00:00:46,290
+I would want to use Jackson databind because I want to do some binding and validation.
+
+8
+00:00:46,500 --> 00:00:53,190
+I would want to use JSTL and I would want to use Hibernate validator and also for logging I would
+
+9
+00:00:53,190 --> 00:01:00,570
+want to add in log4j. We had to decide what dependencies to add in to our projects.
+
+10
+00:01:00,570 --> 00:01:05,010
+Not only that, we needed to decide the versions of them as well.
+
+11
+00:01:05,010 --> 00:01:10,830
+Sometimes this 5.0.2.FINAL version might not be compatible with some other version of
+
+12
+00:01:10,830 --> 00:01:11,730
+Spring MVC.
+
+13
+00:01:11,730 --> 00:01:17,940
+So you needed to decide what are the comparable versions and start using them. Choosing the frameworks
+
+14
+00:01:17,940 --> 00:01:26,270
+to use and which version to use is a major decision that we needed to make when we were not using Spring Boot.
+
+15
+00:01:26,310 --> 00:01:30,530
+We needed to implement default exception handling.
+
+16
+00:01:30,690 --> 00:01:39,210
+You can see that here, we are just implementing simple default exception handling and we needed to create
+
+17
+00:01:39,330 --> 00:01:42,530
+a complete Spring configuration file.
+
+18
+00:01:42,780 --> 00:01:50,670
+We needed to define the component scan and then we would need to configure a view resolver to redirect the views
+
+19
+00:01:50,670 --> 00:01:53,900
+to a JSP. To implement internationalization,
+
+20
+00:01:54,030 --> 00:02:01,770
+We needed to implement a message source and also a locale resolver and in addition to that we needed
+
+21
+00:02:01,770 --> 00:02:04,440
+to configure our web.xml as well.
+
+22
+00:02:04,530 --> 00:02:10,200
+We needed to configure the dispatcher servlet in web.xml so that it can handle all the requests and
+
+23
+00:02:10,200 --> 00:02:11,970
+act as a front controller.
+
+24
+00:02:12,210 --> 00:02:18,220
+We needed to configure the contex configuration location in here and we also needed to configure the
+
+25
+00:02:18,220 --> 00:02:26,070
+Spring security. We needed to configure the filter for it and make sure that it intercepts all the request.
+
+26
+00:02:26,070 --> 00:02:32,190
+There is a lot of work that you would need to do to get a simple web application up and running. We configured
+
+27
+00:02:32,250 --> 00:02:37,620
+dependencies, dependency version, Spring configuration, configuration for internationalization, logging
+
+28
+00:02:37,650 --> 00:02:43,650
+and a lot of other stuff. All these stuff which we looked at in this specific step is the kind of stuff
+
+29
+00:02:43,770 --> 00:02:51,120
+which you don't need to do with Spring Boot. Spring Boot would automatically provide all that stuff for
+
+30
+00:02:51,120 --> 00:02:56,790
+you, so that you can really concentrate on developing your business logic.
+
+31
+00:02:56,790 --> 00:03:01,160
+All the infrastructure would come free for you.
+
+32
+00:03:01,290 --> 00:03:09,330
+The idea behind this step was to give you an idea of the world before Spring Boot. If we directly jump into
+
+33
+00:03:09,330 --> 00:03:10,110
+spring boot,
+
+34
+00:03:10,140 --> 00:03:16,020
+You might not really appreciate  the value that Spring Boot provides. All the stuff which we looked at in
+
+35
+00:03:16,020 --> 00:03:23,640
+this specific example would be replaced by a simple starter project called Spring Boot startup web.
+
+36
+00:03:23,760 --> 00:03:27,550
+In combination with Spring Boot starter security.
+
+37
+00:03:27,780 --> 00:03:35,100
+Just the combination of these two starters would eliminate the need for a lot of configuration that
+
+38
+00:03:35,100 --> 00:03:42,000
+we looked at this specific step. We will look at those starters and a lot more about spring boot in
+
+39
+00:03:42,000 --> 00:03:43,540
+the subsequent steps.
+
+40
+00:03:43,620 --> 00:03:44,310
+Until the next step, bye-bye.

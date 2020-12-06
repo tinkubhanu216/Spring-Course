@@ -1,0 +1,219 @@
+1
+00:00:01,630 --> 00:00:08,530
+In this step, let's look at my favorite feature. The application is up and running and I would be making a change
+
+2
+00:00:08,530 --> 00:00:13,420
+here. So I'm changing the mastering spring 5.0 to 5.1.
+
+3
+00:00:13,600 --> 00:00:15,940
+What would happen, when I execute the service?
+
+4
+00:00:15,940 --> 00:00:18,770
+The service is still returning 5.0.
+
+5
+00:00:18,840 --> 00:00:26,560
+The service does not pick the change up because to pick up the change I would need to stop the server and restart
+
+6
+00:00:26,620 --> 00:00:29,940
+it again. And that's cumbersome, isn't it?
+
+7
+00:00:29,950 --> 00:00:30,740
+Starting up the
+
+8
+00:00:30,760 --> 00:00:33,480
+server would take a few steps.
+
+9
+00:00:33,490 --> 00:00:38,010
+I mean…it would take a few seconds and that would waste my time.
+
+10
+00:00:38,050 --> 00:00:44,350
+How can I get the whole thing to be loaded automatically as soon as I make a code change?
+
+11
+00:00:44,380 --> 00:00:45,450
+How do I do that?
+
+12
+00:00:45,670 --> 00:00:46,300
+That's where
+
+13
+00:00:46,390 --> 00:00:49,580
+Spring Boot developer tools come in.
+
+14
+00:00:49,640 --> 00:00:51,730
+It's an awesome dependency.
+
+15
+00:00:51,730 --> 00:00:52,870
+I love it.
+
+16
+00:00:52,910 --> 00:01:03,210
+I'll copy spring boot starter actuator and I'll put it below test. Spring Boot, it's called spring boot
+
+17
+00:01:03,380 --> 00:01:05,310
+dev tools.
+
+18
+00:01:05,620 --> 00:01:09,060
+I just added our dependency on to spring boot dev tools.
+
+19
+00:01:09,140 --> 00:01:10,620
+It's as simple as that.
+
+20
+00:01:11,000 --> 00:01:18,420
+I'll wait the whole thing to build. So you can see that it's downloading that dependencies. The project is red…the project
+
+21
+00:01:18,430 --> 00:01:23,180
+is ready and now I execute it. When I start the server,
+
+22
+00:01:23,230 --> 00:01:29,460
+You can see that the server is loaded or server started. And now as you did I would get 5.2
+
+23
+00:01:29,470 --> 00:01:33,120
+obviously because I've restarted the server. But
+
+24
+00:01:33,160 --> 00:01:39,960
+the great thing from now on is any Java changes that you make would be automatically picke up. So I'm
+
+25
+00:01:40,000 --> 00:01:44,490
+going back to 5.0. What would happen if I execute this?
+
+26
+00:01:44,530 --> 00:01:51,190
+One of the things you would see in the logs is that the application is restarting automatically and 5.0
+
+27
+00:01:51,550 --> 00:01:54,200
+This time let's focus on what's happening in the log.
+
+28
+00:01:54,370 --> 00:01:58,310
+I'll just clear off whatever log is there. And I'm making a change.
+
+29
+00:01:58,450 --> 00:01:59,410
+Mastering spring.
+
+30
+00:01:59,410 --> 00:02:00,570
+5.1.
+
+31
+00:02:00,620 --> 00:02:08,920
+Let's say. 5.1 is not yet here at the time of creating this video but just having fun. So you can
+
+32
+00:02:08,920 --> 00:02:14,520
+see that this specific thing is also very efficient at the way it restarts.
+
+33
+00:02:14,620 --> 00:02:17,890
+You can see that this actually started in two seconds.
+
+34
+00:02:17,890 --> 00:02:25,570
+The change was picked up in two seconds. I'll stop the application and restart it.
+
+35
+00:02:25,680 --> 00:02:33,580
+You would see that actually the typical restart when I do a fresh restart on spring boot is about 8 to
+
+36
+00:02:33,580 --> 00:02:35,010
+10 seconds.
+
+37
+00:02:35,050 --> 00:02:40,560
+So this is taking about 9 seconds. So if I stop and restart the application it's taking about 9 seconds.
+
+38
+00:02:40,780 --> 00:02:50,320
+However, if I just make a change directly here. I'll…what I'll do…. actually turn this off. And also… let's look at how much
+
+39
+00:02:50,320 --> 00:02:51,980
+time it takes. So now
+
+40
+00:02:52,060 --> 00:02:53,970
+how much time did it take?
+
+41
+00:02:54,070 --> 00:02:57,340
+You can see that this actually takes two and a half seconds.
+
+42
+00:02:57,340 --> 00:02:58,690
+Pretty cool! Isn't it?
+
+43
+00:02:58,690 --> 00:03:03,850
+So one of the things that Spring Boot does, Spring Boot dev tools does very effectively,
+
+44
+00:03:03,850 --> 00:03:10,780
+is it knows that everything in Maven dependencies will not change at all. So it will not load things which
+
+45
+00:03:10,780 --> 00:03:17,530
+are dependent on these again. It will only load those beans which are…which are the application beans
+
+46
+00:03:17,570 --> 00:03:19,760
+again. That's why it takes lesser time
+
+47
+00:03:19,810 --> 00:03:25,340
+when you make a change. When you restart the server, everything including whatever is in here is loaded
+
+48
+00:03:25,600 --> 00:03:32,440
+but when you …when you make a change in the application only that specific things which are application
+
+49
+00:03:32,440 --> 00:03:39,310
+related are reloaded again. And that's the reason why you see that it only takes 2 seconds and imagine
+
+50
+00:03:39,640 --> 00:03:43,050
+the amount of productivity you would gain with this.
+
+51
+00:03:43,180 --> 00:03:47,920
+So this is almost 10 seconds saved for every change you make.
+
+52
+00:03:47,980 --> 00:03:53,920
+If you are maintaining any kind of application that's a big productivity boost. So if you are using a Spring
+
+53
+00:03:53,920 --> 00:03:59,680
+Boot application and if you are not using to Spring Boot developer tools then go ahead and try it.
+
+54
+00:03:59,730 --> 00:04:06,370
+That's a pretty cool addition, I would think, to Spring Boot. In the step, we looked at Spring Boot dev tools which
+
+55
+00:04:06,370 --> 00:04:10,780
+is one of my favorite additions to Spring Boot. Until the next video, bye-bye.

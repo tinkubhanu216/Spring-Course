@@ -1,0 +1,609 @@
+0
+1
+00:00:00,180 --> 00:00:07,230
+Welcome back in this video. Until  now, we have created a number of resources, and all these resources were
+1
+
+2
+00:00:07,230 --> 00:00:15,770
+based on the todo hardcoded service, this data is stored as a static todo list.
+2
+
+3
+00:00:15,870 --> 00:00:17,760
+And it's time to change that.
+3
+
+4
+00:00:17,760 --> 00:00:22,700
+Let's take this and put all the data in the database.
+4
+
+5
+00:00:22,860 --> 00:00:25,820
+We would be using H2 console as in-memory database.
+5
+
+6
+00:00:25,900 --> 00:00:28,910
+We would be using JPA and spring data.
+6
+
+7
+00:00:28,920 --> 00:00:32,940
+JP A>If you are new to JPA or spring.
+7
+
+8
+00:00:32,970 --> 00:00:38,940
+JPA. I would really recommend you to look at the section introduction toJPA.
+8
+
+9
+00:00:38,970 --> 00:00:43,240
+We have a section in the appendix introducing you to JPA,  is that JPA.
+9
+
+10
+00:00:43,530 --> 00:00:44,310
+What does it do?
+10
+
+11
+00:00:44,310 --> 00:00:51,940
+What are the advantages of each two, and all that fun stuff. That section is a prerequisite to be able
+11
+
+12
+00:00:51,940 --> 00:00:58,360
+to understand what's happening in the background. With this specific step and the subsequent steps, where
+12
+
+13
+00:00:58,360 --> 00:01:04,450
+we use JPA to connect the resource to a database.
+13
+
+14
+00:01:04,450 --> 00:01:07,900
+One of the things that we would do is first let's stop this.
+14
+
+15
+00:01:07,910 --> 00:01:10,660
+Well we would need to make a few changes.
+15
+
+16
+00:01:10,750 --> 00:01:16,380
+So let's stop this here. The approach we would take if we would create a parallel todo.
+16
+
+17
+00:01:16,390 --> 00:01:22,840
+JPA resource. So we would let this resource be there and we would create a public service todo.
+17
+
+18
+00:01:22,900 --> 00:01:28,950
+JPA resource, and we would append JOA to each of todos,  or else move this out.
+18
+
+19
+00:01:28,960 --> 00:01:34,330
+But that's the approach that we would be taking really create a parallel.
+19
+
+20
+00:01:34,360 --> 00:01:42,410
+JPA resource, exposing a new set of new URLs, and really really kind of different to the new set of URLs
+20
+
+21
+00:01:42,810 --> 00:01:43,340
+too.
+21
+
+22
+00:01:43,570 --> 00:01:50,680
+Let's focus on getting the database up and running, and populating the database with some initial set
+22
+
+23
+00:01:50,740 --> 00:01:52,140
+of data.
+23
+
+24
+00:01:52,150 --> 00:01:59,920
+The awesome thing with J.P.A hibernate spring, is that A JPA and the springboot combination with H2, is the
+24
+
+25
+00:01:59,920 --> 00:02:07,460
+fact that as soon as you create an entity, it would create the database in memory automatically.
+25
+
+26
+00:02:07,480 --> 00:02:10,740
+Let's see that in action in this specific step.
+26
+
+27
+00:02:10,750 --> 00:02:11,470
+Let's get started.
+27
+
+28
+00:02:11,480 --> 00:02:13,770
+No I'm having a bit of Java.
+28
+
+29
+00:02:13,930 --> 00:02:22,110
+In addition I would need to add is an entity... control-space, and this would become an entity which
+29
+
+30
+00:02:22,110 --> 00:02:24,170
+would be stored into the database.
+30
+
+31
+00:02:24,250 --> 00:02:28,340
+Any entity in JPA needs to have a primary key.
+31
+
+32
+00:02:28,660 --> 00:02:35,160
+I need to add at the annotation control-space, and there you go.
+32
+
+33
+00:02:35,230 --> 00:02:43,150
+This becomes the ID. One of the other important things is ID field ideally should be a wrapper class.
+33
+
+34
+00:02:43,150 --> 00:02:51,840
+It's not suggested to have a primitive, because typically null indicates that an entity is not yet stored
+34
+
+35
+00:02:51,850 --> 00:02:52,760
+to the database.
+35
+
+36
+00:02:52,870 --> 00:02:58,480
+And when you use that entity and say to the database, it means it has to be inserted.
+36
+
+37
+00:02:58,480 --> 00:03:03,940
+So what we are doing is we are making this Long. As soon as you make this long you should see a few compilation
+37
+
+38
+00:03:04,040 --> 00:03:04,660
+errors.
+38
+
+39
+00:03:04,870 --> 00:03:05,860
+Let's fix them.
+39
+
+40
+00:03:07,330 --> 00:03:16,330
+We'll start with changing the getID to Long, and say Id long and you would see that the todo hardcoded
+40
+
+41
+00:03:16,350 --> 00:03:17,740
+service has an error
+41
+
+42
+00:03:17,890 --> 00:03:20,080
+It Go there and let's.
+42
+
+43
+00:03:20,200 --> 00:03:20,750
+Exactly.
+43
+
+44
+00:03:20,790 --> 00:03:23,510
+This here is giving a compilation error.
+44
+
+45
+00:03:23,530 --> 00:03:26,400
+I changed the counter to Long.
+45
+
+46
+00:03:26,690 --> 00:03:30,510
+Once you change the content along everything should compile.
+46
+
+47
+00:03:30,540 --> 00:03:39,240
+Now I go back to the todo service.  Now, what will focus on if we add a fact that this ID I would want it
+47
+
+48
+00:03:39,360 --> 00:03:40,880
+to be auto generated.
+48
+
+49
+00:03:40,890 --> 00:03:45,570
+I don't want to set the value of the ID, whenever a new tool is created.
+49
+
+50
+00:03:45,570 --> 00:03:53,690
+We would want to make it auto generated. The way you can do that is by adding an annotation auto generated.
+50
+
+51
+00:03:53,880 --> 00:04:01,140
+What happens is a sequence would be created, and the sequence would be used to set values into the ID.
+51
+
+52
+00:04:01,140 --> 00:04:07,560
+So whenever you add a to the sequence, it'll be used to generate the ID and set the value for it.
+52
+
+53
+00:04:07,560 --> 00:04:12,370
+Now we have the entire entity set up.
+53
+
+54
+00:04:12,510 --> 00:04:18,120
+Now if you're wondering how did we get all these annotations. @Entity @ID, @generatedValue
+54
+
+55
+00:04:18,120 --> 00:04:24,660
+The answer is when we were creating this project, we already added in a couple of dependencies.
+55
+
+56
+00:04:24,750 --> 00:04:30,960
+The first one which we added in was springboot starter data jpa. On spring startup. Project we
+56
+
+57
+00:04:30,960 --> 00:04:33,650
+selected data JPA, and that's how we get this.
+57
+
+58
+00:04:33,750 --> 00:04:36,750
+And we also selected  h2 database.
+58
+
+59
+00:04:36,750 --> 00:04:43,810
+So we have all the frameworks: JPA, hibernate and springboot starter data JPA.
+59
+
+60
+00:04:44,010 --> 00:04:50,370
+If all this seems like a lot of buzz words, I'll really recommend you to check out the section on JPA
+60
+
+61
+00:04:50,850 --> 00:04:57,810
+in the appendix. Look at the application properties. And over here, what I want to do is I would want to
+61
+
+62
+00:04:57,900 --> 00:05:00,470
+add in a few more things.
+62
+
+63
+00:05:00,520 --> 00:05:05,080
+What I would want to do, is I want to be able to see the sequel which is being generated.So what I'll do is
+63
+
+64
+00:05:05,340 --> 00:05:10,860
+spring.jpa.show-sql =  true. The other thing I would want to enable is something called
+64
+
+65
+00:05:10,930 --> 00:05:16,820
+h2-console. so spring.h2console.enabled =  true.
+65
+
+66
+00:05:17,120 --> 00:05:22,810
+So make sure that you have both these settings enabled before you restart the application. So start the
+66
+
+67
+00:05:22,800 --> 00:05:23,590
+application.
+67
+
+68
+00:05:23,640 --> 00:05:30,180
+And you'd see that it launches up and there's some new information which would be printed in the startup
+68
+
+69
+00:05:30,180 --> 00:05:37,380
+block. You see that a table is being created todo, and a sequence is being created called hibernate
+69
+
+70
+00:05:37,380 --> 00:05:38,490
+sequence.
+70
+
+71
+00:05:38,490 --> 00:05:41,980
+Now you might be wondering how can I check the data in this table?
+71
+
+72
+00:05:42,450 --> 00:05:44,420
+This is the in-memory database.
+72
+
+73
+00:05:44,450 --> 00:05:49,220
+If you can do that is by going to a URL localhost:8080/h2
+73
+
+74
+00:05:49,260 --> 00:05:50,650
+I think so.
+74
+
+75
+00:05:50,970 --> 00:05:55,410
+So if you go to that specific URL, you would see a page like this. One of the important things
+75
+
+76
+00:05:55,410 --> 00:05:57,760
+to make sure is the database you are at,
+76
+
+77
+00:05:57,760 --> 00:06:01,360
+It should be jdbc:h2:mem:testdb.
+77
+
+78
+00:06:01,410 --> 00:06:02,840
+This is a common mistake.
+78
+
+79
+00:06:02,970 --> 00:06:07,020
+Sometimes the default value which comes up, is a little different from this.
+79
+
+80
+00:06:07,040 --> 00:06:12,350
+Make sure that you read it and have JBC h2 mem testdb as it is shown in here.
+80
+
+81
+00:06:12,510 --> 00:06:16,460
+Once you have that you can click on it, and you see the table.
+81
+
+82
+00:06:16,770 --> 00:06:20,720
+And if you doa  select * from todo you'll see that there is no data in here.
+82
+
+83
+00:06:21,000 --> 00:06:23,220
+Let's quickly populate some data in here.
+83
+
+84
+00:06:23,360 --> 00:06:29,890
+The way you can populate data, is by adding a new file in here control an equal file.
+84
+
+85
+00:06:30,090 --> 00:06:34,650
+If you don't see a new sequel file coming up, the other approach would be control-n.
+85
+
+86
+00:06:34,770 --> 00:06:40,180
+Create a new text document, and you can save with data.sql into this specific thing.
+86
+
+87
+00:06:40,460 --> 00:06:45,890
+Save the new sql file, and I'll call this data.sql
+87
+
+88
+00:06:45,900 --> 00:06:48,780
+The important thing is which folder I'm sitting it should be.
+88
+
+89
+00:06:48,980 --> 00:06:50,920
+So what I mean is this.
+89
+
+90
+00:06:51,030 --> 00:06:56,960
+So let's click Finish, and all here I would want to populate data into the table.
+90
+
+91
+00:06:57,330 --> 00:07:02,340
+Let's get todo.java class, so that we have that as a reference.
+91
+
+92
+00:07:02,570 --> 00:07:08,150
+So we would want to enter data into the specific table . insert into todo.
+92
+
+93
+00:07:08,400 --> 00:07:10,800
+And I would specify the column names.
+93
+
+94
+00:07:11,250 --> 00:07:20,970
+Let's say the column names which I'd use are name, description Target date, username description target
+94
+
+95
+00:07:21,160 --> 00:07:21,440
+date.
+95
+
+96
+00:07:21,440 --> 00:07:25,690
+Would be target_date.
+96
+
+97
+00:07:25,710 --> 00:07:28,440
+So if you have something in camel case in here.
+97
+
+98
+00:07:28,580 --> 00:07:29,970
+So these are caps.
+98
+
+99
+00:07:30,030 --> 00:07:38,250
+So in the database typically what we would do is use underscore. JPA understands that in the bean
+99
+
+100
+00:07:38,520 --> 00:07:43,520
+you would have a targetDate, and on the database the naming convention is to have target_date.
+100
+
+101
+00:07:43,970 --> 00:07:49,120
+So the table would be created with Target_date, and then that would be easy.
+101
+
+102
+00:07:49,140 --> 00:07:49,910
+And that's cool!
+102
+
+103
+00:07:52,730 --> 00:08:01,440
+What values do I want to populate into this? I'll use the ID I would want to start with a large ID value,
+103
+
+104
+00:08:01,670 --> 00:08:07,500
+the sequence over here typically start with one, and I get more to conflict with it.
+104
+
+105
+00:08:07,520 --> 00:08:12,260
+That's the reason why I would use a large starting value. You've got the IDs for the data which we
+105
+
+106
+00:08:12,260 --> 00:08:16,130
+insert in the user name is in28 minutes.
+106
+
+107
+00:08:16,130 --> 00:08:21,100
+Make sure that you're using single quotes. Double quotes are not really allowed in here.
+107
+
+108
+00:08:21,140 --> 00:08:32,160
+And I'll say Learn JPA, and the target date is 68 and isDone is false.
+108
+
+109
+00:08:32,330 --> 00:08:41,800
+Now put a semicolon in here at the insert, and you can insert multiple Todos. I'll need to change
+109
+
+110
+00:08:41,800 --> 00:08:46,000
+the ID, is typically one of the mistakes a lot of people do is not change the ID's.
+110
+
+111
+00:08:46,170 --> 00:08:51,990
+If you don't change the ID's, then it would show it or throw it into the exception, because we cannot
+111
+
+112
+00:08:52,030 --> 00:08:54,210
+have two rows with the same ID.
+112
+
+113
+00:08:54,390 --> 00:08:56,180
+Username would remain the same.
+113
+
+114
+00:08:56,250 --> 00:09:07,450
+JPA. It says learn JPA and learn data JPA, and learn microservices
+114
+
+115
+00:09:07,710 --> 00:09:13,900
+Let's save this, and let's wait for the application to start and pick it up.
+115
+
+116
+00:09:14,920 --> 00:09:20,410
+If you go to the h2 console and click run, it will actually take you back, because the server 
+116
+
+117
+00:09:20,410 --> 00:09:29,260
+has restarted. todo again and click run, and you would see that the data is populated. In this quick step,
+117
+
+118
+00:09:29,740 --> 00:09:33,340
+we made the todo object an entity.
+118
+
+119
+00:09:33,570 --> 00:09:41,680
+So this is being managed by JPA, and we populated some data for it, and we were able to see all this stuff
+119
+
+120
+00:09:42,100 --> 00:09:49,030
+in his tokens. So if you have any questions about what's happening on this working so easy, so check out
+120
+
+121
+00:09:49,030 --> 00:09:51,070
+the section in the appendix on JPA.
+121
+
+122
+00:09:51,460 --> 00:09:52,840
+I'll see you in the next step.

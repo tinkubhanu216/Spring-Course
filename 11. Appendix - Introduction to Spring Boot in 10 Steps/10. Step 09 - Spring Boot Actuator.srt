@@ -1,0 +1,467 @@
+1
+00:00:00,780 --> 00:00:05,530
+In this step we will investigate much more about world trade.
+
+2
+00:00:05,750 --> 00:00:12,950
+How do I use Greenwood actuator where you seem just like everything else it's putting board using an
+
+3
+00:00:12,950 --> 00:00:15,810
+actuator is also really very simple.
+
+4
+00:00:16,370 --> 00:00:18,550
+All that I need to do is good for America.
+
+5
+00:00:18,890 --> 00:00:20,430
+And you have guessed it right.
+
+6
+00:00:20,450 --> 00:00:23,590
+I just need to add stuff for actuator.
+
+7
+00:00:23,870 --> 00:00:30,710
+So I'm copping the start of a verb and changing the starter name to actually after that it implies that
+
+8
+00:00:32,570 --> 00:00:34,080
+I didn't start to fracture it.
+
+9
+00:00:34,100 --> 00:00:37,380
+So what does the actuator bring in.
+
+10
+00:00:37,380 --> 00:00:42,940
+Actually it actually brings in a lot of monitoring around your application.
+
+11
+00:00:43,100 --> 00:00:49,710
+So in actuator you'd be able to read a lot of data about the application.
+
+12
+00:00:49,880 --> 00:00:52,710
+Let's say you want to see water the beans that are configured.
+
+13
+00:00:52,940 --> 00:00:56,030
+You want to see how Arta configuration has worked.
+
+14
+00:00:56,240 --> 00:01:02,210
+You want to see how many times the specific services call you want to see how many times a specific
+
+15
+00:01:02,210 --> 00:01:04,250
+service has failed.
+
+16
+00:01:04,250 --> 00:01:11,970
+All that kind of stuff you can check in your actuator and all that I need to do to enable that is in
+
+17
+00:01:12,080 --> 00:01:19,410
+something called an actuator in springboard that the actuator actually exposes a lot of the rest services
+
+18
+00:01:19,820 --> 00:01:25,840
+and these services are compliant with the standard called had standard.
+
+19
+00:01:26,420 --> 00:01:34,540
+And we would use a whole browser so that we can browse through the data which is provided by the service
+
+20
+00:01:34,770 --> 00:01:39,610
+agency for help browser it spring bitterest help browser.
+
+21
+00:01:39,620 --> 00:01:43,380
+So it's spring data rest Hal.
+
+22
+00:01:43,490 --> 00:01:50,510
+So you can take the project up the group ID should actually be data it offspring from a data spring
+
+23
+00:01:50,510 --> 00:01:52,210
+that at least help browser.
+
+24
+00:01:52,200 --> 00:01:58,250
+So once we add dependency for that the browser would be configured among our dependencies.
+
+25
+00:01:58,250 --> 00:02:01,770
+Now you can see all the dependencies in the Miami independent It's been a good start.
+
+26
+00:02:01,760 --> 00:02:05,750
+Actually it does bring good actually to spend the rest Harrel browser.
+
+27
+00:02:05,840 --> 00:02:06,650
+That's cool.
+
+28
+00:02:06,680 --> 00:02:11,900
+One of the important things to remember is that the actuator you are Lil's have been changing quite
+
+29
+00:02:11,900 --> 00:02:20,120
+a lot across spring board release in spring bought one dart X the UL and was localhost 88 the slash
+
+30
+00:02:20,130 --> 00:02:28,220
+actuator and later in the earlier versions of spring point zero point zero like the milestone resists
+
+31
+00:02:28,430 --> 00:02:38,010
+it was last 88 slash application number again we are back to normal last ADHD slash actuator.
+
+32
+00:02:38,180 --> 00:02:41,240
+So this is the you are going to launch up the actuator.
+
+33
+00:02:41,240 --> 00:02:48,090
+I mean this is after point zero point zero dot release the UI released localhost 88 the slash actuator.
+
+34
+00:02:48,210 --> 00:02:55,000
+It does not work and probably you can do close ADHD Sless application right once you type in localhost
+
+35
+00:02:55,010 --> 00:02:56,790
+88 ADHD Lesch actuator.
+
+36
+00:02:56,810 --> 00:03:02,390
+This is what you'd be seeing if you're using anything greater than to point to point two leagues you'd
+
+37
+00:03:02,390 --> 00:03:05,070
+see three you Errol's coming in.
+
+38
+00:03:05,210 --> 00:03:05,540
+Right.
+
+39
+00:03:05,540 --> 00:03:08,300
+So these are the held and the informed.
+
+40
+00:03:08,300 --> 00:03:12,800
+So if I click help you'd see they held up the applications up and running.
+
+41
+00:03:12,820 --> 00:03:13,600
+That's cool.
+
+42
+00:03:13,670 --> 00:03:14,470
+Right.
+
+43
+00:03:14,490 --> 00:03:17,710
+And the other one is the Imphal.
+
+44
+00:03:17,730 --> 00:03:25,620
+There is not a lot of info here right now if there is a lot of stuff that actuator pro-white to enable
+
+45
+00:03:25,620 --> 00:03:29,610
+that you'd need to configure but how do I do that.
+
+46
+00:03:29,640 --> 00:03:35,270
+The way you can with that is called You Are piggishness properties and back pain management endpoint
+
+47
+00:03:35,820 --> 00:03:43,110
+web Dorte exposure don't include a sequel to the sequel to start.
+
+48
+00:03:43,410 --> 00:03:49,920
+What we are doing in here is we are enabling the ebay exposure so the exposure overhead should DP of
+
+49
+00:03:50,100 --> 00:03:52,510
+all the management points.
+
+50
+00:03:52,590 --> 00:03:59,190
+One of the important things to remember is when you enable a lot of tracking a lot of auditing.
+
+51
+00:03:59,430 --> 00:04:03,010
+What would happen is there would be a performance impact as well.
+
+52
+00:04:03,150 --> 00:04:09,320
+One of the recommendations is to identify which of the things that you would want and only enable those.
+
+53
+00:04:09,450 --> 00:04:11,150
+But for now we are taking a shortcut.
+
+54
+00:04:11,160 --> 00:04:17,280
+We are enabling everything management endpoints web exposure that include physical stuff all the things
+
+55
+00:04:17,280 --> 00:04:23,540
+you would already know is the fact that if I type in controlled space or comment space you'd see a dropdown
+
+56
+00:04:23,640 --> 00:04:24,400
+coming in.
+
+57
+00:04:24,600 --> 00:04:28,000
+This is because of something called a spring tools plug in.
+
+58
+00:04:28,020 --> 00:04:31,180
+So there's an eclipse plugin called Spring tools.
+
+59
+00:04:31,380 --> 00:04:37,290
+You can see that I can see what develop properties it also validates the values of these properties
+
+60
+00:04:37,320 --> 00:04:41,830
+and things like that we configured management or the endpoints that we have got exposure include is
+
+61
+00:04:41,840 --> 00:04:48,750
+called just to save it and restart your application to make make sure that you stop and start your application
+
+62
+00:04:49,100 --> 00:04:51,540
+and go and refresh the actuator.
+
+63
+00:04:51,540 --> 00:04:52,470
+You'd see that now.
+
+64
+00:04:52,560 --> 00:04:56,700
+There are many more articles which are present in here.
+
+65
+00:04:56,810 --> 00:05:00,030
+So you would see a lot of which are coming up in here.
+
+66
+00:05:00,030 --> 00:05:04,950
+The other thing we can type in this localhost ADHD we have already added in the whole browser.
+
+67
+00:05:04,980 --> 00:05:07,220
+Let's zoom out a little bit.
+
+68
+00:05:07,380 --> 00:05:12,840
+So we added in the hull brothers so if you type in localhost ADHD you go to the browser and we can use
+
+69
+00:05:12,840 --> 00:05:18,890
+help browser to browse through the actuators I can type in slash actuator in here.
+
+70
+00:05:19,110 --> 00:05:23,820
+So all that I need to do is type in slash actuator that the you are in for the actual in here and I
+
+71
+00:05:23,820 --> 00:05:29,090
+can start looking through all the things related to actuators directly from here.
+
+72
+00:05:29,250 --> 00:05:36,920
+Let's look at a few of these things that the actuator is exposing the oddity when it is related to security.
+
+73
+00:05:37,050 --> 00:05:40,720
+Or did you want to show that users who were properly validated.
+
+74
+00:05:40,740 --> 00:05:44,630
+How many people failed the authentication and all that kind of stuff.
+
+75
+00:05:44,640 --> 00:05:46,360
+Beans is an interesting thing.
+
+76
+00:05:46,380 --> 00:05:53,130
+And picking beans they Sutro all this green beans that are configured right praying is a dependency
+
+77
+00:05:53,130 --> 00:05:59,790
+management framework and it manages all the bins it creates all the components for you and you can look
+
+78
+00:05:59,790 --> 00:06:02,950
+at all the beams that spring has created for you.
+
+79
+00:06:02,970 --> 00:06:05,790
+You can also check the health of the application its up.
+
+80
+00:06:05,910 --> 00:06:11,480
+Conditions is another interesting thing as we have this because it knows being good is all about auto
+
+81
+00:06:11,480 --> 00:06:12,620
+configuration.
+
+82
+00:06:12,630 --> 00:06:18,420
+There is a lot of stuff that being built or configured conditioned so it exposes the positive matches
+
+83
+00:06:18,480 --> 00:06:25,230
+which are all the conditions that matched as well as if you search for negative matches the conditions
+
+84
+00:06:25,260 --> 00:06:31,020
+which did not match so it would draw a list of bins which are configured which are not trigger and all
+
+85
+00:06:31,020 --> 00:06:32,330
+that kind of stuff.
+
+86
+00:06:32,340 --> 00:06:35,230
+You can also get the details of configuration properties.
+
+87
+00:06:35,250 --> 00:06:40,550
+And we don't mind loggers which are configured You can also get them to read them.
+
+88
+00:06:40,560 --> 00:06:47,850
+And also you can get a few metrics as well so if you go to the metrics I can see a list of metrics which
+
+89
+00:06:47,940 --> 00:06:49,380
+are valid.
+
+90
+00:06:49,440 --> 00:06:52,790
+So let's say I would want to find out how much memory is used.
+
+91
+00:06:52,860 --> 00:06:58,860
+So I can say I can copy this JVM memory used and add it in here.
+
+92
+00:06:58,940 --> 00:07:02,080
+Slash JVM maybe not used to go.
+
+93
+00:07:02,160 --> 00:07:06,480
+You would see the value of the amount of memory that is being used.
+
+94
+00:07:06,630 --> 00:07:09,610
+The same thing can be done with other metrics as well.
+
+95
+00:07:09,660 --> 00:07:15,930
+So if I go back to the actual metrics you can see that there are a wide variety of metrics that are
+
+96
+00:07:15,930 --> 00:07:17,970
+being exposed in here.
+
+97
+00:07:18,060 --> 00:07:20,640
+C.P. usage and all that kind of stuff.
+
+98
+00:07:20,700 --> 00:07:25,870
+If I go back again to the actuator I can also see the stuff you can do to us.
+
+99
+00:07:25,890 --> 00:07:31,620
+That is an interesting thing called HTP trees which should all the requests that were executed.
+
+100
+00:07:31,620 --> 00:07:34,560
+So it shows that this is a request which is coming in.
+
+101
+00:07:34,560 --> 00:07:40,250
+Somebody like the X the actuator This is the response which when bag the time it can be so and so.
+
+102
+00:07:40,480 --> 00:07:45,960
+So you can see all the details of the previous requests that were executed.
+
+103
+00:07:46,080 --> 00:07:49,890
+The important thing is to remember that this would have a performance impact.
+
+104
+00:07:49,890 --> 00:07:50,070
+Right.
+
+105
+00:07:50,070 --> 00:07:51,990
+You cannot enable it in production.
+
+106
+00:07:51,990 --> 00:07:58,500
+This is useful to trace a few requests but obviously you would not want to enable it to decrease in
+
+107
+00:07:58,500 --> 00:08:04,560
+production for all that it was the last one which is present in here is the mappings mappings shows
+
+108
+00:08:04,590 --> 00:08:09,390
+all the different things that are mapped to our eyes.
+
+109
+00:08:09,520 --> 00:08:16,040
+Right now where we are creating a web application or a web service we are mapping a lot of it whenever
+
+110
+00:08:16,080 --> 00:08:20,530
+we are adding the dependency on next year we add a few users as well.
+
+111
+00:08:20,670 --> 00:08:23,940
+So you can see all the mappings in here.
+
+112
+00:08:23,940 --> 00:08:30,540
+The idea behind this was to quickly give you an overview of what are all the things you can do with
+
+113
+00:08:30,870 --> 00:08:37,160
+actually if some of the information you see in here is complex and you are finding it difficult to understand.
+
+114
+00:08:37,260 --> 00:08:38,250
+No problem at all.
+
+115
+00:08:38,250 --> 00:08:44,220
+The most important thing to understand is in future if you need any such information there is one place
+
+116
+00:08:44,220 --> 00:08:46,820
+you can go to that actuate.
+
+117
+00:08:46,860 --> 00:08:48,020
+And then the next step.

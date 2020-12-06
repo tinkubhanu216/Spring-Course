@@ -1,0 +1,495 @@
+1
+00:00:01,570 --> 00:00:09,750
+In the previous step, we were able to create a REST service very easily. In the step, we will understand what
+
+2
+00:00:09,780 --> 00:00:11,770
+is auto configuration.
+
+3
+00:00:11,810 --> 00:00:14,680
+How did all the things that are needed for the REST
+
+4
+00:00:14,720 --> 00:00:18,700
+service to be up and running get configured automatically.
+
+5
+00:00:18,710 --> 00:00:20,490
+Let's look at it in this step.
+
+6
+00:00:20,660 --> 00:00:26,450
+We have the Spring Boot in 10 steps application where we have the at SpringBootApplication
+
+7
+00:00:26,450 --> 00:00:33,220
+annotation. The annotation at SpringBootApplication indicates that this is a Spring context file.
+
+8
+00:00:33,230 --> 00:00:34,430
+That's number one.
+
+9
+00:00:34,430 --> 00:00:39,180
+Number two, it enables something called auto configuration.
+
+10
+00:00:39,200 --> 00:00:43,350
+Number three, it enables something called component scan.
+
+11
+00:00:43,820 --> 00:00:49,820
+Component scan is one of the important features of Spring where it would start automatically scanning
+
+12
+00:00:49,850 --> 00:00:52,470
+these classes in this package.
+
+13
+00:00:52,550 --> 00:00:56,660
+And this sub package for any beans.
+
+14
+00:00:56,720 --> 00:01:00,840
+So we have added in an annotation at restController.
+
+15
+00:01:00,980 --> 00:01:05,540
+This is one of the annotations which is scanned for it.
+
+16
+00:01:05,540 --> 00:01:12,160
+So this would be registered as a component. So the  bookController would be registered as a bean and it would be managed
+
+17
+00:01:12,290 --> 00:01:14,420
+by the Spring framework.
+
+18
+00:01:14,750 --> 00:01:19,750
+There are three things that are essentially done by at Spring Boot application.
+
+19
+00:01:19,760 --> 00:01:22,130
+It indicates that this is a Spring context.
+
+20
+00:01:22,130 --> 00:01:27,060
+The second thing is the fact that this enables auto configuration.
+
+21
+00:01:27,080 --> 00:01:32,920
+The third thing is that it enables automatic scan of this specific package.
+
+22
+00:01:32,920 --> 00:01:39,650
+Now if we want to look at auto configuration in dept. Spring application dot run method is used to run
+
+23
+00:01:39,740 --> 00:01:41,690
+a Spring context.
+
+24
+00:01:41,690 --> 00:01:47,990
+So I'm giving a Spring context as an input to it and it would be able to run that. The run method also
+
+25
+00:01:47,990 --> 00:01:52,740
+returns something. So it returns  a application context.
+
+26
+00:01:52,760 --> 00:01:59,750
+So I’ll actually get the application context back. So I'm getting the application context back.
+
+27
+00:01:59,880 --> 00:02:04,630
+This returns the application context. I’m taking it and I would say application context..
+
+28
+00:02:04,790 --> 00:02:06,200
+I would want to loop around it.
+
+29
+00:02:06,200 --> 00:02:15,480
+So, for each, control one. Control space actually. I would want to loop around the application context.
+
+30
+00:02:15,690 --> 00:02:17,410
+dot get beans.
+
+31
+00:02:17,450 --> 00:02:24,380
+I want to get the names of all the beans which are configured and I would call this name and I would
+
+32
+00:02:24,380 --> 00:02:29,620
+want to log them. I’ll for now do a sysout. Taking a shortcut here.
+
+33
+00:02:29,620 --> 00:02:32,550
+Ideally I should have been using a logger. But I’m a lazy guy.
+
+34
+00:02:32,700 --> 00:02:36,910
+I would go ahead and print all the beans which are present in here.
+
+35
+00:02:36,920 --> 00:02:38,270
+Let's see what would happen.
+
+36
+00:02:38,270 --> 00:02:40,300
+Run us Java application.
+
+37
+00:02:40,640 --> 00:02:45,160
+OK! I'm getting an error saying, it’s failed to start because 8080 is already used.
+
+38
+00:02:45,170 --> 00:02:45,830
+Let's see.
+
+39
+00:02:45,980 --> 00:02:46,880
+It's already being used.
+
+40
+00:02:46,880 --> 00:02:48,020
+I'll kill that.
+
+41
+00:02:48,350 --> 00:02:49,640
+And let's start again.
+
+42
+00:02:49,670 --> 00:02:50,970
+Ok, cool!
+
+43
+00:02:51,080 --> 00:02:53,590
+There are a lot of things that are printed right now.
+
+44
+00:02:53,600 --> 00:02:59,990
+So there are a host of things that are getting configured for us automatically.
+
+45
+00:03:00,020 --> 00:03:02,340
+How are these being configured?
+
+46
+00:03:02,720 --> 00:03:10,120
+That's basically the feature called auto configuration. What Spring Boot does is as part of the Spring Boot
+
+47
+00:03:10,130 --> 00:03:14,260
+framework, there is something called Spring Boot autoconfigure.
+
+48
+00:03:14,270 --> 00:03:22,040
+So if I look at, one of the dependencies is Spring Boot auto configure. And this Spring Boot auto configure
+
+49
+00:03:22,310 --> 00:03:28,820
+has a lot of logic built into it. So you can see that there is a lot of classes that are written.
+
+50
+00:03:28,850 --> 00:03:34,850
+So if you look at the auto configuration Jar, it's a very very very big jar.
+
+51
+00:03:34,910 --> 00:03:36,680
+And if we go to the Web,
+
+52
+00:03:36,720 --> 00:03:41,900
+We will find our configurations for all the things that we are looking at right now.
+
+53
+00:03:42,110 --> 00:03:47,960
+I'm going in to the auto configure web servlet and you would see something called dispatcher servlet
+
+54
+00:03:48,020 --> 00:03:49,730
+auto configuration.
+
+55
+00:03:50,030 --> 00:03:56,020
+These auto configuration classes are what are creating these beans.
+
+56
+00:03:56,360 --> 00:04:03,060
+What would happen at startup is the Spring Boot framework would trigger the auto configuration jar.
+
+57
+00:04:03,350 --> 00:04:07,480
+And it would loop through classes which are on the classpath.
+
+58
+00:04:07,660 --> 00:04:09,590
+So it would see that, OK,
+
+59
+00:04:09,820 --> 00:04:16,220
+do I have a specific class on the classpath? It would see that I have a Spring web MVC framework on
+
+60
+00:04:16,220 --> 00:04:16,720
+the classpath.
+
+61
+00:04:16,730 --> 00:04:20,330
+What does this Spring Boot auto configure do?
+
+62
+00:04:20,330 --> 00:04:26,310
+It says, “Oh! There is Spring web MVC on the classpath, then I would need to configure a dispatcher
+
+63
+00:04:26,320 --> 00:04:30,130
+servlet.” It would say, “Oh! there is Spring MVC on the classpath,
+
+64
+00:04:30,130 --> 00:04:33,560
+so I would need to configure a view resolver.”
+
+65
+00:04:33,680 --> 00:04:43,220
+So all those kind of things happen and you'd be able to see all the beans which were created in here.
+
+66
+00:04:43,370 --> 00:04:45,280
+How does the configuration work?
+
+67
+00:04:45,330 --> 00:04:47,270
+Spring Boot basically looks at two things.
+
+68
+00:04:47,270 --> 00:04:53,690
+One is frameworks available on the classpath. There's a website called springboottutorial dot com, where we have
+
+69
+00:04:53,690 --> 00:04:54,970
+a lot of articles on Spring Boot.
+
+70
+00:04:54,980 --> 00:04:57,220
+I'm referring to one of the articles there.
+
+71
+00:04:57,320 --> 00:05:03,200
+So Spring Boot looks at A) the frameworks which are available on the classpath and also, B) It looks
+
+72
+00:05:03,200 --> 00:05:10,280
+at the existing beans which are configured for the application. And based on that, it provides the
+
+73
+00:05:10,310 --> 00:05:11,900
+configuration needed.
+
+74
+00:05:11,900 --> 00:05:16,650
+So for example, if you are using a web starter, the basic things that you would need would be a dispatcher
+
+75
+00:05:16,650 --> 00:05:23,150
+servlet,  you would need a, probably, some internationalization, you need some messaging. All that kind of
+
+76
+00:05:23,150 --> 00:05:25,850
+stuff would get autoconfigured for you.
+
+77
+00:05:25,880 --> 00:05:31,660
+Now, we are looking at one of the auto configuration beans which is data source auto configuration.
+
+78
+00:05:31,940 --> 00:05:37,800
+If you see the code of data source auto configuration which is inside the Spring boot auto configure jar.
+
+79
+00:05:38,060 --> 00:05:43,970
+You would see that it's conditional on class data source dot class and an embedded database type dot class to
+
+80
+00:05:43,970 --> 00:05:45,110
+be present on the classpath.
+
+81
+00:05:45,120 --> 00:05:49,220
+But so what happens is only these classes are on the classpath,
+
+82
+00:05:49,220 --> 00:05:55,670
+then this specific bean would be created. The data source bean would be only created when these are on
+
+83
+00:05:55,670 --> 00:05:56,330
+the classpath.
+
+84
+00:05:56,340 --> 00:06:02,660
+But you can see the code in here. So data base auto configuration is conditional on a specific class being
+
+85
+00:06:02,720 --> 00:06:03,810
+available on the classpath.
+
+86
+00:06:03,830 --> 00:06:09,730
+But you can also see another example in here, So embedded data source database configuration.
+
+87
+00:06:09,810 --> 00:06:16,930
+This is only created when there is no datasource, when there is no bean created with a data source or
+
+88
+00:06:16,940 --> 00:06:17,700
+a XA datasource.
+
+89
+00:06:17,720 --> 00:06:24,410
+Spring Boot would then create an embedded database configuration for us. If you want to find out more about
+
+90
+00:06:24,440 --> 00:06:26,770
+what auto configuration is happening,
+
+91
+00:06:26,870 --> 00:06:34,500
+what we can do is we can turn on debug logging. What I can do is go to application dot properties.
+
+92
+00:06:34,550 --> 00:06:37,280
+That's one of the files which is present in here.
+
+93
+00:06:37,280 --> 00:06:40,100
+We'll talk about application properties a little later.
+
+94
+00:06:40,400 --> 00:06:50,300
+I'm turning on the logging level. All that you need to do is say logging dot level dot org dot Spring
+
+95
+00:06:50,850 --> 00:06:54,460
+Framework is equal to debug.
+
+96
+00:06:54,560 --> 00:06:56,840
+This would start the application in a debug mode.
+
+97
+00:06:56,840 --> 00:07:00,280
+Let me kill this up. Start the application again.
+
+98
+00:07:00,320 --> 00:07:03,640
+You can see a lot more logging being printed right now.
+
+99
+00:07:03,650 --> 00:07:07,530
+So a lot of things are being printed along with which
+
+100
+00:07:07,700 --> 00:07:12,970
+you’d actually have a lot of logging about auto configuration which is printed in here.
+
+101
+00:07:13,130 --> 00:07:19,570
+So this will actually say all the stuff which was auto configured and which was not auto configured.
+
+102
+00:07:19,580 --> 00:07:19,870
+So it’s saying
+
+103
+00:07:19,870 --> 00:07:27,510
+dispatcher servlet auto configuration has matched because I found something of this kind in the classpath. So it’s saying,
+
+104
+00:07:27,860 --> 00:07:33,470
+I found a servlet called dispatcher servlet on the classpath. So I've configured dispatcher servlet automatically.
+
+105
+00:07:34,220 --> 00:07:42,260
+It’s saying I've configured an error MVC auto configuration. I've already configured default error controller.
+
+106
+00:07:42,350 --> 00:07:49,910
+I've configured a cache, generic cache configuration. I've configured Jackson for doing binding and I’ve auto
+
+107
+00:07:49,910 --> 00:07:52,130
+configured validation as well.
+
+108
+00:07:52,130 --> 00:07:57,540
+You can also see that there are things like view resolver and everything that were auto configured.
+
+109
+00:07:57,770 --> 00:08:03,000
+Not only that, the auto configuration report also shows what are the things that were not auto configured
+
+110
+00:08:03,060 --> 00:08:10,640
+So it would show why the rest of the auto configuration things did not match and why they were not
+
+111
+00:08:11,120 --> 00:08:12,770
+executed.
+
+112
+00:08:12,770 --> 00:08:15,270
+Why beans for them were not created.
+
+113
+00:08:15,320 --> 00:08:20,930
+Auto configuration is a very very important concept regarding Spring Boot. One of the most important
+
+114
+00:08:20,930 --> 00:08:27,380
+things to understand is you were still a beginner with Spring Boot and auto configuration is something
+
+115
+00:08:27,380 --> 00:08:32,380
+which will grow on you as you keep building more and more Spring Boot application.
+
+116
+00:08:32,560 --> 00:08:36,760
+If complete concept of auto configuration did not fit in your mind right
+
+117
+00:08:36,770 --> 00:08:38,800
+right now, that's not a problem at all.
+
+118
+00:08:38,810 --> 00:08:45,260
+You would definitely learn it by the time you end this course. Auto configuration is one of the fundamental
+
+119
+00:08:45,260 --> 00:08:45,930
+things
+
+120
+00:08:46,070 --> 00:08:52,130
+why Spring Boot is so famous and so easy to use. In this step,
+
+121
+00:08:52,160 --> 00:08:55,610
+We looked at the basics of auto configuration.
+
+122
+00:08:55,610 --> 00:09:01,120
+We looked at some of the beans which were automatically created and also we looked at where the code for
+
+123
+00:09:01,130 --> 00:09:04,160
+Spring Boot auto configuration is.
+
+124
+00:09:04,580 --> 00:09:05,780
+Until the next step, bye-bye.

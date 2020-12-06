@@ -1,0 +1,219 @@
+1
+00:00:02,690 --> 00:00:07,730
+In this step, we would want to look at the various starter projects which are present in Spring Boot. In the last step, we looked at three
+
+2
+00:00:07,730 --> 00:00:12,070
+of them. We looked at starter test, we looked at Spring Boot starter web.
+
+3
+00:00:12,110 --> 00:00:14,280
+And we look at doing Spring Boot starter
+
+4
+00:00:14,330 --> 00:00:18,600
+JPA. We look at other starters which are present in this specific step.
+
+5
+00:00:18,620 --> 00:00:23,310
+This will be a short step but it would be great for you to understand the different
+
+6
+00:00:23,320 --> 00:00:28,880
+starters that are offered by Spring Boot. One of the important starters that is offered by Spring Boot is
+
+7
+00:00:28,880 --> 00:00:31,360
+Spring Boot starter web services.
+
+8
+00:00:31,430 --> 00:00:36,680
+This is the starter you would need to use when you want to develop SOAP Web services.
+
+9
+00:00:36,680 --> 00:00:40,880
+If you understand Web services then there are basically REST services
+
+10
+00:00:40,940 --> 00:00:46,300
+and SOAP services. Actually the classification is not as simple as that because.
+
+11
+00:00:46,460 --> 00:00:46,870
+SOAP web services
+
+12
+00:00:47,020 --> 00:00:49,600
+can also can fit into the bracket of REST web services.
+
+13
+00:00:49,730 --> 00:00:55,020
+So, if you want to define WSDL and then implement your
+
+14
+00:00:55,130 --> 00:00:57,020
+web service, that's a SOAP web service.
+
+15
+00:00:57,020 --> 00:00:57,320
+Right?
+
+16
+00:00:57,320 --> 00:01:02,460
+If you are developing a SOAP web service then you can use this starter, Spring Boot starter web service
+
+17
+00:01:02,780 --> 00:01:06,090
+We already looked at using a RESTful application.
+
+18
+00:01:06,140 --> 00:01:07,780
+What did we use to build?
+
+19
+00:01:07,860 --> 00:01:13,550
+We used Spring Boot starter web. Similar to that, even if you wanted a typical web application, you can
+
+20
+00:01:13,550 --> 00:01:19,880
+use Spring Boot starter web. Spring Boot starter test, as we looked at in the previous example is for unit testing
+
+21
+00:01:19,910 --> 00:01:21,590
+and integration testing.
+
+22
+00:01:21,650 --> 00:01:22,300
+Spring Boot starter test
+
+23
+00:01:22,300 --> 00:01:26,610
+really makes it easy to write great unit tests and integration test.
+
+24
+00:01:26,630 --> 00:01:33,230
+If you want to write applications using Spring JDBC then Spring Boot starter JDBC is perfect
+
+25
+00:01:33,230 --> 00:01:39,080
+for you. If you you're writing RESTful web services and you would want to add HATEOAS features
+
+26
+00:01:39,450 --> 00:01:40,230
+HATEOAS….
+
+27
+00:01:40,250 --> 00:01:44,600
+HATEOAS, whichever you'd want to call it. If you want to add those features to your services,
+
+28
+00:01:44,600 --> 00:01:52,310
+then Spring Boot starter hateoas is the one to go for. All web applications and all RESTful services
+
+29
+00:01:52,310 --> 00:01:53,940
+should be secured.
+
+30
+00:01:54,110 --> 00:01:54,760
+Spring Boot starter security
+
+31
+00:01:54,770 --> 00:01:58,950
+is the starter for using Spring security.
+
+32
+00:01:58,970 --> 00:02:04,580
+You can implement both authentication and authorization and Spring Boot starter security has support
+
+33
+00:02:04,580 --> 00:02:12,320
+for basic authentication as well as Oauth authentication. It also has support for Oauth2 authentication
+
+34
+00:02:12,380 --> 00:02:12,860
+as well.
+
+35
+00:02:12,860 --> 00:02:18,260
+So whichever one you are using you can use Spring Boot starter security. As we looked at in the previous
+
+36
+00:02:18,260 --> 00:02:25,700
+steps, Spring Boot starter JPA is the option when you want to do JPA. By default, Spring Boot data JPA uses
+
+37
+00:02:25,700 --> 00:02:28,780
+hibernate as the ORM framework.
+
+38
+00:02:28,910 --> 00:02:35,810
+If you want to implement caching then you can go for Spring Boot starter cache. It has support for a wide range
+
+39
+00:02:35,930 --> 00:02:41,390
+of caching options including distributed caches like his hazelcast.
+
+40
+00:02:41,390 --> 00:02:48,650
+If you're using Spring Boot starter data JPA and you would want to expose your entities as RESTful services
+
+41
+00:02:48,980 --> 00:02:54,450
+then you can go with Spring Boot starter data rest. Spring Boot starter data rest
+
+42
+00:02:54,450 --> 00:03:02,600
+makes it very very easy to expose Spring Boot data JPA component…I mean Spring Boot data JPA entities as
+
+43
+00:03:02,600 --> 00:03:04,050
+RESTful web services.
+
+44
+00:03:04,220 --> 00:03:12,720
+They expose all the typical request methods like get, post, put and delete. The other starters
+
+45
+00:03:12,740 --> 00:03:18,350
+of Spring Boot are more technical. Spring Boot starter actuator which will use it in one of the next steps
+
+46
+00:03:18,410 --> 00:03:24,620
+is for monitoring and also you have starters for the embedded servers. We saw that by default we were using
+
+47
+00:03:24,620 --> 00:03:30,350
+Spring Boot starter Tomcat. So you can also use Spring Boot starter undertow or jetty if you'd want to use
+
+48
+00:03:30,410 --> 00:03:32,190
+those embedded servlet containers.
+
+49
+00:03:32,540 --> 00:03:38,300
+And also there are starters for logging and log4j. Spring Boot actually provides a wide variety
+
+50
+00:03:38,300 --> 00:03:43,070
+of starters. Actually going through all of them and understanding them would be taking an effort of
+
+51
+00:03:43,090 --> 00:03:43,440
+life time,
+
+52
+00:03:43,440 --> 00:03:46,340
+I think. OK! there you go.
+
+53
+00:03:46,370 --> 00:03:52,790
+The idea behind this step was to give you the wide variety of starters that Spring Boot provides. Whenever
+
+54
+00:03:52,790 --> 00:03:54,520
+you have a problem to solve,
+
+55
+00:03:54,530 --> 00:03:59,430
+go ahead and look at if there is starter to solve your problem. Until the next step, bye-bye.

@@ -1,0 +1,231 @@
+1
+00:00:02,500 --> 00:00:08,770
+Welcome back! In this step, we would start looking at entities. In the previous step, we set up a simple project.
+
+2
+00:00:08,800 --> 00:00:13,930
+There are things which we’d need to still understand about that project. We will understand them as we go.
+
+3
+00:00:14,080 --> 00:00:21,580
+And now let's focus on creating a simple entity. What we want to do is to create an entity called user.
+
+4
+00:00:21,850 --> 00:00:23,620
+Let’s create a simple class.
+
+5
+00:00:23,650 --> 00:00:28,890
+So class name it as user. I would want to store it in a separate package.
+
+6
+00:00:28,890 --> 00:00:35,740
+I would want to just say this, entity and say finish. Now you'd see that the user is created in a package
+
+7
+00:00:35,740 --> 00:00:36,870
+called entity.
+
+8
+00:00:36,910 --> 00:00:37,450
+That's cool.
+
+9
+00:00:37,450 --> 00:00:44,140
+So this is where we store all entities. In this package where we would put all our entities in and user
+
+10
+00:00:44,140 --> 00:00:45,680
+is an example entity.
+
+11
+00:00:45,760 --> 00:00:49,050
+What we want to have is a few attributes in the user.
+
+12
+00:00:49,060 --> 00:00:51,450
+So I would say first thing is an Id.
+
+13
+00:00:51,460 --> 00:00:58,270
+So I'll say ..instead of public… actually it should be private. Private Long Id and I would want to store a couple
+
+14
+00:00:58,270 --> 00:01:05,420
+of attributes of the user. Private string name and private string role.
+
+15
+00:01:05,740 --> 00:01:10,450
+One thing you need to understand is this is not really perfect design because a name might have first
+
+16
+00:01:10,450 --> 00:01:15,730
+name, last name and other stuff. So you might really need to actually have a class called name.
+
+17
+00:01:15,730 --> 00:01:19,810
+Ideally you would want to have a enum defining that. Let’s keep it simple for now.
+
+18
+00:01:19,990 --> 00:01:25,690
+So let's just have strings and I would also generate the getters and setters and stuff like that.
+
+19
+00:01:25,690 --> 00:01:31,330
+So what I'll do is right click source and say generate getters and setters.
+
+20
+00:01:31,380 --> 00:01:33,070
+I would only want getters.
+
+21
+00:01:33,070 --> 00:01:40,000
+So I'll  say select getter. And say OK. I'll also create a toString. So right click source generate toString
+
+22
+00:01:40,240 --> 00:01:43,540
+and say OK. It would generate a to String method for us.
+
+23
+00:01:43,810 --> 00:01:49,230
+And also what I'll try and do is to generate a simple constructor.
+
+24
+00:01:49,240 --> 00:01:51,760
+So generate constructor using fields.
+
+25
+00:01:52,010 --> 00:01:58,690
+Ideally we will not use an Id field in the constructor. So I’ll remove the id. I’ll use he other fields so we
+
+26
+00:01:58,690 --> 00:02:00,250
+have a constructor in here.
+
+27
+00:02:00,250 --> 00:02:03,280
+It's a simple constructor. Two parameter, name and role.
+
+28
+00:02:03,430 --> 00:02:09,340
+One of the things that JPA expects in every class is a default constructor.
+
+29
+00:02:09,340 --> 00:02:15,580
+So if we create a constructor like this then we are over riding the default constructor which is provided
+
+30
+00:02:15,980 --> 00:02:18,010
+JPA expects a default constructor.
+
+31
+00:02:18,010 --> 00:02:22,860
+So let's go ahead and define a simple default constructor as well.
+
+32
+00:02:23,110 --> 00:02:30,290
+So this is just like a simple bean. There is nothing JPA specific in it right now. It’s a simple bean.
+
+33
+00:02:30,310 --> 00:02:36,430
+It has three attributes - Id, name and role. It has a simple constructor accepting name and role.
+
+34
+00:02:36,760 --> 00:02:40,240
+And it has a couple of getters and a toString method.
+
+35
+00:02:40,240 --> 00:02:43,390
+This is very similar to any bean that you would define.
+
+36
+00:02:43,390 --> 00:02:46,560
+There is nothing JPA specific in here.
+
+37
+00:02:46,720 --> 00:02:54,370
+So now I would want to take this user and I would want to store it to a table called user in the database
+
+38
+00:02:54,380 --> 00:03:00,160
+so I would want to actually take the data from user and be able to map it to a table.
+
+39
+00:03:00,160 --> 00:03:05,040
+How do I do that? Then I would need to make this an entity.
+
+40
+00:03:05,200 --> 00:03:11,980
+So if I want to be able to store this user to a table then what we need to do is we’d need to define and
+
+41
+00:03:12,100 --> 00:03:20,450
+annotation.That’s at entity. As we discussed earlier, we are going to use the Javax dot persistence. Javax
+
+42
+00:03:20,520 --> 00:03:22,390
+dot persistence is the package where
+
+43
+00:03:22,420 --> 00:03:28,540
+java persistence API annotations are present. So I'll use Javax dot persistence entity. You can see that that's
+
+44
+00:03:28,630 --> 00:03:29,940
+imported in here.
+
+45
+00:03:30,210 --> 00:03:32,590
+So entity specifies that a class is an entity.
+
+46
+00:03:32,620 --> 00:03:36,220
+This is something which would be persisted to a database.
+
+47
+00:03:36,300 --> 00:03:42,670
+What we'll do is we'll also want to say this is a primary key. How do I say this is a primary key? By
+
+48
+00:03:42,670 --> 00:03:49,470
+using another annotaiton called at Id. User has a primary key called Id.
+
+49
+00:03:49,470 --> 00:03:51,270
+This becomes the primary key.
+
+50
+00:03:51,280 --> 00:03:55,350
+One of the things I would want to do is I don't really want to assign the primary key.
+
+51
+00:03:55,540 --> 00:04:03,140
+So I would want this to be generated. How do I make this to be generated? By saying it's a generated value.
+
+52
+00:04:03,230 --> 00:04:06,660
+I'm adding an annotaiton saying this is a generated value.
+
+53
+00:04:06,730 --> 00:04:12,370
+So until now, you have created a simple entity called user. We added an annotation called  entity and we added couple
+
+54
+00:04:12,370 --> 00:04:18,100
+of annotations on the Id field. Id and generated value to say that this is something which is generated.
+
+55
+00:04:18,240 --> 00:04:23,610
+Once we have created an entity, we would need to be able to save this to a database.
+
+56
+00:04:23,650 --> 00:04:29,650
+How do we store entities to the database and get them from the database? The way we would do that is by using
+
+57
+00:04:29,650 --> 00:04:38,470
+something called a entity manager. In the next step, we would start defining a service to get these values
+
+58
+00:04:38,470 --> 00:04:39,870
+from the database.

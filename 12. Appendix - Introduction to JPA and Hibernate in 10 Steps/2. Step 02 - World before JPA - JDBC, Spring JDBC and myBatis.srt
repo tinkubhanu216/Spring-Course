@@ -1,0 +1,371 @@
+1
+00:00:01,570 --> 00:00:05,620
+In the last video, we talk about object relational impedance mismatch.
+
+2
+00:00:05,770 --> 00:00:09,540
+We saw how we design tables is different from how we design objects.
+
+3
+00:00:09,550 --> 00:00:12,480
+We discussed that there are three options that were used before 
+
+4
+00:00:12,490 --> 00:00:14,660
+JPA. JDBC, Spring JDBC
+
+5
+00:00:14,710 --> 00:00:21,330
+And myBatis. In this video, we'll get an introduction to how JDBC, spring JDBC
+
+6
+00:00:21,360 --> 00:00:23,050
+and myBatis solve the problem.
+
+7
+00:00:23,140 --> 00:00:26,860
+If you're already familiar with that, you can skip this video and move onto the next video where
+
+8
+00:00:26,860 --> 00:00:32,930
+we will be discussing about JPA. The other approaches  before JPA were JDBC, Spring JDBC
+
+9
+00:00:32,980 --> 00:00:37,310
+and myBatis. In JDBC, Spring JDBC and myBatis, what we do?
+
+10
+00:00:37,420 --> 00:00:42,340
+We write queries. Once we write the queries we need to do two things.
+
+11
+00:00:42,340 --> 00:00:48,370
+One is these queries have parameters. So over here if you look at it these are called parameters. Update todo
+
+12
+00:00:48,370 --> 00:00:50,200
+set user is equal to something.
+
+13
+00:00:50,200 --> 00:00:52,060
+So these are all different parameters.
+
+14
+00:00:52,060 --> 00:00:54,800
+So I would need to populate these parameters.
+
+15
+00:00:54,820 --> 00:00:59,270
+So once you write the query you need to set the values for these parameters.
+
+16
+00:00:59,320 --> 00:01:05,580
+The other thing I would need to do is once the query is executed, for example, I'm executing this query, right?
+
+17
+00:01:05,610 --> 00:01:08,040
+So I would need to take the values from the query
+
+18
+00:01:08,050 --> 00:01:10,430
+So the results are coming back in a result set.
+
+19
+00:01:10,430 --> 00:01:15,390
+I would need to take the values from the result set and store it to the bean.
+
+20
+00:01:15,430 --> 00:01:19,600
+Here the bean is todo. So I’d need to take the values from the result set and put it to the bean.
+
+21
+00:01:19,630 --> 00:01:24,570
+If it's a update or delete  query then you don't really have any results coming back.
+
+22
+00:01:24,580 --> 00:01:27,770
+But if you are doing a select query then you have results back.
+
+23
+00:01:27,910 --> 00:01:33,210
+So you need to take those results and populate into your java objects or beans.
+
+24
+00:01:33,220 --> 00:01:34,620
+How did JDBC do that?
+
+25
+00:01:34,650 --> 00:01:37,520
+JDBC is basically Java database connectivity .
+
+26
+00:01:37,750 --> 00:01:43,450
+And the way it did it was through things like statement, prepared statement, result set etc.
+
+27
+00:01:43,480 --> 00:01:49,360
+So what we do is we write a query. So we rewrite a query and then we had to create a statement or a prepared
+
+28
+00:01:49,360 --> 00:01:55,450
+statement for it and set the parameters into the query.  Set each values, so we said the value
+
+29
+00:01:55,450 --> 00:01:58,780
+Here is one. The value here is 2.
+
+30
+00:01:58,900 --> 00:02:00,820
+Here is three and so on.
+
+31
+00:02:01,060 --> 00:02:06,400
+And once the query is executed, if it’s a select query then we would need to get a result set and we would
+
+32
+00:02:06,400 --> 00:02:14,050
+need to map manually. What we would need to do is to do something like this. We’d say, we’d get the result set and
+
+33
+00:02:14,050 --> 00:02:16,800
+then take the values from the result set and put into the bean.
+
+34
+00:02:16,810 --> 00:02:18,870
+So we are explicitly doing that in here.
+
+35
+00:02:18,880 --> 00:02:25,100
+You can see that I'm actually taking one by one from the resultset and putting it into the bean.
+
+36
+00:02:25,120 --> 00:02:31,630
+If you look at the code that we wrote with JDBC,  it was a little complex, right? Just to update
+
+37
+00:02:31,630 --> 00:02:37,690
+something, just to do a simple update, I had to write like 15 20 lines of code and I'm not even talking
+
+38
+00:02:37,690 --> 00:02:39,480
+about exception handling code in here.
+
+39
+00:02:39,510 --> 00:02:45,400
+This kind of becomes really a lot of code that I would need to write. What spring JDBC did is it tried
+
+40
+00:02:45,400 --> 00:02:51,610
+to provide a layer on top of HJDBC. Instead of using low level things like statement, prepared statement
+
+41
+00:02:51,610 --> 00:02:55,340
+other things, JDBC said I'll provide you a JDBC database template.
+
+42
+00:02:55,360 --> 00:03:00,720
+You use the JDBC template. If I wanted to do a update, I still had to write the query.
+
+43
+00:03:00,730 --> 00:03:06,100
+The basic approach is still the same. You had to write a query but what JDBC template did
+
+44
+00:03:06,100 --> 00:03:09,460
+it made mapping parameters to query very easy.
+
+45
+00:03:09,460 --> 00:03:15,290
+So it said, “ok! you can call JDBC update with your query and all the parameters.”
+
+46
+00:03:15,290 --> 00:03:21,270
+What I'll do is take the first one and replace it here. Take the second one and replace it here. Take
+
+47
+00:03:21,280 --> 00:03:23,750
+the third one and replace it here.
+
+48
+00:03:23,830 --> 00:03:29,920
+And also it introduced a few simple concepts like a rowmappers. By default
+
+49
+00:03:29,920 --> 00:03:35,890
+If your names match then you don't really need to create a mapper at all. Then you can use something
+
+50
+00:03:35,890 --> 00:03:37,740
+called bean property row mapper.
+
+51
+00:03:37,990 --> 00:03:42,680
+But if you want to define a mapper then go ahead and create a todo mapper.
+
+52
+00:03:42,880 --> 00:03:48,780
+Once you create a mapper, this mapper can be used in multiple queries. Over here
+
+53
+00:03:48,840 --> 00:03:54,250
+we're using this todo mapper to map the results from the query to the bean.
+
+54
+00:03:54,250 --> 00:04:00,070
+So what it is returning is the todo. You can see that all the logic I would need to typically do in JDBC
+
+55
+00:04:00,100 --> 00:04:03,550
+I don't need to do that when I'm using JDBC template.
+
+56
+00:04:03,550 --> 00:04:10,930
+So what did Spring JDBC do? Simply provide a simple layer on top JDBC so that I can easily map parameters
+
+57
+00:04:10,930 --> 00:04:17,290
+to queries and easily take the results from the result sets and map it to Java objects or
+
+58
+00:04:17,290 --> 00:04:18,340
+beans.
+
+59
+00:04:18,340 --> 00:04:24,140
+Now what's the other framework which came in? myBatis. Actually sometimes people call myBatis as
+
+60
+00:04:24,190 --> 00:04:27,310
+an ORM framework. Object relation mapping framework.
+
+61
+00:04:27,520 --> 00:04:33,070
+But I don't really think it's object relational mapping framework because it's not really mapping objects to
+
+62
+00:04:33,100 --> 00:04:33,890
+table.
+
+63
+00:04:34,210 --> 00:04:38,410
+What it does is it maps objects to queries.
+
+64
+00:04:38,410 --> 00:04:43,390
+myBatis provides a simple XML or annotation based configuration.
+
+65
+00:04:43,390 --> 00:04:51,170
+So whatever mapping that we did earlier from your parameters, parameters to queries and taking values from
+
+66
+00:04:51,220 --> 00:04:57,040
+the result ses and putting them to beans, what we can do with myBatis is you can do the same stuff using
+
+67
+00:04:57,070 --> 00:05:03,630
+XML or simple annotations. In JDBC or Spring JDBC what we used to do with we use to write queries like
+
+68
+00:05:03,660 --> 00:05:04,370
+this.
+
+69
+00:05:04,440 --> 00:05:08,780
+So we used to put question marks and we would use to replace the values.
+
+70
+00:05:09,060 --> 00:05:14,510
+But what myBatis did is it provided a simple mapping framework.
+
+71
+00:05:14,760 --> 00:05:21,990
+So instead of a question mark I would say hash user. And what is user?  User is the name of the attribute
+
+72
+00:05:22,020 --> 00:05:23,260
+in the bean.
+
+73
+00:05:23,400 --> 00:05:29,120
+For example, over here you can see target date. Target date is equal to target date and what is Target date?
+
+74
+00:05:29,120 --> 00:05:32,630
+Target date is the target date from the bean.
+
+75
+00:05:32,820 --> 00:05:38,820
+If I wanted to use this query, it's very simple. I just need to say I want to update. I want to use this
+
+76
+00:05:38,820 --> 00:05:47,110
+update query and use this bean because you have already mapped the name of the field in here.
+
+77
+00:05:47,310 --> 00:05:52,070
+myBatis would be able to recognize that and execute the update statement for you.
+
+78
+00:05:52,080 --> 00:05:55,050
+We took a quick look at how things were done with JDBC.
+
+79
+00:05:55,050 --> 00:05:57,200
+We took a quick look at how things were done
+
+80
+00:05:57,210 --> 00:06:03,210
+with Spring JDBC and also myBatis. The fundamental thing for all these three approaches was the
+
+81
+00:06:03,210 --> 00:06:05,630
+fact that they are still based on queries.
+
+82
+00:06:05,630 --> 00:06:05,920
+Right?
+
+83
+00:06:05,940 --> 00:06:08,610
+We still write a lot of queries.
+
+84
+00:06:08,610 --> 00:06:14,460
+The problem with queries is when the relationships between tables change then you have to modify
+
+85
+00:06:14,460 --> 00:06:19,880
+all your queries. I have worked in lot of applications where there were a lot of big big queries which were
+
+86
+00:06:19,900 --> 00:06:25,500
+written. Like, I have worked in applications where there were queries of hundred two hundred lines of code and
+
+87
+00:06:25,500 --> 00:06:31,530
+understanding these and maintaining these is a really tough job. You need to really have a great understanding
+
+88
+00:06:31,530 --> 00:06:36,510
+of how things are done in the database to be able to write these queries.
+
+89
+00:06:36,810 --> 00:06:38,970
+And that's the real problem.
+
+90
+00:06:39,030 --> 00:06:44,310
+The problem was the queries were becoming so complex that it was difficult to really maintain them.
+
+91
+00:06:44,330 --> 00:06:49,380
+And whenever there were changes in the relationships between tables it was really becoming difficult
+
+92
+00:06:49,380 --> 00:06:56,150
+to maintain these queries. That’s the world where JPA stepped in. In the next
+
+93
+00:06:56,180 --> 00:06:59,940
+video we will look at how JPA tries to solve this problem.

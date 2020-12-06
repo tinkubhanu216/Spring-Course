@@ -1,0 +1,247 @@
+1
+00:00:00,730 --> 00:00:06,720
+Welcome to this video where we’d try and understand how JPA solves the problem of object relational
+
+2
+00:00:06,720 --> 00:00:12,330
+mapping. The problem we were talking about is the fact that the application classes, the way we design our objects
+
+3
+00:00:12,630 --> 00:00:16,140
+is different from how we design tables on our database.
+
+4
+00:00:16,320 --> 00:00:20,200
+So the way we design this employee task, part time employee, full time employee
+
+5
+00:00:20,210 --> 00:00:26,450
+objects is different from how we  do things on the database. Task, employee, employee tasks.
+
+6
+00:00:26,460 --> 00:00:28,700
+So how does JPA solve the problem?
+
+7
+00:00:28,870 --> 00:00:35,260
+JPA provides a mapping. You can map application classes to tables.
+
+8
+00:00:35,520 --> 00:00:38,760
+You can say this class maps to this table.
+
+9
+00:00:38,780 --> 00:00:46,500
+With JPA you’d be able to define mappings between your classes and the tables using things like
+
+10
+00:00:46,590 --> 00:00:54,340
+entities, relationships. You would use something called an entity manager to manage your entities.
+
+11
+00:00:54,420 --> 00:00:56,630
+I would want to save a task to the database.
+
+12
+00:00:56,640 --> 00:01:01,790
+I can use the entity manager, give it a task object and it would be able to save to the database.
+
+13
+00:01:01,800 --> 00:01:08,280
+I would want to get the values of a certain amount of tasks, or I would want to get the values of all
+
+14
+00:01:08,280 --> 00:01:12,440
+the tasks related to a person. I can use the entity manager.
+
+15
+00:01:12,470 --> 00:01:21,720
+JPA also has this features of criteria API and JPQL which provides additional ways of finding data
+
+16
+00:01:21,750 --> 00:01:23,390
+from your database.
+
+17
+00:01:23,400 --> 00:01:29,580
+So I would want to find some data from the database. I would want to do some, certain kind of searches against
+
+18
+00:01:29,580 --> 00:01:32,200
+the database then intead of using SQL 
+
+19
+00:01:32,220 --> 00:01:40,520
+you can also use JPQL or criteria API to query the database. JPQL is similar to SQL
+
+20
+00:01:40,590 --> 00:01:48,420
+However, you would be using entities instead of tables in JPQL and criteria API represents a
+
+21
+00:01:48,430 --> 00:01:55,430
+way you can write JPL using Java APIs. Before we get our hands dirty with JPA
+
+22
+00:01:55,660 --> 00:02:01,130
+We'll look at a few examples of how you can map application classes to database.
+
+23
+00:02:01,170 --> 00:02:07,140
+Earlier we looked at an example where in the task table there was a mismatch of how things were in the task
+
+24
+00:02:07,380 --> 00:02:10,700
+class or the task object and the task table.
+
+25
+00:02:10,740 --> 00:02:12,360
+How do we solve that?
+
+26
+00:02:12,410 --> 00:02:14,510
+JPA provides an annotation.
+
+27
+00:02:14,520 --> 00:02:22,950
+So here there's an annotation called at table. The table annotation helps you to map your object to your
+
+28
+00:02:23,000 --> 00:02:23,400
+table.
+
+29
+00:02:23,400 --> 00:02:30,660
+So here I am saying, “OK! This task is going to be stored. An instance of class task would be stored to
+
+30
+00:02:30,750 --> 00:02:32,270
+the entity task.”
+
+31
+00:02:32,280 --> 00:02:37,890
+I'm representing this as an entity by putting an at entity annotation on top of it.
+
+32
+00:02:38,010 --> 00:02:44,480
+And also I'm saying this id is a primary key by putting an at Id on top of it.
+
+33
+00:02:44,550 --> 00:02:51,250
+I'm saying this description field which is present in here should be stored in a column called description.
+
+34
+00:02:51,270 --> 00:02:53,310
+So that's how we map.
+
+35
+00:02:53,310 --> 00:02:57,300
+So we're saying description, target date. So, in the table it's called target date.
+
+36
+00:02:57,310 --> 00:03:01,550
+So, how do we map it? By putting at column name is equal to the target date.
+
+37
+00:03:01,590 --> 00:03:05,740
+So, this is a simple example of mapping fields to columns.
+
+38
+00:03:05,760 --> 00:03:11,700
+You can also establish relationships between the different entities.
+
+39
+00:03:11,760 --> 00:03:14,610
+So  employee is an entity. Task is an entity.
+
+40
+00:03:14,610 --> 00:03:18,740
+We already look at the fact that they have a many to many relationship.
+
+41
+00:03:18,810 --> 00:03:21,660
+You can use an annotation called at many to many.
+
+42
+00:03:21,660 --> 00:03:24,930
+So here I am saying at many to many and many to many.
+
+43
+00:03:24,960 --> 00:03:32,130
+This establishes a many to many relationship between the employee and the task class. And the third example
+
+44
+00:03:32,130 --> 00:03:35,760
+which we looked at was the full time employee and part time employee.
+
+45
+00:03:35,760 --> 00:03:42,510
+These classes are all mapped to just a single table in the database.
+
+46
+00:03:42,510 --> 00:03:44,520
+They are all mapped to employee.
+
+47
+00:03:44,520 --> 00:03:48,030
+So JPA provides a inheritance mapping.
+
+48
+00:03:48,060 --> 00:03:55,380
+So it says, “I would want to use an inheritance mapping. The strategy is one table. All the subclasses of employee
+
+49
+00:03:55,600 --> 00:04:01,570
+are stored to one table and we are also saying, how do we distinguish is using the employee type.
+
+50
+00:04:01,590 --> 00:04:08,190
+So we're also saying that in here. So here we’re saying the discriminator column is employee type. In this specific step,
+
+51
+00:04:08,200 --> 00:04:16,030
+until now, we looked at a few examples of how JPA provides mappings between your objects and the tables.
+
+52
+00:04:16,060 --> 00:04:22,020
+The most important thing that you need to understand is we are just trying to highlight a big picture
+
+53
+00:04:22,020 --> 00:04:23,570
+of how things are done with
+
+54
+00:04:23,570 --> 00:04:28,850
+JPA. If you are not able to understand these things at in-depth, that's not a problem at all.
+
+55
+00:04:29,070 --> 00:04:35,530
+You're going to do a lot of this stuff step by step in the future steps. In this step,
+
+56
+00:04:35,550 --> 00:04:44,180
+we took a quick overview of the big picture of JPA. We saw how JPA helps us to map object to tables.
+
+57
+00:04:44,190 --> 00:04:51,470
+We looked at how we can map specific attributes, specific fields to tale column.
+
+58
+00:04:51,630 --> 00:04:55,080
+We looked at examples of how to map relationships.
+
+59
+00:04:55,290 --> 00:05:00,730
+And we looked at how to map inheritance relationships between objects as well.
+
+60
+00:05:00,860 --> 00:05:05,240
+The idea behind this step is to give you a quick flavor of what you can do with JPA.
+
+61
+00:05:05,540 --> 00:05:09,530
+We have not really got our hands dirty yet. In the subsequent steps,
+
+62
+00:05:09,530 --> 00:05:11,980
+we'll start getting our hands dirty.

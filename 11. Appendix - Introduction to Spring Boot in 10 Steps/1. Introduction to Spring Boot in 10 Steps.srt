@@ -1,0 +1,54 @@
+0
+1
+00:00:01,210 --> 00:00:08,500
+Welcome to this QuickStart Guide on Spring Boot. Spring Boot is the most popular framework to develop
+1
+
+2
+00:00:08,500 --> 00:00:11,840
+microservices. In this QuickStart Guide,
+2
+
+3
+00:00:11,890 --> 00:00:16,780
+we will explore all the features which make Spring Boot popular.
+3
+
+4
+00:00:16,860 --> 00:00:24,130
+We'll start with creating a simple project using initializer and then understand the most important concepts
+4
+
+5
+00:00:24,130 --> 00:00:25,010
+of Spring Boot.
+5
+
+6
+00:00:25,070 --> 00:00:32,320
+We will talk about auto-configuration, we will talk about things like starter projects, we will use various
+6
+
+7
+00:00:32,320 --> 00:00:39,820
+kinds of starter projects in our application and also, we'll talk about Spring Boot Actuator to enable monitoring
+7
+
+8
+00:00:39,820 --> 00:00:41,160
+on your application,
+8
+
+9
+00:00:41,380 --> 00:00:48,070
+and we also will talk about how you can become productive with spring-boot-devtools.
+9
+
+10
+00:00:48,070 --> 00:00:55,230
+While these 10 steps might not make you an expert on Spring Boot, they would definitely help you to get a look in.
+10
+
+11
+00:00:55,300 --> 00:00:56,580
+Let's get started now.

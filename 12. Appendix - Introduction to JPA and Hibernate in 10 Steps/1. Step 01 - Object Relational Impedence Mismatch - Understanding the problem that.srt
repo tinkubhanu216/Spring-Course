@@ -1,0 +1,267 @@
+1
+00:00:01,310 --> 00:00:06,320
+Welcome to this video where we are going to discuss a little bit of theory about Java persistence API.
+
+2
+00:00:06,500 --> 00:00:12,360
+What we want to understand is what is the problem that Java persistence API is trying to solve.
+
+3
+00:00:12,530 --> 00:00:19,100
+And what are the alternatives to Java persistence API and how does Java persistence API solve that problem.
+
+4
+00:00:19,100 --> 00:00:24,230
+That's basically what we would want to understand the next couple of steps will be a little bit of theory.
+
+5
+00:00:24,290 --> 00:00:29,180
+If you are a hands on guy then it might be a little boring for you but I think it's important to understand
+
+6
+00:00:29,180 --> 00:00:31,530
+the theory behind Java persistence API.
+
+7
+00:00:31,580 --> 00:00:34,730
+What is the problem that Java persistence API is trying to solve.
+
+8
+00:00:34,730 --> 00:00:36,240
+Think about it.
+
+9
+00:00:36,350 --> 00:00:39,790
+The programming language we are using is Java. We want to take data from Java.
+
+10
+00:00:39,860 --> 00:00:42,160
+Where do you want to store it? In the database.
+
+11
+00:00:42,380 --> 00:00:43,930
+How are databases designed?
+
+12
+00:00:43,940 --> 00:00:48,620
+Databases are typically relational databases, right? Now a days there's a lot of big data and other
+
+13
+00:00:48,620 --> 00:00:51,100
+stuff NoSQL stuff which is coming into picture.
+
+14
+00:00:51,320 --> 00:00:58,850
+But even now for the most part we use relational databases and in relational databases we use tables.
+
+15
+00:00:59,120 --> 00:01:03,080
+In Java side we have objects. On the database side we have tables.
+
+16
+00:01:03,140 --> 00:01:06,580
+How do we store data from objects to tables?
+
+17
+00:01:06,590 --> 00:01:14,150
+The way we designed Java program is using object oriented programming. So we use Object Oriented concepts. However, 
+
+18
+00:01:14,150 --> 00:01:14,950
+on the database
+
+19
+00:01:15,080 --> 00:01:16,800
+We use something called normalization.
+
+20
+00:01:16,850 --> 00:01:23,150
+Object Oriented Programming typically consists of concepts like encapsulation, inheritance, interfaces
+
+21
+00:01:23,330 --> 00:01:25,520
+polymorphism, and things like that.
+
+22
+00:01:25,780 --> 00:01:30,380
+However, when we talk about relational databases we are talking about things like tables, foreign keys
+
+23
+00:01:30,410 --> 00:01:31,400
+primary keys,
+
+24
+00:01:31,430 --> 00:01:34,650
+First normal form, second normal form, and third normal form.
+
+25
+00:01:34,730 --> 00:01:37,720
+There is a mismatch between these two.
+
+26
+00:01:37,730 --> 00:01:41,710
+There is a mismatch between how we design objects and how we design tables.
+
+27
+00:01:42,050 --> 00:01:45,580
+But we would want to establish a relationship between them.
+
+28
+00:01:45,590 --> 00:01:48,650
+We would want to establish a mapping between them.
+
+29
+00:01:48,650 --> 00:01:52,490
+Let's consider a few examples of this impedance mismatch.
+
+30
+00:01:52,640 --> 00:01:54,480
+I have a very simple example here.
+
+31
+00:01:54,510 --> 00:01:59,240
+I have employees and tasks, right? So you have an employee who can have multiple tasks a task which can
+
+32
+00:01:59,240 --> 00:02:01,650
+be associated with multiple employees.
+
+33
+00:02:01,730 --> 00:02:07,840
+And what we would want to think about is what are the possible mismatches when you're trying to map
+
+34
+00:02:08,060 --> 00:02:12,430
+this problem statement to objects and tables.
+
+35
+00:02:12,620 --> 00:02:20,390
+Let's look at the first example right now. The first mismatch is in terms of the basic details. An
+
+36
+00:02:20,420 --> 00:02:22,610
+object is made up of fields.
+
+37
+00:02:22,840 --> 00:02:29,180
+Table is made up of columns. How we name the fields is different from how we named the columns.
+
+38
+00:02:29,180 --> 00:02:33,610
+For example, here using in desc and here in the table the column is description.
+
+39
+00:02:33,610 --> 00:02:39,500
+Here we are calling it target date. However, in the table we are saying it’s target underscore date. Is Done 
+
+40
+00:02:39,500 --> 00:02:40,140
+is underscore done.
+
+41
+00:02:40,190 --> 00:02:42,970
+This is kind of a basic trivial example.
+
+42
+00:02:43,010 --> 00:02:47,270
+Let's think about relationships between tables. Relationships - 
+
+43
+00:02:47,300 --> 00:02:51,970
+Employee can have multiple tasks and a task can have multiple employees associated with it.
+
+44
+00:02:51,980 --> 00:02:54,680
+So how do we represent it in Java? Employee,
+
+45
+00:02:54,800 --> 00:02:56,740
+we’ll put a list of tasks to him.
+
+46
+00:02:56,770 --> 00:02:59,260
+So employee class will have a list of tasks.
+
+47
+00:02:59,360 --> 00:03:03,920
+This is how we put it and a task is associated with a list of employees.
+
+48
+00:03:03,920 --> 00:03:08,930
+This is how we recognize that in the Java world, in the Object-Oriented world.
+
+49
+00:03:08,930 --> 00:03:13,100
+How do we do that in table? Typically, in a table employee task.
+
+50
+00:03:13,200 --> 00:03:18,090
+we create a new table called employee underscore tasks and store the relationship in there.
+
+51
+00:03:18,260 --> 00:03:24,120
+So the way we designed the tables is different from how we design our classes or objects.
+
+52
+00:03:24,140 --> 00:03:27,770
+How do you take data from here and store in the table?
+
+53
+00:03:28,040 --> 00:03:32,660
+And the third example is multiple classes are sometimes mapped to a single table.
+
+54
+00:03:32,780 --> 00:03:37,940
+So here we have employees. Two kinds of employees, full time employees and part time employees. Fulltime
+
+55
+00:03:37,940 --> 00:03:43,520
+employees have a salary, part time employees have a hourly wage and you can see that these extend employee.
+
+56
+00:03:43,640 --> 00:03:44,960
+There are three classes here,
+
+57
+00:03:45,080 --> 00:03:47,940
+But when we talk about tables we just have one table.
+
+58
+00:03:48,110 --> 00:03:54,020
+We have an employee type to distinguish between full time employee and part time employee and we store the
+
+59
+00:03:54,020 --> 00:03:56,380
+values of the part time employee in hourly wage.
+
+60
+00:03:56,400 --> 00:04:02,120
+So this is one of the attributes which is specific to part time employee and for full time employee
+
+61
+00:04:02,120 --> 00:04:08,890
+we are storing the salary. The data from these three classes has to be stored to just one table.
+
+62
+00:04:08,910 --> 00:04:14,720
+Until we were looking at a few examples of object relational impedance mismatch. What we are talking
+
+63
+00:04:14,720 --> 00:04:20,830
+about is the fact that how we design our objects is different from how we design our tables.
+
+64
+00:04:21,020 --> 00:04:27,110
+And that's really the problem that all persistence frameworks have been trying to solve.
+
+65
+00:04:27,310 --> 00:04:34,420
+Typically, frameworks which we use to solve the persistence problem were JDBC, Spring JDBC
+
+66
+00:04:34,490 --> 00:04:40,280
+And myBatis.  In the next video, we’ll look at how those framworks tried to solve the problem of
+
+67
+00:04:40,310 --> 00:04:42,420
+object relational impedance mismatch.

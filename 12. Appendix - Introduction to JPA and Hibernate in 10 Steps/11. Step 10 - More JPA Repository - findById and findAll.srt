@@ -1,0 +1,147 @@
+1
+00:00:02,300 --> 00:00:06,830
+Spring data JPA makes it easy to manage your entities.
+
+2
+00:00:07,100 --> 00:00:14,450
+Once you have defined your entities and defined the mapping to the database, that it! Spring data repository
+
+3
+00:00:14,510 --> 00:00:18,220
+would provide a lot of useful methods to manage them.
+
+4
+00:00:18,500 --> 00:00:21,220
+In the previous step, we be made use of this save method.
+
+5
+00:00:21,380 --> 00:00:23,570
+Let's start with using a few more methods.
+
+6
+00:00:23,580 --> 00:00:29,410
+That's one of the important methods which is present in the user repository, user repository dot
+
+7
+00:00:29,550 --> 00:00:38,510
+find. If I want to find by Id, I can use the method find by Id and you can see that find by Id uses a long.
+
+8
+00:00:38,510 --> 00:00:43,990
+So I’ll say, I'd want to find the user who has an Id one. And assign it to a local variable.
+
+9
+00:00:44,000 --> 00:00:46,650
+This actually returns an optional.
+
+10
+00:00:46,730 --> 00:00:55,810
+So I’ll say user with id one and I would say user is not created but it is actually retreived.
+
+11
+00:00:56,060 --> 00:01:01,600
+So I've got the user who has the Id one retrieved from the database.
+
+12
+00:01:01,640 --> 00:01:07,040
+The other options user repository provides is to query all users.
+
+13
+00:01:07,190 --> 00:01:14,900
+So let's say dot find all and I'll assign this to a list and let's call it users
+
+14
+00:01:15,020 --> 00:01:24,560
+and let's also log all users plus. We’re using couple of methods from the user repository. Actually user repository has
+
+15
+00:01:24,640 --> 00:01:25,920
+a lot of methods.
+
+16
+00:01:26,000 --> 00:01:29,990
+So you’d see that user repository has a count method, a delete method
+
+17
+00:01:30,110 --> 00:01:34,220
+You can actually delete in batch. You can check whether something exists or not.
+
+18
+00:01:34,220 --> 00:01:41,960
+You can do wide variety of searches using find and also you have methods to save. So save method is used
+
+19
+00:01:42,410 --> 00:01:47,230
+to insert and also to update an entity.
+
+20
+00:01:47,270 --> 00:01:51,050
+There are a wide variety of methods that are there in the user repositary. I would recommend you
+
+21
+00:01:51,050 --> 00:01:55,470
+to try and see what are the methods that are there and try to play around with them.
+
+22
+00:01:55,640 --> 00:01:56,120
+For now,
+
+23
+00:01:56,150 --> 00:02:02,090
+let's restrict ourselves for these two things and let's start running the application. I’ll stop this
+
+24
+00:02:02,390 --> 00:02:03,790
+and start it again.
+
+25
+00:02:03,850 --> 00:02:09,240
+The application will take it…take a while to launch up because we have put it in debug mode.
+
+26
+00:02:09,470 --> 00:02:11,000
+Now it's complete execution.
+
+27
+00:02:11,000 --> 00:02:15,320
+If you look at the log, you'd see a few things that are printed.
+
+28
+00:02:15,440 --> 00:02:19,480
+So one of the things which is printed is user is retrieved, so we are able to retrieve the user
+
+29
+00:02:19,670 --> 00:02:20,610
+with id one.
+
+30
+00:02:20,690 --> 00:02:23,260
+The name is Jack and we see the role is admin.
+
+31
+00:02:23,420 --> 00:02:29,690
+And also we see all users printed in the log. So all users, user with id 1 and Id 2, so we are able
+
+32
+00:02:29,690 --> 00:02:31,360
+to retrive all the users back.
+
+33
+00:02:31,490 --> 00:02:37,880
+We saw how user repository is very useful in simplifying interactions with the entities in managing
+
+34
+00:02:37,940 --> 00:02:38,890
+entities.
+
+35
+00:02:38,900 --> 00:02:43,680
+So now with Spring data JPA all that we need to do is define the entities.
+
+36
+00:02:43,690 --> 00:02:51,910
+So once you have defined entities, Spring data JPA makes it really really easy to manage those entities.
+
+37
+00:02:51,910 --> 00:02:53,180
+Until the next step, bye bye.

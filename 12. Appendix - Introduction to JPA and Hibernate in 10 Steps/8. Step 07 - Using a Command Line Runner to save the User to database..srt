@@ -1,0 +1,291 @@
+1
+00:00:01,870 --> 00:00:07,730
+In the previous steps we defined an entity called user and we created a dao service servies to manage
+
+2
+00:00:07,850 --> 00:00:08,880
+this entity.
+
+3
+00:00:08,960 --> 00:00:12,980
+I would want to be able to call this dao service at some place.
+
+4
+00:00:13,130 --> 00:00:18,680
+One of the things that we have already set up is a simple project which launches up a spring context. 
+
+5
+00:00:18,680 --> 00:00:24,320
+So this project because we created using Spring Boot and uses, users Spring Boot starter this is already starting
+
+6
+00:00:24,320 --> 00:00:26,390
+something called a Spring context.
+
+7
+00:00:26,420 --> 00:00:33,530
+What we can do is at the launch of this Spring context, we would want to insert a user in. How do we do
+
+8
+00:00:33,530 --> 00:00:34,320
+that?
+
+9
+00:00:34,320 --> 00:00:36,780
+There’s a concept called command line runner.
+
+10
+00:00:36,800 --> 00:00:43,160
+So this command line runners are typically executed when the context launches up. When the spring context
+
+11
+00:00:43,160 --> 00:00:48,740
+launches up. You don’t really need to worry about the context right now. All that you need to remember is
+
+12
+00:00:48,770 --> 00:00:53,990
+the fact that this command line runner launches up when the application starts up.
+
+13
+00:00:53,990 --> 00:00:58,180
+So whenever we start the application, the code in the command line runner gets executed.
+
+14
+00:00:58,220 --> 00:00:59,760
+Let's create a simple command line runner.
+
+15
+00:00:59,860 --> 00:01:04,900
+I’ll recall the new class user because I'm talking to the service. So I’ll say
+
+16
+00:01:04,960 --> 00:01:11,600
+User dao service command line runner. This commandline runner, I would want it to be managed by Spring, so I'll say at component
+
+17
+00:01:11,680 --> 00:01:17,400
+and import, to make it a command line runner,  I need to implement an interface. So the interface,
+
+18
+00:01:17,690 --> 00:01:22,700
+as you can guess is command line runner. So I can import the command line runner in.
+
+19
+00:01:23,030 --> 00:01:25,520
+Now, I have to implement a method called run.
+
+20
+00:01:25,550 --> 00:01:31,040
+So I'd want to implement the run method inside the command line runner. Inside this there’s run method. I would want
+
+21
+00:01:31,040 --> 00:01:38,850
+to be able to save the user. So I would want to be able to say, user user is equal to new user of Jack.
+
+22
+00:01:39,050 --> 00:01:41,620
+I would want to give him a role of admin.
+
+23
+00:01:41,690 --> 00:01:43,560
+I would import the user in.
+
+24
+00:01:43,790 --> 00:01:47,230
+And I would want to be able to do a persist for this.
+
+25
+00:01:47,300 --> 00:01:49,660
+I would want to be able to save him to the database.
+
+26
+00:01:49,910 --> 00:01:50,970
+How do I save him?
+
+27
+00:01:51,260 --> 00:01:53,020
+I would need the user dao service.
+
+28
+00:01:53,090 --> 00:01:59,540
+I’ll say user dao service.  I’ve created a simple instance of the user dao service. I would want Spring
+
+29
+00:01:59,720 --> 00:02:05,030
+to autowire it in. I’m saying import autowire. That’s cool! I would want this user data
+
+30
+00:02:05,060 --> 00:02:06,130
+service, user dao service 
+
+31
+00:02:06,150 --> 00:02:08,120
+to save this data.
+
+32
+00:02:08,140 --> 00:02:14,810
+So how do I do that? Insert user. One of the important things is the fact that the user dao service is also
+
+33
+00:02:14,810 --> 00:02:16,790
+returns the Id back.
+
+34
+00:02:16,790 --> 00:02:23,690
+So what I’ll do is I would want to log this Id. So I would want to save, like log the Id which was created. To be
+
+35
+00:02:23,690 --> 00:02:24,490
+able to log it
+
+36
+00:02:24,500 --> 00:02:25,800
+I would need a logger.
+
+37
+00:02:25,820 --> 00:02:31,210
+So what I have done is use the logger factory dot get logger for this specific class.
+
+38
+00:02:31,370 --> 00:02:32,590
+Actually it should be here.
+
+39
+00:02:32,720 --> 00:02:33,950
+So its user dao service
+
+40
+00:02:33,960 --> 00:02:35,700
+command line runner dot class.
+
+41
+00:02:35,710 --> 00:02:41,930
+I'm getting the logger. I'm using SLF4J here. So I'm going to use SLF4J.
+
+42
+00:02:41,960 --> 00:02:45,370
+We created a simple logger so we can log this stuff out.
+
+43
+00:02:45,410 --> 00:02:55,930
+So now I would say log dot info and I would say a new user is created plus user.
+
+44
+00:02:56,160 --> 00:02:59,320
+Ok! Let's take a quick look back at what we are doing.
+
+45
+00:02:59,360 --> 00:03:04,130
+We implemented the command line interface, command line interface. Because we would want this to run at
+
+46
+00:03:04,130 --> 00:03:10,520
+the launch of the application. We added in a user dao service because that's what allows us to insert
+
+47
+00:03:10,610 --> 00:03:14,660
+a user. We created a user. We called insert user and we are logging it.
+
+48
+00:03:14,660 --> 00:03:17,140
+That's basically what we have done until now.
+
+49
+00:03:17,210 --> 00:03:20,240
+Let's launch the application and see what happens.
+
+50
+00:03:20,240 --> 00:03:23,330
+Right click run as java application.
+
+51
+00:03:23,330 --> 00:03:27,680
+If you get a port conflict what you need to make sure is that you kill the earlier instance which was
+
+52
+00:03:27,680 --> 00:03:28,440
+running. I’ve already
+
+53
+00:03:28,500 --> 00:03:30,990
+kill that instance and started a new one.
+
+54
+00:03:31,010 --> 00:03:32,380
+So let's see what happens.
+
+55
+00:03:32,480 --> 00:03:33,560
+It's starting up.
+
+56
+00:03:33,590 --> 00:03:39,550
+And one of the things that you would see at the start up in the log is the fact that it prints a new user.
+
+57
+00:03:39,550 --> 00:03:43,160
+So a new user is created. User Id is equal to this.
+
+58
+00:03:43,160 --> 00:03:46,080
+So this is present in the log.
+
+59
+00:03:46,100 --> 00:03:51,090
+So what we're able to do now is we are able to successfully save something down to the database.
+
+60
+00:03:51,120 --> 00:03:57,580
+The thing which you need to understand here is the fact that we have not really created a database yet.
+
+61
+00:03:57,800 --> 00:03:59,830
+How is this magic happening?
+
+62
+00:03:59,990 --> 00:04:02,150
+Where is this data really getting stored?
+
+63
+00:04:02,140 --> 00:04:03,300
+Where is the database present?
+
+64
+00:04:03,320 --> 00:04:05,140
+Do not worry about that.
+
+65
+00:04:05,150 --> 00:04:11,390
+We'll look at it and more in the next step. Until now, what we have created is very simple, right?
+
+66
+00:04:11,390 --> 00:04:13,990
+We have created a simple entity called user.
+
+67
+00:04:13,990 --> 00:04:19,910
+We have created a service called user dao service to be able to manage the user and we are calling dao service 
+
+68
+00:04:19,910 --> 00:04:21,120
+is in the command line runner.
+
+69
+00:04:21,130 --> 00:04:26,630
+So at the launch of the application we are calling the service to be able to store the user in. And
+
+70
+00:04:26,630 --> 00:04:28,560
+we saw that the user was created fine.
+
+71
+00:04:28,580 --> 00:04:31,120
+This is a lot of magic that is happening.
+
+72
+00:04:31,130 --> 00:04:33,570
+What is the magic that is happening in the background?
+
+73
+00:04:33,740 --> 00:04:36,290
+Thats basically what we would look at in the next step.

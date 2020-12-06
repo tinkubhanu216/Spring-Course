@@ -1,0 +1,349 @@
+0
+1
+00:00:02,450 --> 00:00:12,830
+Welcome back. In the previous step, we connected the retrieve all todos and the retrieve method to the services
+1
+
+2
+00:00:13,250 --> 00:00:17,060
+which are exposed from the JPA todo resource.
+2
+
+3
+00:00:17,530 --> 00:00:21,060
+Let's now try and do the rest of the stuff, one by one.
+3
+
+4
+00:00:21,140 --> 00:00:28,250
+I'm going to the todo JPA resource. Let's look at the other methods which are in here. Let's start with the
+4
+
+5
+00:00:28,250 --> 00:00:37,020
+delete todo. What I would need to do, is I comment this out and just todo the JPA repository.
+5
+
+6
+00:00:37,130 --> 00:00:40,230
+.get byID, right.
+6
+
+7
+00:00:40,790 --> 00:00:42,650
+So this does NOT be returning anything.
+7
+
+8
+00:00:42,650 --> 00:00:43,480
+So what we'll do.
+8
+
+9
+00:00:43,640 --> 00:00:45,740
+It would throw an exception if something goes wrong.
+9
+
+10
+00:00:46,010 --> 00:00:48,210
+So what i'll do is, 
+10
+
+11
+00:00:48,620 --> 00:00:52,010
+No content.  build() and comment this.
+11
+
+12
+00:00:52,250 --> 00:00:55,890
+So if the delete is successful, it would be done, no content back.
+12
+
+13
+00:00:56,120 --> 00:00:59,460
+Now the rest of the things should be easy.
+13
+
+14
+00:00:59,510 --> 00:01:03,260
+This one I just need to replace it with JPA repository.
+14
+
+15
+00:01:03,290 --> 00:01:12,850
+So it's come in this and replace this with todo JPA repository.
+15
+
+16
+00:01:12,960 --> 00:01:14,940
+.save , it as simple as that.
+16
+
+17
+00:01:16,260 --> 00:01:21,570
+And here is also the same method.
+17
+
+18
+00:01:21,840 --> 00:01:25,150
+So we just do the same thing that we did in here.
+18
+
+19
+00:01:25,440 --> 00:01:28,920
+One of the things I have just observed, let's fix this let's listen.
+19
+
+20
+00:01:28,960 --> 00:01:34,740
+So now we are using to do JPA repository everywhere. In order to imitate one of the things that I just
+20
+
+21
+00:01:34,740 --> 00:01:40,080
+observed, is both methods are called update todo.  the POST  mapping should be called actually create
+21
+
+22
+00:01:40,830 --> 00:01:43,410
+isn't it! Let's update.
+22
+
+23
+00:01:43,470 --> 00:01:52,020
+So we have a delete todo, update todo, and create todo that all updated with the right logic.
+23
+
+24
+00:01:52,370 --> 00:01:59,080
+The mistake actually this was quite update todo, and let's correct this to create todo. 
+24
+
+25
+00:01:59,120 --> 00:02:02,110
+Now you'd see that the entire thing compiles. Good!
+25
+
+26
+00:02:02,120 --> 00:02:03,870
+Now everything is compiling.
+26
+
+27
+00:02:04,050 --> 00:02:13,960
+And what what you can do is change all the other stuff delete JPA  retrieve.
+27
+
+28
+00:02:14,000 --> 00:02:19,340
+We already changed update, and the keyword.
+28
+
+29
+00:02:19,770 --> 00:02:24,470
+So now all five are pointing to the API.
+29
+
+30
+00:02:24,480 --> 00:02:30,660
+You are well I don't really need the API anymore, and move that out from the import. All the things you
+30
+
+31
+00:02:30,660 --> 00:02:32,840
+can make sure it's all here.
+31
+
+32
+00:02:32,850 --> 00:02:38,220
+This line should be is == -1, into the component. In the save todo, the first
+32
+
+33
+00:02:38,220 --> 00:02:41,920
+line should be this.id === minus 1.
+33
+
+34
+00:02:42,040 --> 00:02:44,540
+When you are comparing objects,
+34
+
+35
+00:02:44,580 --> 00:02:49,830
+you should use ===. When you are comparing primitives,
+35
+
+36
+00:02:49,830 --> 00:02:52,350
+It's better to use ==.
+36
+
+37
+00:02:52,440 --> 00:02:55,900
+I guess most of the stuff is done right now, and let's save this.
+37
+
+38
+00:02:56,120 --> 00:02:58,250
+And let's look at the front end
+38
+
+39
+00:02:58,290 --> 00:03:00,650
+I'm able to see the three todos.
+39
+
+40
+00:03:00,900 --> 00:03:05,300
+If you go to the H2 console right now and look at the data that we have.
+40
+
+41
+00:03:05,470 --> 00:03:06,530
+Server has been started.
+41
+
+42
+00:03:06,550 --> 00:03:12,330
+So it would have refreshed the data down here, and that's cool.
+42
+
+43
+00:03:12,460 --> 00:03:15,750
+Over here todo,
+43
+
+44
+00:03:16,050 --> 00:03:22,460
+And let's call this on JPA todo, and see? cool,
+44
+
+45
+00:03:22,620 --> 00:03:30,380
+That works! And let's say I change the target date, I want to change this to 38.
+45
+
+46
+00:03:30,390 --> 00:03:34,020
+Now remember I'm a lazy guy and that works.
+46
+
+47
+00:03:34,330 --> 00:03:41,350
+Let's add another one, and learn something, and use it for ok.
+47
+
+48
+00:03:41,440 --> 00:03:48,660
+Is one thing I can to I know very well, I would say save . save is not really working.
+48
+
+49
+00:03:48,890 --> 00:03:50,500
+Let's look at what's happening.
+49
+
+50
+00:03:50,510 --> 00:03:58,540
+You can see the reason why this is not really working, is because the user name is being set to null.
+50
+
+51
+00:03:58,580 --> 00:04:04,760
+The reason why  username is being set, because we don't really have the user name set into the
+51
+
+52
+00:04:04,800 --> 00:04:06,520
+todo on the front end.
+52
+
+53
+00:04:06,530 --> 00:04:09,330
+We don't really care about the username.
+53
+
+54
+00:04:09,350 --> 00:04:17,730
+So what we need to do over here, is todo.set username and take todo as paratemer.
+54
+
+55
+00:04:17,770 --> 00:04:20,570
+inserted into it, to save it.
+55
+
+56
+00:04:20,670 --> 00:04:22,010
+This would restart the
+56
+
+57
+00:04:22,060 --> 00:04:24,220
+Server.
+57
+
+58
+00:04:24,320 --> 00:04:27,350
+So when I go to the todos, I would see these.
+58
+
+59
+00:04:27,470 --> 00:04:37,550
+And when I do a select * from todo, connect and run this again, I would actually see the refreshed
+59
+
+60
+00:04:37,630 --> 00:04:42,600
+data. And now try and add  learn something NBC 4.
+60
+
+61
+00:04:42,730 --> 00:04:44,890
+And let's change the target date.
+61
+
+62
+00:04:46,650 --> 00:04:49,240
+To 30th.
+62
+
+63
+00:04:49,760 --> 00:04:56,210
+And you would see that all the todos that we had added in, you'd be able to see them. The last few step,
+63
+
+64
+00:04:56,400 --> 00:04:56,780
+we did
+64
+
+65
+00:04:56,810 --> 00:05:03,220
+all that is needed to connect the application, the backend to a database.
+65
+
+66
+00:05:03,320 --> 00:05:09,590
+We saw that it was really really easy. We just needed to create an entity, we needed to create a JPA resource
+66
+
+67
+00:05:09,950 --> 00:05:16,920
+and the JPA repository. The repository was a spring data JPA,  a feature which allowed us to have the talk
+67
+
+68
+00:05:17,030 --> 00:05:18,160
+to the spring data.
+68
+
+69
+00:05:18,200 --> 00:05:22,010
+JPA repository. I'll see you in the next step.
+69
+
+70
+00:05:22,070 --> 00:05:22,430
+Bye Bye!

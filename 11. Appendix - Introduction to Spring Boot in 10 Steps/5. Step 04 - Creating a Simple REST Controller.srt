@@ -1,0 +1,247 @@
+1
+00:00:02,450 --> 00:00:08,530
+To understand the magic of Spring Boot further, the let's create a simple REST controller in this
+
+2
+00:00:08,710 --> 00:00:12,670
+example. What we’ll do is we’ll create a simple REST
+
+3
+00:00:12,680 --> 00:00:15,700
+service. I would want to create a REST service
+
+4
+00:00:15,730 --> 00:00:24,680
+with a URI.  Spring like books slash books and I would want to return a few hard coded books. Since the
+
+5
+00:00:24,680 --> 00:00:26,940
+Tomcat runs on port
+
+6
+00:00:26,970 --> 00:00:28,400
+8080 by default.
+
+7
+00:00:28,460 --> 00:00:29,670
+That's what we saw.
+
+8
+00:00:29,780 --> 00:00:30,800
+port 8080.
+
+9
+00:00:30,860 --> 00:00:39,200
+So URI would be something like HTTP colon slash slash localhost colon 8080 and I would want
+
+10
+00:00:39,230 --> 00:00:44,760
+to return a few hardcoded books. Before we go to the REST controller or let's create a simple bean so I’ll
+
+11
+00:00:44,840 --> 00:00:46,150
+create a new class.
+
+12
+00:00:46,220 --> 00:00:47,730
+I'll call this book.
+
+13
+00:00:47,870 --> 00:00:50,660
+Let's not really make it a lot complex.
+
+14
+00:00:50,660 --> 00:01:00,620
+I'll just say a long Id string, name of the book and string author. We can store a lot more details like
+
+15
+00:01:00,920 --> 00:01:02,950
+ISBN, copies and things like that.
+
+16
+00:01:02,960 --> 00:01:08,630
+But let's keep it simple. Let's just have these options which are present in this group…in this book.
+
+17
+00:01:08,630 --> 00:01:11,720
+Let's also create a constructor, quickly.
+
+18
+00:01:11,900 --> 00:01:16,010
+And, also, I would want to create the getters and setters.
+
+19
+00:01:16,070 --> 00:01:19,700
+I don't really want to create a setters but I would want to add in the getters.
+
+20
+00:01:20,150 --> 00:01:26,470
+So I’ll say select getter and add it in and I’ll add in a toString as well.
+
+21
+00:01:26,830 --> 00:01:27,620
+OK. Cool.
+
+22
+00:01:27,730 --> 00:01:29,670
+We have a simple bean defined right now.
+
+23
+00:01:29,710 --> 00:01:32,830
+So we have a bean with Id, name and author.
+
+24
+00:01:32,850 --> 00:01:36,010
+Now I would want to start creating the REST controller.
+
+25
+00:01:36,290 --> 00:01:38,290
+So how do I create a REST controller?
+
+26
+00:01:38,300 --> 00:01:41,860
+Again it's a Java class and I would want to call this books controller.
+
+27
+00:01:41,930 --> 00:01:46,630
+I would want this to be a REST controller. I would want it to serve requests, REST requests.
+
+28
+00:01:46,670 --> 00:01:54,040
+I’ll need to use the annotation, let's put this in. Now I have the REST controller annotation added in.
+
+29
+00:01:54,050 --> 00:01:59,300
+Now I would want to map a URI to it, right? So the one which I want to map is slash books.
+
+30
+00:01:59,540 --> 00:02:04,130
+So I would want to map slash books. So whenever somebody executes a GET request on slash books,
+
+31
+00:02:04,790 --> 00:02:09,500
+I would want it to return a set of hardcoded books. So how do I do that?
+
+32
+00:02:09,550 --> 00:02:17,970
+That's by get map. I am mapping a get URL. So I’m mapping a get URL for what?
+
+33
+00:02:18,340 --> 00:02:25,910
+So Get is the type of the request. So if you understand HTTP well then you would know that there
+
+34
+00:02:25,910 --> 00:02:34,330
+are multiple types of HTTP  method. That’s right GET, POST , DELTE. Get is typically used to retrieve data.
+
+35
+00:02:34,340 --> 00:02:41,030
+So I would want to use get. Let's create a method, so public and I would want to return a list of books
+
+36
+00:02:41,030 --> 00:02:44,350
+back and get all books.
+
+37
+00:02:47,780 --> 00:02:49,770
+I’ll import have dot util dot list.
+
+38
+00:02:49,770 --> 00:02:55,070
+And now I can actually return a simple, I’d want to create a book.
+
+39
+00:02:55,080 --> 00:03:03,650
+So I’ll say new book. I'll use an Id of one. And I can use one of the recent books I have written, so
+
+40
+00:03:03,720 --> 00:03:15,240
+I’ll say mastering Spring 5.0 is the name of the book and authored by Ranga Karnam. All that we did is very
+
+41
+00:03:15,240 --> 00:03:16,790
+very very simple things, right?
+
+42
+00:03:16,800 --> 00:03:23,150
+Add a REST controller method would handle a get request to the specific URI.
+
+43
+00:03:23,210 --> 00:03:27,480
+And what we're doing here is we are actually returning a book.
+
+44
+00:03:27,660 --> 00:03:30,820
+We can actually written multiple books if you you'd want to.
+
+45
+00:03:30,870 --> 00:03:37,330
+For now I just wanted to keep it simple and I just wanted to return one book back.
+
+46
+00:03:37,500 --> 00:03:40,230
+Now I would actually go ahead and now startup the server.
+
+47
+00:03:40,260 --> 00:03:45,120
+I'm running it as a java application. Spring Boot in 10 steps application.
+
+48
+00:03:45,180 --> 00:03:53,310
+Server has started up and in the log you can see that there is our mapping has also been picked up directly.
+
+49
+00:03:53,490 --> 00:04:01,840
+So you would see that slash books get method is mapped on to the method we wrote. get all books.
+
+50
+00:04:01,950 --> 00:04:09,220
+So let's see what would happen when I execute the request. local host 8080 slash books.
+
+51
+00:04:09,240 --> 00:04:14,010
+You can see the server respond back with a JSON response.
+
+52
+00:04:14,030 --> 00:04:15,200
+This is a JSON response.
+
+53
+00:04:15,210 --> 00:04:18,960
+Id one. Name is masterings Spring 5.0, author is Ranga Karnam.
+
+54
+00:04:19,260 --> 00:04:26,480
+So this request is actually returning back the details in a JSON format. This is a rest service.
+
+55
+00:04:26,640 --> 00:04:34,450
+The magical part of the whole thing is the fact that we have directly focused on creating the rest service.
+
+56
+00:04:34,620 --> 00:04:37,380
+That's what Spring Boot aims to enable.
+
+57
+00:04:37,410 --> 00:04:40,350
+We have not focused on any of the infrastructure stuff.
+
+58
+00:04:40,350 --> 00:04:47,280
+We did not focus on either configuring framework or configuring some beans or configuring a dispatcher
+
+59
+00:04:47,280 --> 00:04:54,870
+servlet or configuring a view resolver. We did nothing. But still magically this service starts
+
+60
+00:04:55,080 --> 00:04:56,260
+working.
+
+61
+00:04:56,280 --> 00:04:57,690
+How does this happen?
+
+62
+00:04:57,810 --> 00:05:01,400
+That what we would learn in the next few steps.

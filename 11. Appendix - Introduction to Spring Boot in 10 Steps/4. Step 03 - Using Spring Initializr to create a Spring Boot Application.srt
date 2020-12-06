@@ -1,0 +1,239 @@
+1
+00:00:01,200 --> 00:00:08,060
+Welcome back in the step we create a simple springboard project and look at all the magic.
+
+2
+00:00:08,100 --> 00:00:15,490
+A simple start to project controlled the way you can create a springboard project is by going to start
+
+3
+00:00:15,630 --> 00:00:16,510
+tapping dirt at your.
+
+4
+00:00:16,650 --> 00:00:18,230
+Very simple stuff.
+
+5
+00:00:18,390 --> 00:00:22,540
+You just do a google search for something and Shalako you should be able to easily get here.
+
+6
+00:00:22,650 --> 00:00:28,020
+Start to bring you once you are here I would need to choose.
+
+7
+00:00:28,210 --> 00:00:33,480
+I would use Mavin as my build to Java as the language you can use any question of springboard which
+
+8
+00:00:33,480 --> 00:00:34,560
+is greater than 2.2.
+
+9
+00:00:34,580 --> 00:00:36,860
+I use 2.00 0 snapchat.
+
+10
+00:00:36,900 --> 00:00:43,030
+I hope by the time you do this course there will be greater question of point 2 as well.
+
+11
+00:00:43,470 --> 00:00:50,400
+You can use any of those versions and all here I would need to configure a name for my project just
+
+12
+00:00:50,400 --> 00:00:57,010
+like you give a class name and a package name to each class you would need to give a group ID and effect
+
+13
+00:00:57,050 --> 00:00:59,120
+ID to each project.
+
+14
+00:00:59,340 --> 00:01:06,830
+So I would go ahead and give that to a Commodore in 28 minutes or putting board basics and I'll call
+
+15
+00:01:06,840 --> 00:01:17,780
+this spring board in 10 steps and do this you can add startup projects startup projects makes it very
+
+16
+00:01:17,800 --> 00:01:20,600
+easy to develop applications.
+
+17
+00:01:20,670 --> 00:01:27,940
+We would want to develop a simple service and to be able to develop a service we need to do is start
+
+18
+00:01:27,990 --> 00:01:28,270
+there.
+
+19
+00:01:28,290 --> 00:01:30,680
+So you'll need to use springboard to start a web.
+
+20
+00:01:30,900 --> 00:01:37,290
+So I'm adding a vibes that you can see that in here so you can see that there is a vibe added in here.
+
+21
+00:01:37,290 --> 00:01:44,730
+Now you can go ahead and Gendry project once you click that project a zip file would be downloaded to
+
+22
+00:01:44,730 --> 00:01:46,510
+your Downloads folder.
+
+23
+00:01:46,830 --> 00:01:51,330
+What I would need you to do is you take that zip file and zip it.
+
+24
+00:01:51,330 --> 00:01:59,610
+Do any folder on your hard disk and not don't pop to that folder to actually going to project this or
+
+25
+00:01:59,620 --> 00:02:05,790
+download a zip file and zip zip zip file to a folder on my hard disk in 28 minutes.
+
+26
+00:02:05,790 --> 00:02:11,220
+Get getting started in 5 steps spring boot in 10 steps.
+
+27
+00:02:11,340 --> 00:02:16,220
+You can actually unzip it to any folder on your local hard drive.
+
+28
+00:02:16,410 --> 00:02:23,660
+I would go into eclipse and import that project or what I lose file import existing Maimon projects
+
+29
+00:02:23,820 --> 00:02:28,300
+and you can paste in the directory with you and it did.
+
+30
+00:02:28,440 --> 00:02:31,620
+Or you can use the Browse to browse to that specific data.
+
+31
+00:02:31,780 --> 00:02:37,710
+Either of these things should be fine once you are able to successfully select the directory you see
+
+32
+00:02:38,520 --> 00:02:41,130
+bringing in 10 steps upon darksome.
+
+33
+00:02:41,300 --> 00:02:43,470
+So I would go ahead and click Finish now.
+
+34
+00:02:43,770 --> 00:02:51,000
+What would happen in the background is now eclipse would look at the maven configuration and start downloading
+
+35
+00:02:51,000 --> 00:02:52,860
+all the other stuff that is needed.
+
+36
+00:02:52,870 --> 00:02:58,320
+So you'd see that it would start to download all the dependencies and all that kind of stuff.
+
+37
+00:02:58,320 --> 00:03:02,110
+This is the first time using springboard then this might take a little while.
+
+38
+00:03:02,130 --> 00:03:07,020
+It might take a few minutes for the whole configuration and the creation of the project to complete
+
+39
+00:03:07,170 --> 00:03:08,630
+the entire thing has completed.
+
+40
+00:03:08,870 --> 00:03:14,740
+And now if you look at it right now this is the project which has been created.
+
+41
+00:03:14,780 --> 00:03:22,440
+We have a local source manger where all our Java code is Salsman resources IIS resources folder.
+
+42
+00:03:22,610 --> 00:03:27,600
+One of the files which would with the application that properties will talk about it a little later.
+
+43
+00:03:27,740 --> 00:03:30,240
+So as Java has the best.
+
+44
+00:03:30,290 --> 00:03:33,990
+Other than that you should see a lot of Mammon dependencies.
+
+45
+00:03:34,010 --> 00:03:34,880
+Check coming in.
+
+46
+00:03:34,880 --> 00:03:41,350
+You can see that there are a wide variety of dependencies that are coming in right now.
+
+47
+00:03:41,540 --> 00:03:46,170
+You will look at why these dependencies are coming in a little later.
+
+48
+00:03:46,220 --> 00:03:50,390
+For now let's see if you're able to start this application up.
+
+49
+00:03:50,480 --> 00:03:58,170
+So I'll open up spring boot in 10 steps application and I would right click and see.
+
+50
+00:03:58,200 --> 00:04:00,530
+Run down application.
+
+51
+00:04:00,530 --> 00:04:06,440
+Actually we have not really implemented any code as such so there is nothing that is implemented right
+
+52
+00:04:06,440 --> 00:04:07,020
+now.
+
+53
+00:04:07,310 --> 00:04:12,960
+All that we are looking for is to see if the software has started fine or not.
+
+54
+00:04:12,970 --> 00:04:21,710
+Do you see something like this started spinning in 10 steps application in seconds on port 80 80.
+
+55
+00:04:21,980 --> 00:04:29,450
+And if you look at the details of the log you would see that there are a lot of things happening already.
+
+56
+00:04:29,460 --> 00:04:36,450
+However the most important part is the fact that you have web application up and running.
+
+57
+00:04:36,500 --> 00:04:42,170
+We would look at different things which are present in this log and understand what is happening in
+
+58
+00:04:42,170 --> 00:04:43,180
+the background.
+
+59
+00:04:43,310 --> 00:04:46,570
+A lot more in the future steps.
+
+60
+00:04:46,730 --> 00:04:47,830
+Until then I.
