@@ -1,0 +1,203 @@
+1
+00:00:01,500 --> 00:00:09,210
+In the last couple of videos, we were introduced to the ‘What’ devote and the ‘How’ of Web services. In this
+
+2
+00:00:09,360 --> 00:00:15,990
+Video, let’s revise some of the key terminology that is associated with Web services. Request, Response, Message
+
+3
+00:00:15,990 --> 00:00:17,370
+exchange format.
+
+4
+00:00:17,430 --> 00:00:19,080
+We’ll look at what is a service provider.
+
+5
+00:00:19,080 --> 00:00:20,730
+What is a service consumer. What is a
+
+6
+00:00:20,730 --> 00:00:24,370
+service definition and what is transport.
+
+7
+00:00:24,490 --> 00:00:32,340
+Let's start with a request and response. Request is the input of our service and response is the output
+
+8
+00:00:32,340 --> 00:00:40,030
+from a web service. Message exchange format is the format of the request and the response.
+
+9
+00:00:40,150 --> 00:00:41,730
+ Are we using XML?
+
+10
+00:00:41,730 --> 00:00:43,240
+Are we using JSON?
+
+11
+00:00:43,500 --> 00:00:47,230
+What is the format of the request and response.
+
+12
+00:00:47,280 --> 00:00:51,020
+That’s basically the message exchange format.
+
+13
+00:00:51,030 --> 00:00:57,270
+The next key terminology is service provider and service consumer. Application A
+
+14
+00:00:57,270 --> 00:01:03,820
+wants to consume a service from the web service which is present in here.
+
+15
+00:01:03,870 --> 00:01:13,560
+The web service here is called a service provider. Service provider is the one which hosts the web service.
+
+16
+00:01:13,850 --> 00:01:18,980
+The service consumer is the one which is consuming the web service. Application A
+
+17
+00:01:18,990 --> 00:01:23,820
+in this example is a consumer of the web service.
+
+18
+00:01:23,880 --> 00:01:31,170
+In this example, the java application, the dot net application and the PHP application are the consumers of the web
+
+19
+00:01:31,200 --> 00:01:36,190
+Service. We looked at the service provider - the guy who is providing this service.
+
+20
+00:01:36,300 --> 00:01:39,300
+Service consumer is who is using the service.
+
+21
+00:01:39,390 --> 00:01:43,380
+The next important terminology is service definition.
+
+22
+00:01:43,380 --> 00:01:50,780
+The service definition is the contract between the service provider and the service consumers.
+
+23
+00:01:50,810 --> 00:01:55,580
+The service definition defines what is the format of the request and response.
+
+24
+00:01:55,600 --> 00:01:59,810
+XML or JSON? What is the structure of the request.
+
+25
+00:02:00,000 --> 00:02:05,060
+What is the structure of the response and where is this service available.
+
+26
+00:02:05,070 --> 00:02:08,480
+That’s the end point. Endpoint defines
+
+27
+00:02:08,610 --> 00:02:11,590
+what URL is the service is exposed at.
+
+28
+00:02:11,620 --> 00:02:19,080
+How can these service consumer call this service which is exposed by the service provider.
+
+29
+00:02:19,170 --> 00:02:29,580
+The other key terminology is transport. Transport defines how a service is called. Is the service exposed
+
+30
+00:02:29,610 --> 00:02:30,590
+over Internet.
+
+31
+00:02:30,600 --> 00:02:33,320
+So I'll be given a URL and I'll call it.
+
+32
+00:02:33,450 --> 00:02:38,080
+Or is the service exposed over a Queue. Two popular formats
+
+33
+00:02:38,090 --> 00:02:40,620
+are HTTP and MQ.
+
+34
+00:02:40,620 --> 00:02:42,040
+HTTP is
+
+35
+00:02:42,060 --> 00:02:49,800
+basically over the web. Just like you type a URL in the browser, in a similar way application A would call
+
+36
+00:02:49,830 --> 00:02:51,160
+the web service.
+
+37
+00:02:51,210 --> 00:02:58,980
+The other format is MQ is to use communication over a queue. The service requester would place a message
+
+38
+00:02:59,040 --> 00:03:03,370
+in the queue. The service provider would be listening on the queue.
+
+39
+00:03:03,510 --> 00:03:10,370
+And as soon as there's a request on the queue it would take the request, do the processing of it, create
+
+40
+00:03:10,400 --> 00:03:17,640
+the response and put it back in the queue and the service requester would get the response from the queue.
+
+41
+00:03:18,120 --> 00:03:20,690
+The transport which is used is MQ.
+
+42
+00:03:20,700 --> 00:03:25,570
+It does not necessarily be Websphere MQ, it can be any other MQs as well.
+
+43
+00:03:25,740 --> 00:03:29,050
+But the fact is, the communication happens over queue.
+
+44
+00:03:29,070 --> 00:03:34,300
+This is called a web service which is exposed over the transport MQ.
+
+45
+00:03:34,300 --> 00:03:41,040
+The last key terminology we looked at was transport. Transport indicates whether the service is exposed
+
+46
+00:03:41,100 --> 00:03:48,480
+over a queue or whether its exposed over the web. Thats the Internet. Idea behind this video is to provide
+
+47
+00:03:48,480 --> 00:03:55,770
+a quick overview of all the key terminology which is associated with Web services.
+
+48
+00:03:55,860 --> 00:03:59,320
+Most of this is what we have discussed in the earlier videos.
+
+49
+00:03:59,610 --> 00:04:05,880
+We wanted to make sure that there is no ambiguity in understanding of these key terminology because
+
+50
+00:04:05,880 --> 00:04:11,140
+we would be using this terminology during the next steps of this course.
+
+51
+00:04:11,360 --> 00:04:12,770
+Until the next video, bye-bye.
