@@ -1,0 +1,469 @@
+0
+1
+00:00:00,120 --> 00:00:01,820
+Welcome back.
+1
+
+2
+00:00:01,820 --> 00:00:06,960
+Now in this step, let's focus on the front end, and let's see what's happening on the front end. Since
+2
+
+3
+00:00:06,960 --> 00:00:13,770
+we enabled basic authentication, we added security in the back end and it's securing our RESTful services.
+3
+
+4
+00:00:13,770 --> 00:00:18,620
+So we're not really sending any security information along with our RESTful services.
+4
+
+5
+00:00:18,810 --> 00:00:20,650
+I've logged in, I'm on the welcome page.
+5
+
+6
+00:00:20,700 --> 00:00:22,710
+I've cleared the console out.
+6
+
+7
+00:00:22,710 --> 00:00:30,430
+I did that I click inspect, and clear out and let's clear it again, and click get welcome message.
+7
+
+8
+00:00:30,540 --> 00:00:32,970
+You can see that I'm getting an error.
+8
+
+9
+00:00:32,970 --> 00:00:39,780
+It says access to HTTP GET request is blocked by CORS policy, because he did not apply the
+9
+
+10
+00:00:39,780 --> 00:00:43,870
+basic authentication details along with our request.
+10
+
+11
+00:00:43,920 --> 00:00:45,560
+We might be getting some error.
+11
+
+12
+00:00:45,750 --> 00:00:49,790
+Let's first go back and let's see the details of the error.
+12
+
+13
+00:00:49,860 --> 00:00:57,410
+A little later. But until later, copy this error and have a back up of this specific error message.
+13
+
+14
+00:00:57,520 --> 00:01:03,260
+I got the welcome data service and just paste a copy of this message down.
+14
+
+15
+00:01:03,510 --> 00:01:04,990
+Access to this.
+15
+
+16
+00:01:05,070 --> 00:01:12,270
+What I wanted to do is along with the request, you would want to send the basic authentication headers
+16
+
+17
+00:01:12,660 --> 00:01:17,790
+just like we sent the basic authentication headers while we were using the client.
+17
+
+18
+00:01:17,930 --> 00:01:25,050
+We can send them along with the execution of the request, from the front end code as well.
+18
+
+19
+00:01:25,050 --> 00:01:31,140
+Now on to welcome data service, and we are in the execute hello world. So it would appear that the method
+19
+
+20
+00:01:31,140 --> 00:01:35,270
+which is invoked,  finally in the data service, when we click on get welcome message.
+20
+
+21
+00:01:35,550 --> 00:01:40,270
+And what you want to do, is let's focus on this and add a few headers in here.
+21
+
+22
+00:01:40,280 --> 00:01:47,720
+Your first comment here, you'll see that I can send a list of headers as part of the options of the second
+22
+
+23
+00:01:48,050 --> 00:01:55,370
+parameter. So you can take options : headers and that would send the headers out.
+23
+
+24
+00:01:55,500 --> 00:01:58,870
+So what Windows will first create a method to create the headers.
+24
+
+25
+00:01:59,100 --> 00:02:05,070
+So instead of writing all the code in here, what I'll do is create a separate method.So I'll say create
+25
+
+26
+00:02:05,460 --> 00:02:09,050
+basic HTTP header.
+26
+
+27
+00:02:09,200 --> 00:02:14,710
+Or even better would be a basic authentication header.
+27
+
+28
+00:02:14,900 --> 00:02:19,760
+For now let's hardcode everything in here, So I'll say let username =.
+28
+
+29
+00:02:19,840 --> 00:02:22,380
+in28minutes.
+29
+
+30
+00:02:22,410 --> 00:02:28,320
+That's the username password  = dummy.
+30
+
+31
+00:02:28,320 --> 00:02:32,640
+Now I would want to create the basic authentication header.
+31
+
+32
+00:02:32,640 --> 00:02:34,380
+How do we create the basic authentication header?
+32
+
+33
+00:02:34,380 --> 00:02:42,570
+Basic authentication header string if we remember earlier, there was something like this basic plus
+33
+
+34
+00:02:42,750 --> 00:02:45,540
+user name plus password.
+34
+
+35
+00:02:45,560 --> 00:02:53,010
+The basic thing typically is actually some kind of a byte 64 representation, of a combination of username
+35
+
+36
+00:02:53,010 --> 00:02:56,340
+password, appended with a string call basic.
+36
+
+37
+00:02:56,340 --> 00:03:02,970
+The user name and password separated by colon, and in addition to this.
+37
+
+38
+00:03:03,040 --> 00:03:10,550
+What I would need to do, is I would need to encode string which comes out of this.
+38
+
+39
+00:03:10,550 --> 00:03:17,360
+This needs to be encoded in a base 64 format, and a great thing is Javascript already provided that
+39
+
+40
+00:03:17,470 --> 00:03:21,380
+window.btoa function.
+40
+
+41
+00:03:21,380 --> 00:03:27,580
+You can see it's now base 64. So that's the encoding that this does.
+41
+
+42
+00:03:27,680 --> 00:03:35,510
+So your basic authentication headers string is basic string, plus the base-64 encoding of a name plus :
+42
+
+43
+00:03:35,540 --> 00:03:36,480
+plus password.
+43
+
+44
+00:03:36,680 --> 00:03:41,400
+Now what you would need to do is, we would need to send this as part of the headers.
+44
+
+45
+00:03:41,590 --> 00:03:49,700
+For now let's end this method in here. Let's return the basic auth string from here and what I do
+45
+
+46
+00:03:49,700 --> 00:03:52,800
+in here is call the method.
+46
+
+47
+00:03:53,300 --> 00:04:05,270
+So I'll say let basic string = this method .. call that, and add this to it. The reason why I'm
+47
+
+48
+00:04:05,270 --> 00:04:09,250
+building it separate method, is because we would want to use this method a little later.
+48
+
+49
+00:04:09,260 --> 00:04:11,080
+Now let's create the headers.
+49
+
+50
+00:04:11,080 --> 00:04:16,340
+So I said let headers is = the way can create header's is by using something called HTTP
+50
+
+51
+00:04:16,580 --> 00:04:17,780
+headers.
+51
+
+52
+00:04:17,800 --> 00:04:20,620
+So HttpHeaders is one of the classes.
+52
+
+53
+00:04:20,890 --> 00:04:24,970
+It's an angular/ common /http So let's put that in.
+53
+
+54
+00:04:25,090 --> 00:04:26,810
+You would see that it's in here.
+54
+
+55
+00:04:26,810 --> 00:04:32,370
+So what http does is import it in, and what we wanted to create is a httpHeader and over here,
+55
+
+56
+00:04:32,380 --> 00:04:38,390
+you can provide an object. So I would need to provide open { close } and the header what you would
+56
+
+57
+00:04:38,390 --> 00:04:40,140
+want to send as authorization.
+57
+
+58
+00:04:40,160 --> 00:04:45,680
+So say authorization: the value for the authorization that we would need to send. What is the value
+58
+
+59
+00:04:45,680 --> 00:04:48,310
+that you would need to send for that authorization?
+59
+
+60
+00:04:48,320 --> 00:04:52,610
+It's this basic authentication string.
+60
+
+61
+00:04:52,700 --> 00:04:54,570
+So let's format this a little bit.
+61
+
+62
+00:04:54,600 --> 00:05:01,050
+So it's basically I'm creating a constructor, creating an instance of the Httpheaders, and passing
+62
+
+63
+00:05:01,050 --> 00:05:06,040
+in this specific object with authorization while you populated it.
+63
+
+64
+00:05:06,060 --> 00:05:10,040
+We have a httpHeaders, that's created with authorization.
+64
+
+65
+00:05:10,200 --> 00:05:17,670
+I call this headers, and now I would want httpHeaders out to this specific method, before I can pass them
+65
+
+66
+00:05:17,700 --> 00:05:18,570
+out,
+66
+
+67
+00:05:19,250 --> 00:05:26,640
+inside the object. So inside of other object and putting in headers. it's very important that this is
+67
+
+68
+00:05:27,030 --> 00:05:28,270
+named as headers.
+68
+
+69
+00:05:28,590 --> 00:05:35,250
+If you have a different variable name in here., then it's better to put headers: 
+69
+
+70
+00:05:35,670 --> 00:05:38,170
+So this is a constant.
+70
+
+71
+00:05:38,280 --> 00:05:42,090
+And this headers represent this specific thing which we have in here.
+71
+
+72
+00:05:42,090 --> 00:05:46,450
+So if I'm naming this as header, then probably should we call something like this.
+72
+
+73
+00:05:46,530 --> 00:05:47,830
+headers and that.
+73
+
+74
+00:05:48,270 --> 00:05:53,200
+So what fields are inside the object? we are setting an attribute called headers to this.
+74
+
+75
+00:05:53,450 --> 00:05:59,850
+I would love actually to just leave it as headers, and leave something of the scope so headers, and by
+75
+
+76
+00:05:59,850 --> 00:06:04,210
+default the name of the attribute would be the name of this field.
+76
+
+77
+00:06:04,220 --> 00:06:08,040
+But there are a wide range of mysteries in Javascript, and now, 
+77
+
+78
+00:06:08,100 --> 00:06:09,520
+let's see what would happen.
+78
+
+79
+00:06:09,710 --> 00:06:15,150
+Now if I go in wait for the application to launch, and click get welcome message.
+79
+
+80
+00:06:15,190 --> 00:06:20,500
+Now you see that this message is a little different from earlier one.
+80
+
+81
+00:06:20,630 --> 00:06:26,840
+You see that earlier it said no access control is present on the request of source.
+81
+
+82
+00:06:26,860 --> 00:06:32,040
+Now, it says it response to preflight requests doesn't pass access control check.
+82
+
+83
+00:06:32,040 --> 00:06:34,770
+It does not have the OK status.
+83
+
+84
+00:06:34,950 --> 00:06:37,920
+And you can look at actually the network tab.
+84
+
+85
+00:06:38,280 --> 00:06:41,950
+And let's clear everything out which is present in here before.
+85
+
+86
+00:06:41,980 --> 00:06:46,800
+And let's pull the screen up a little so that we can see a little bit more.
+86
+
+87
+00:06:46,890 --> 00:06:52,210
+You see that there is a new request which is being seen if you look at the General.
+87
+
+88
+00:06:52,350 --> 00:06:54,970
+That is a new request method which is being used.
+88
+
+89
+00:06:54,990 --> 00:06:56,780
+It's called option.
+89
+
+90
+00:06:57,090 --> 00:07:03,870
+What is happening is as soon as we added basic authentication some kind of authentication to our request
+90
+
+91
+00:07:04,110 --> 00:07:05,990
+before making the call.
+91
+
+92
+00:07:06,030 --> 00:07:13,280
+There is something called options check which is done and you can see that this options check is failing.
+92
+
+93
+00:07:13,530 --> 00:07:15,760
+Right now. Let's fix the options
+93
+
+94
+00:07:15,790 --> 00:07:20,900
+part in the next step, along with something called CSRM.  I'll see you in the next step. Bye.

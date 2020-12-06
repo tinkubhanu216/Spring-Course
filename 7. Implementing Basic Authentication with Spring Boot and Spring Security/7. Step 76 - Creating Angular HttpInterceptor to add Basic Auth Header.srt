@@ -1,0 +1,394 @@
+0
+1
+00:00:02,400 --> 00:00:09,130
+Welcome back. In the previous step, we enable the customized security configuration.
+1
+
+2
+00:00:09,180 --> 00:00:14,720
+What do you need to do before you would do the next step, is you stop and start.
+2
+
+3
+00:00:14,760 --> 00:00:17,730
+So so make sure that you stop and start over it.
+3
+
+4
+00:00:17,880 --> 00:00:24,750
+So I'm going to stop and start the server manually and after that it go to the home page, you'll see now
+4
+
+5
+00:00:25,120 --> 00:00:33,090
+that you have a customized welcome message. You get a message like that and see that the request worked, and
+5
+
+6
+00:00:33,090 --> 00:00:40,530
+you'd see when you go to inspect it, go to the console and clear all the console stuff, and let go to
+6
+
+7
+00:00:40,530 --> 00:00:42,770
+the network and make sure that it's empty.
+7
+
+8
+00:00:42,780 --> 00:00:46,430
+Let's go ahead and click the welcome message.
+8
+
+9
+00:00:46,440 --> 00:00:52,110
+You see now that there are no errors in the console, and on the network you would see that the request
+9
+
+10
+00:00:52,350 --> 00:00:54,450
+has went through fine.
+10
+
+11
+00:00:54,450 --> 00:00:56,190
+That's awesome!
+11
+
+12
+00:00:56,190 --> 00:01:02,210
+Now what we want to do is we want to do the same thing for all the other requests.
+12
+
+13
+00:01:02,220 --> 00:01:06,970
+If you go to the todos page, you'd see that are not really displayed if you look at the console, you
+13
+
+14
+00:01:06,970 --> 00:01:10,100
+would see that the same is happening with the todos.
+14
+
+15
+00:01:10,110 --> 00:01:16,470
+Now I would want to enable the same thing which we did for the welcome data service, for all the other
+15
+
+16
+00:01:16,470 --> 00:01:17,150
+stuff.
+16
+
+17
+00:01:17,280 --> 00:01:21,030
+One of the options that we can use is I can copy this right.
+17
+
+18
+00:01:21,030 --> 00:01:29,790
+I can just copy the specific thing and use this in the Data Service. But that would mean that every time
+18
+
+19
+00:01:29,820 --> 00:01:36,510
+I create a new method call, whenever I create a new data service method, I would need to add headers do
+19
+
+20
+00:01:36,510 --> 00:01:38,460
+it manually.
+20
+
+21
+00:01:38,460 --> 00:01:41,710
+That would be a real big pain right?
+21
+
+22
+00:01:41,880 --> 00:01:48,170
+What do you want to do, is you would want to do this kind of stuff in a more common way.
+22
+
+23
+00:01:48,300 --> 00:01:49,960
+And that's what it should be?
+23
+
+24
+00:01:49,960 --> 00:01:56,140
+Interceptors allow us to do it. What we do in this specific step is, when we try and configure the Interceptors.
+24
+
+25
+00:01:56,150 --> 00:02:04,180
+The interceptors that that would enable us to add a specific request header to every request.
+25
+
+26
+00:02:04,470 --> 00:02:10,820
+So if I make a request from this web application, they intercept it. They intercept it, and add a specific
+26
+
+27
+00:02:10,820 --> 00:02:15,000
+header, authentication header, on top of whatever is already there.
+27
+
+28
+00:02:15,430 --> 00:02:22,020
+As usual let's go down to the command prompt and let's create a service.
+28
+
+29
+00:02:22,020 --> 00:02:33,340
+So what we want to do, is we want to create a service call this  HTTP interceptor apps.
+29
+
+30
+00:02:34,220 --> 00:02:37,920
+We call this http interceptor basic.
+30
+
+31
+00:02:38,330 --> 00:02:44,130
+So we are actually creating HTTP Interceptor for basic authentication, that's it. And
+31
+
+32
+00:02:47,930 --> 00:02:55,220
+you see that the service is created. I can open it up to be in basic authentication.
+32
+
+33
+00:02:55,280 --> 00:03:01,430
+Open up the service file. The default dependency injection stuff is really what you would want to do
+33
+
+34
+00:03:01,430 --> 00:03:09,250
+in here is implement a specific interface is called implement HTTP interceptor.
+34
+
+35
+00:03:09,320 --> 00:03:14,540
+So this is the http interceptor, from angular common HTTP, that we would want to intercept or implement.
+35
+
+36
+00:03:14,540 --> 00:03:20,360
+Actually you can see the import which is coming up. At the top and you would see that that is a compilation
+36
+
+37
+00:03:20,390 --> 00:03:25,430
+error, because we would need to find a specific method which is in the http interceptor , which
+37
+
+38
+00:03:25,430 --> 00:03:27,150
+is this specific method.
+38
+
+39
+00:03:27,290 --> 00:03:29,660
+So let's take this method,
+39
+
+40
+00:03:30,020 --> 00:03:39,030
+Intercept, and just copy this in into our intercept, just below the constructor.
+40
+
+41
+00:03:39,090 --> 00:03:45,660
+Put this stuff in http handler common/http  again. You can see the thing at the top.
+41
+
+42
+00:03:45,910 --> 00:03:47,540
+Should it be the request again.
+42
+
+43
+00:03:47,560 --> 00:03:48,190
+That's cool.
+43
+
+44
+00:03:48,380 --> 00:03:50,510
+And we're not doing anything yet.
+44
+
+45
+00:03:50,510 --> 00:03:53,100
+And that's the reason why it's complaining.
+45
+
+46
+00:03:53,330 --> 00:03:54,480
+This will be fixed as soon as.
+46
+
+47
+00:03:54,490 --> 00:03:57,560
+We return the right thing from this specific method.
+47
+
+48
+00:03:57,560 --> 00:04:01,070
+So what we want to do is very similar to what we did in Welcome data service.
+48
+
+49
+00:04:01,130 --> 00:04:05,250
+We will want to do this basic auth header string.
+49
+
+50
+00:04:05,270 --> 00:04:10,940
+So let's take that into the username is in28minutes,  password is dummy we would want to make use
+50
+
+51
+00:04:10,940 --> 00:04:11,800
+of this.
+51
+
+52
+00:04:12,020 --> 00:04:18,410
+And what we want to do is, every request which is coming in, and this request is actually the http
+52
+
+53
+00:04:18,410 --> 00:04:22,310
+request which is being sent out. So whatever request is being sent out,
+53
+
+54
+00:04:22,320 --> 00:04:25,490
+what we want to do, is we want to add a header onto it
+54
+
+55
+00:04:25,490 --> 00:04:29,060
+The thing is these request objects cannot be modified.
+55
+
+56
+00:04:29,060 --> 00:04:31,930
+So what I do is actually I'll clone it.
+56
+
+57
+00:04:31,970 --> 00:04:37,880
+So I make a clone of that specific thing, and write a specific property.
+57
+
+58
+00:04:37,930 --> 00:04:48,970
+So I want to clone it and override a specific property. What you want to do, is set headers, and we know
+58
+
+59
+00:04:48,970 --> 00:04:55,830
+about the headers: authorization, and the values should be basic auth string.
+59
+
+60
+00:04:55,990 --> 00:04:59,310
+Now let's format it so that it's all cool.
+60
+
+61
+00:05:00,700 --> 00:05:03,560
+Push this a little on the other side.
+61
+
+62
+00:05:03,690 --> 00:05:05,420
+Now you can see exactly what's happening.
+62
+
+63
+00:05:05,560 --> 00:05:10,830
+So what we are doing, is we are setting a header called authorization, cloning the request and the only
+63
+
+64
+00:05:10,840 --> 00:05:15,630
+thing that you are changing is, adding an authorization header based on what we have in here.
+64
+
+65
+00:05:15,740 --> 00:05:18,690
+The http interceptor acts like a filter.
+65
+
+66
+00:05:18,730 --> 00:05:22,010
+So you would want actually help it continue execution.
+66
+
+67
+00:05:22,010 --> 00:05:26,890
+So once we... I did not want the rest of this stuff to happen as usual.
+67
+
+68
+00:05:26,890 --> 00:05:32,680
+So what I'll do is I'll say next, which is the next http handler. I want to invoke it: next.handler
+68
+
+69
+00:05:32,680 --> 00:05:35,550
+handle them and pass in the request.
+69
+
+70
+00:05:35,550 --> 00:05:38,490
+So we are sending the modified request.
+70
+
+71
+00:05:38,490 --> 00:05:45,820
+So what we are doing is we are intercepting the request, adding the authorization header, and we are sending
+71
+
+72
+00:05:45,820 --> 00:05:50,080
+it to the next HTTP handler, as simple as that.
+72
+
+73
+00:05:50,080 --> 00:05:56,160
+So what we did here is we implemented a http interceptor. The server is implementing the
+73
+
+74
+00:05:56,170 --> 00:05:57,800
+HTTP interceptor.
+74
+
+75
+00:05:58,370 --> 00:05:59,660
+In this http interceptor,
+75
+
+76
+00:05:59,680 --> 00:06:06,610
+We are adding the basic authentication header on top of the original request.
+76
+
+77
+00:06:06,610 --> 00:06:11,340
+There is a lot more configuration to do, before we get this and that thing working.
+77
+
+78
+00:06:11,350 --> 00:06:12,690
+We'll look at that in the next step.
+78
+
+79
+00:06:12,700 --> 00:06:13,140
+Until then, bye!

@@ -1,0 +1,229 @@
+0
+1
+00:00:02,620 --> 00:00:04,220
+Welcome back.
+1
+
+2
+00:00:04,340 --> 00:00:09,810
+One of the things you would have already observed is the fact that our login page still uses hard coded
+2
+
+3
+00:00:09,890 --> 00:00:11,200
+authentication.
+3
+
+4
+00:00:11,540 --> 00:00:17,180
+What we do in the step is, let's create a service in the backend. The idea behind that is when the user
+4
+
+5
+00:00:17,180 --> 00:00:18,300
+is trying to log in,
+5
+
+6
+00:00:18,500 --> 00:00:24,530
+We try to hit the service, and if the service returns validated  response, then that means the user
+6
+
+7
+00:00:24,530 --> 00:00:25,970
+is authenticated.
+7
+
+8
+00:00:26,040 --> 00:00:28,690
+Otherwise it is not really authenticated.
+8
+
+9
+00:00:28,760 --> 00:00:34,040
+Let's move to the back end, and let's quickly create a service and copy the hello world controller and
+9
+
+10
+00:00:34,040 --> 00:00:37,490
+hello world be in the basic package.
+10
+
+11
+00:00:38,280 --> 00:00:45,170
+And you see a few errors coming in in this console,  because there are a number of methods.
+11
+
+12
+00:00:45,210 --> 00:00:47,310
+with the same URL.
+12
+
+13
+00:00:47,420 --> 00:00:55,250
+So let's remove the other two methods quickly, and I'll change this to basic.
+13
+
+14
+00:00:55,640 --> 00:00:57,110
+So URL mapping,
+14
+
+15
+00:00:57,130 --> 00:01:03,020
+This is a GET request to a basic auth, and the other thing I'll do is this is using return.
+15
+
+16
+00:01:03,030 --> 00:01:06,930
+So let me check which HellowWorldBean is being made use of.
+16
+
+17
+00:01:06,930 --> 00:01:08,870
+So it's used in the same package.
+17
+
+18
+00:01:08,880 --> 00:01:13,560
+So what I did was, I renamed this all.. shift-R, like the factory rename.
+18
+
+19
+00:01:13,950 --> 00:01:24,250
+I renamed this to authentication bean, and I'll send a message saying you authenticate it at a later.
+19
+
+20
+00:01:24,250 --> 00:01:28,590
+point in time. You can actually send a lot more details as part of the response.
+20
+
+21
+00:01:28,600 --> 00:01:35,880
+Maybe the rules the user has, and things like that, but now it's sitting just authenticated message back.
+21
+
+22
+00:01:36,070 --> 00:01:38,290
+So this is the bean, that's cool!
+22
+
+23
+00:01:38,330 --> 00:01:40,010
+Let's quickly look at the packages.
+23
+
+24
+00:01:40,030 --> 00:01:43,700
+So we have an authentication bean and it's called Helloworld controller.
+24
+
+25
+00:01:43,700 --> 00:01:46,390
+Now this is not HelloWorldController. Call 
+25
+
+26
+00:01:46,390 --> 00:01:54,360
+this as basic authentication controller, actually factory you name it.
+26
+
+27
+00:01:55,620 --> 00:01:59,300
+And now, you'd see that the application restarted fine.
+27
+
+28
+00:01:59,500 --> 00:02:01,010
+So you see that everything is fine.
+28
+
+29
+00:02:01,030 --> 00:02:03,230
+We have a new service created.
+29
+
+30
+00:02:03,430 --> 00:02:07,800
+Let's organize the import export import our control shift.
+30
+
+31
+00:02:08,360 --> 00:02:10,590
+And all the unused imports are gone.
+31
+
+32
+00:02:10,600 --> 00:02:14,620
+Now we have a clean basic authentication controller.
+32
+
+33
+00:02:14,620 --> 00:02:16,010
+The idea is very simple.
+33
+
+34
+00:02:16,040 --> 00:02:17,240
+You'll be able to get here.
+34
+
+35
+00:02:17,440 --> 00:02:19,960
+We're from using the basic authentication.
+35
+
+36
+00:02:20,200 --> 00:02:24,740
+And therefore when somebody is trying to login, what we want to do is we want to hit this URL.
+36
+
+37
+00:02:24,940 --> 00:02:28,750
+And if he's having the proper authentication details, then it would send.
+37
+
+38
+00:02:28,850 --> 00:02:30,100
+This response back.
+38
+
+39
+00:02:30,190 --> 00:02:35,230
+Most of the authentication is actually done because of the automated configuration by spring security
+39
+
+40
+00:02:35,290 --> 00:02:39,810
+in combination with these specific configuration that we provided.
+40
+
+41
+00:02:39,820 --> 00:02:42,880
+I'm having a lot of fun, and I'm sure you're having a lot of fun too.
+41
+
+42
+00:02:42,880 --> 00:02:48,100
+Security is a lot of fun topic, and there was a lot of hard work in configuring all this stuff and getting
+42
+
+43
+00:02:48,100 --> 00:02:49,530
+them to work together.
+43
+
+44
+00:02:49,540 --> 00:02:51,450
+I'm sure you're going to enjoy it further.
+44
+
+45
+00:02:51,550 --> 00:02:52,440
+I'll see you the next step.
+45
+
+46
+00:02:52,440 --> 00:02:53,200
+Until then, bye!

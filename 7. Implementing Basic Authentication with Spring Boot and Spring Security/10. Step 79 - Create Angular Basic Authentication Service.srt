@@ -1,0 +1,379 @@
+0
+1
+00:00:02,750 --> 00:00:08,630
+Welcome back. In the previous step, we configured our service in the back end. In this step, what you want
+1
+
+2
+00:00:08,630 --> 00:00:14,780
+to do is, we would want to use this service on the back end, and call it in our login page. Login page is
+2
+
+3
+00:00:14,780 --> 00:00:22,510
+using hardcoded authentication. login actually authentication, hard coded authentication. So that's the
+3
+
+4
+00:00:22,520 --> 00:00:28,000
+one where you have hardcoded this authentication right now, and we don't want to hard code the authentication
+4
+
+5
+00:00:28,010 --> 00:00:28,940
+anymore.
+5
+
+6
+00:00:29,120 --> 00:00:38,110
+So I guess we will change that. Niw I'll copy this right like copy this file and again paste it into the
+6
+
+7
+00:00:38,110 --> 00:00:45,110
+same file click paste, and you'll see that there are hardcoded authentication.
+7
+
+8
+00:00:45,120 --> 00:00:46,180
+So .1.ts
+8
+
+9
+00:00:46,240 --> 00:00:49,000
+.ts
+9
+
+10
+00:00:50,240 --> 00:00:52,250
+I would now call this  .1.ts.
+10
+
+11
+00:00:52,420 --> 00:00:56,940
+What do you call this basic authentication service?
+11
+
+12
+00:00:57,070 --> 00:01:00,100
+Yes and also the name the name of the class.
+12
+
+13
+00:01:00,100 --> 00:01:03,190
+Two basic authentication services.
+13
+
+14
+00:01:03,460 --> 00:01:09,870
+So what we did is we copied the hardcoded authentication service.ts actually the service class .ts
+14
+
+15
+00:01:10,360 --> 00:01:14,770
+and renamed it to basic authentication.service.ts. Let me renamed the class as well.
+15
+
+16
+00:01:14,780 --> 00:01:21,970
+Basically the authentication service . ts. And now what do you want to do in here, is call the basic authentication
+16
+
+17
+00:01:21,970 --> 00:01:25,940
+logic, We would want to put it in here right now.
+17
+
+18
+00:01:26,080 --> 00:01:27,240
+This is the validation we are doing.
+18
+
+19
+00:01:27,300 --> 00:01:28,200
+This is not good.
+19
+
+20
+00:01:28,200 --> 00:01:34,560
+What we're doing here. So we try and hit the HTTP service which we have created just now, the basic part
+20
+
+21
+00:01:35,300 --> 00:01:36,600
+of the data package.
+21
+
+22
+00:01:36,730 --> 00:01:41,980
+Let's pick up the welcome data service we already have, and a little bit of stuff in here too.
+22
+
+23
+00:01:42,040 --> 00:01:44,460
+In the hello world stuff.
+23
+
+24
+00:01:44,470 --> 00:01:52,360
+So I copy these two methods, Control-C and I'll put them down here, maximize the screen so that we
+24
+
+25
+00:01:52,360 --> 00:01:53,680
+can focus on.
+25
+
+26
+00:01:53,980 --> 00:01:59,390
+The first thing I'll do is, you can see that HttpHeaders is giving a compilation error. a control space.
+26
+
+27
+00:01:59,390 --> 00:02:01,520
+Let's import the http headers.
+27
+
+28
+00:02:01,810 --> 00:02:05,740
+You can see that the HTP is not available here.
+28
+
+29
+00:02:05,840 --> 00:02:10,460
+The way can bring it in is by making it available in the header.
+29
+
+30
+00:02:10,540 --> 00:02:17,310
+Actually the constructor for dependency injection  private  httpheaders
+30
+
+31
+00:02:17,440 --> 00:02:19,060
+So that's fixed.
+31
+
+32
+00:02:19,210 --> 00:02:21,280
+Let's see what other errors are there.
+32
+
+33
+00:02:21,300 --> 00:02:23,530
+The HELLO world bean is not there.
+33
+
+34
+00:02:23,760 --> 00:02:24,510
+Hello World bean
+34
+
+35
+00:02:24,520 --> 00:02:28,780
+I'll call this authentication bean, authentication.
+35
+
+36
+00:02:32,880 --> 00:02:35,040
+Let's do the same name be to be used here.
+36
+
+37
+00:02:35,150 --> 00:02:39,440
+We call it authentication. So let's use it as authentication bean in here as well.
+37
+
+38
+00:02:40,550 --> 00:02:49,860
+Let's create the authentication bean class at the bottom, so export class authentication bean and  add
+38
+
+39
+00:02:49,860 --> 00:03:01,530
+add a public message create them. The constructor... there's a typo here.
+39
+
+40
+00:03:01,580 --> 00:03:03,240
+It should be constructor good.
+40
+
+41
+00:03:03,290 --> 00:03:07,460
+Now this class would compile. So let's see what happens.
+41
+
+42
+00:03:07,460 --> 00:03:13,520
+So the only thing we just need some attention, is I don't really have dollar name. What we would do is
+42
+
+43
+00:03:13,820 --> 00:03:15,740
+the service name is little different.
+43
+
+44
+00:03:15,790 --> 00:03:20,920
+So is what you'd want to call it's basic, but let's copy it from here and pasted here.
+44
+
+45
+00:03:21,200 --> 00:03:23,850
+So basically it's a service name that you would want to use.
+45
+
+46
+00:03:23,930 --> 00:03:25,570
+One are the other things you can see in here.
+46
+
+47
+00:03:25,610 --> 00:03:31,220
+Is this not really needed this is my name, and I can really move that out because we are not using them
+47
+
+48
+00:03:31,220 --> 00:03:31,790
+anymore.
+48
+
+49
+00:03:31,910 --> 00:03:34,450
+And I renamed the method to say execute
+49
+
+50
+00:03:37,580 --> 00:03:44,580
+basic authentication service. Because it's already there in the class.
+50
+
+51
+00:03:44,600 --> 00:03:47,360
+I'll just call this execute authentication tools.
+51
+
+52
+00:03:47,600 --> 00:03:53,450
+So what we are doing here is we are just calling the basic authentication service, it's adding in the header
+52
+
+53
+00:03:53,480 --> 00:03:54,290
+and all that stuff.
+53
+
+54
+00:03:54,290 --> 00:03:56,210
+So it's fine.
+54
+
+55
+00:03:56,210 --> 00:04:02,250
+What we have done is we have created this method execute, the indication is this would be able to call
+55
+
+56
+00:04:02,250 --> 00:04:04,480
+the http authentication service, by passing.
+56
+
+57
+00:04:04,490 --> 00:04:07,550
+In the specified http headers. 
+57
+
+58
+00:04:07,580 --> 00:04:13,010
+One other thing which we are alsoe attempting to do, is to replace this authentice method with this
+58
+
+59
+00:04:13,050 --> 00:04:15,920
+execute authentication service method.
+59
+
+60
+00:04:15,920 --> 00:04:21,370
+So what I would want to use the username and password which is entered in the screen.
+60
+
+61
+00:04:21,360 --> 00:04:27,380
+So let's add this parameters, username and password and not what I'm calling the basic authentication
+61
+
+62
+00:04:27,380 --> 00:04:34,320
+header, I would want to actually use this stuff in.
+62
+
+63
+00:04:34,560 --> 00:04:42,370
+What I will do is just copy this logic and remove this matter, because you would want to actually do
+63
+
+64
+00:04:42,640 --> 00:04:45,170
+a lot of stuff with this a little later.
+64
+
+65
+00:04:45,250 --> 00:04:48,350
+So I'll just put this logic directly in here.
+65
+
+66
+00:04:50,220 --> 00:04:54,350
+And I will actually not to use the user name password which is not indicated.
+66
+
+67
+00:04:54,390 --> 00:04:56,190
+So let's delete this.
+67
+
+68
+00:04:56,440 --> 00:05:00,530
+So know you have the authentication header which is being created in here.
+68
+
+69
+00:05:00,570 --> 00:05:02,780
+And let's not really return it back.
+69
+
+70
+00:05:02,970 --> 00:05:09,060
+So I use the authentication header and execute the service right from here.
+70
+
+71
+00:05:09,480 --> 00:05:11,730
+Let's take a quick review of what we have done until now.
+71
+
+72
+00:05:12,050 --> 00:05:18,540
+We have created a very very similar method to authenticate, and passed in the argument that we have hardcoded
+72
+
+73
+00:05:18,570 --> 00:05:19,770
+authentication.
+73
+
+74
+00:05:19,770 --> 00:05:25,680
+Now what we have done is we have created the basic authorization string or the basic authentication
+74
+
+75
+00:05:25,680 --> 00:05:31,210
+string, and set it as a header in the call that the basic rule will follow that.
+75
+
+76
+00:05:31,220 --> 00:05:33,030
+I'll see you in the next step.

@@ -1,0 +1,194 @@
+0
+1
+00:00:00,240 --> 00:00:06,430
+Welcome back. In this step, we connected our log in service to the back end service, or actually the logout
+1
+
+2
+00:00:06,480 --> 00:00:08,690
+page to the back end service.
+2
+
+3
+00:00:08,940 --> 00:00:13,180
+And we were able to authenticate the user based on that response coming back.
+3
+
+4
+00:00:13,320 --> 00:00:19,260
+However there are a lot of things that we can improve, on what we are doing in the front end, with respect
+4
+
+5
+00:00:19,260 --> 00:00:21,570
+to http services.
+5
+
+6
+00:00:21,570 --> 00:00:26,130
+A lot of places we have a hard coded stuff. We have hardcoded user everywhere.
+6
+
+7
+00:00:26,280 --> 00:00:29,290
+What do I have to do a different environment?
+7
+
+8
+00:00:29,400 --> 00:00:35,910
+What if I have to change that URL of the back end?  Let's improve on our application in the next few
+8
+
+9
+00:00:35,910 --> 00:00:38,910
+steps, especially focused on the front end.
+9
+
+10
+00:00:38,970 --> 00:00:41,840
+Lets start with the basic authentication service.
+10
+
+11
+00:00:41,910 --> 00:00:48,870
+Right now we have a few methods in here, to help us to check if a user is logged in, to log out and
+11
+
+12
+00:00:49,050 --> 00:00:52,610
+to set the authenticating user into the session.
+12
+
+13
+00:00:52,830 --> 00:00:58,200
+One of the things that we would do, is we would create the basic authentication login, right here so that
+13
+
+14
+00:00:58,420 --> 00:01:02,890
+the application does not need to worry about have to do the basic authentication stuff.
+14
+
+15
+00:01:03,060 --> 00:01:07,150
+You wouldn't want that to be done at one place, and thats down here.
+15
+
+16
+00:01:07,350 --> 00:01:10,200
+So what we're doing here is sessionsStorage. update . Then,
+16
+
+17
+00:01:10,200 --> 00:01:15,900
+We call this token, or you can call it authentication tokek or whatever you would want to call it.
+17
+
+18
+00:01:16,020 --> 00:01:20,570
+So I would say token and I would say basic or header.
+18
+
+19
+00:01:20,700 --> 00:01:26,280
+So what we are doing, is we are setting up the user name and the token into the session storage.
+19
+
+20
+00:01:26,310 --> 00:01:32,880
+This basic authentication service should be responsible for both authentication as well as all handling
+20
+
+21
+00:01:32,890 --> 00:01:34,610
+with the session storage.
+21
+
+22
+00:01:34,620 --> 00:01:40,190
+Therefore what I would want to do, is I would want to create a few utility methods.
+22
+
+23
+00:01:40,470 --> 00:01:45,340
+Let's create a method there, so what I'll do is authenticate the
+23
+
+24
+00:01:47,650 --> 00:01:51,850
+user and over here let's just return.
+24
+
+25
+00:01:52,210 --> 00:01:54,580
+The authenticated user back.
+25
+
+26
+00:01:54,580 --> 00:02:00,960
+The other thing I would want to do is get authenticated token.  get authenticate
+26
+
+27
+00:02:03,560 --> 00:02:04,320
+token.
+27
+
+28
+00:02:04,370 --> 00:02:09,960
+And what I'll do, is I'll return the authenticated token back. So, getItem()
+28
+
+29
+00:02:10,140 --> 00:02:16,200
+And let's do it only if get authenticated user returns something valid.
+29
+
+30
+00:02:17,670 --> 00:02:22,840
+If does not get authenticated user, return something else. And the other thing I just noticed, is login method
+30
+
+31
+00:02:22,840 --> 00:02:27,240
+is not clearing authentication token. That's important!
+31
+
+32
+00:02:27,240 --> 00:02:32,730
+Let's clear out the token as well.  remove the authenticated user and the token.
+32
+
+33
+00:02:33,360 --> 00:02:39,000
+We have methods now to get the authenticated user,  to get the token, to log out, to check if a user
+33
+
+34
+00:02:39,000 --> 00:02:40,080
+is logged in.
+34
+
+35
+00:02:40,230 --> 00:02:46,590
+And the basic authentication stuff: we don't really need this method anymore, because it's hard coded
+35
+
+36
+00:02:46,590 --> 00:02:49,660
+authentication. So we moved that specific thing.
+36
+
+37
+00:02:49,660 --> 00:02:55,820
+Now we have an almost clean basic authentication service. In the next step, what we'll do is we'll
+37
+
+38
+00:02:56,130 --> 00:03:02,030
+link all the other stuff all the other pieces of code, to this basic authentication service.
+38
+
+39
+00:03:02,100 --> 00:03:03,970
+I'll see you in the next step. Until then, Bye!

@@ -1,0 +1,434 @@
+0
+1
+00:00:01,820 --> 00:00:07,940
+If you run the application right now, you would see that we are able to log in,  log out in28minutes
+1
+
+2
+00:00:08,000 --> 00:00:12,580
+dummy and log in, and I'm able to get the welcome message.
+2
+
+3
+00:00:12,590 --> 00:00:16,210
+This is because we have hardcoded the basic authentication in it.
+3
+
+4
+00:00:16,220 --> 00:00:20,340
+It's not really depending on the interceptor yet, because it's still working.
+4
+
+5
+00:00:20,360 --> 00:00:25,450
+If you go to todos,  then todos does not work because we have disable the http interceptor.
+5
+
+6
+00:00:26,150 --> 00:00:26,810
+In this step,
+6
+
+7
+00:00:26,840 --> 00:00:29,490
+Let's try and get everything into a working state.
+7
+
+8
+00:00:29,540 --> 00:00:35,240
+And let's also connect the welcome message to get ready a message to the intercept. Then, we'll remove the
+8
+
+9
+00:00:35,240 --> 00:00:37,500
+hard coded code that we stored in there.
+9
+
+10
+00:00:37,670 --> 00:00:41,590
+Let's start with the welcome service.  welcome data service.
+10
+
+11
+00:00:41,590 --> 00:00:45,150
+Right now what we have in here is this hard coding, right?
+11
+
+12
+00:00:45,170 --> 00:00:49,070
+This is specifically because we started with the welcome page.
+12
+
+13
+00:00:49,100 --> 00:00:50,250
+service at the start,
+13
+
+14
+00:00:50,270 --> 00:00:54,840
+And we hard coded the basic header in there. Before we created the http interceptor.  Now, comment
+14
+
+15
+00:00:54,840 --> 00:01:01,340
+in this out, and I don't really need to pass in the headers in here, so I'll press enter here and I'll
+15
+
+16
+00:01:01,340 --> 00:01:02,600
+comment
+16
+
+17
+00:01:03,150 --> 00:01:08,720
+This method is not used anymore, so control-/ again to comment.
+17
+
+18
+00:01:10,340 --> 00:01:13,730
+So the welcome data service in the name of getting things working.
+18
+
+19
+00:01:13,730 --> 00:01:15,640
+What we're doing is we have been breaking things.
+19
+
+20
+00:01:15,650 --> 00:01:17,270
+So this is not really working right now.
+20
+
+21
+00:01:17,270 --> 00:01:18,820
+There's an error in the background.
+21
+
+22
+00:01:18,830 --> 00:01:23,770
+I leave it as an exercise for you to figure out how to handle that kind of errors.
+22
+
+23
+00:01:23,930 --> 00:01:25,940
+And show message on the screen.
+23
+
+24
+00:01:26,210 --> 00:01:30,520
+This can also be implemented as a common solution across the application.
+24
+
+25
+00:01:30,530 --> 00:01:33,500
+For now let's switch our attention to this.
+25
+
+26
+00:01:33,590 --> 00:01:35,030
+And welcome.
+26
+
+27
+00:01:35,030 --> 00:01:38,260
+These are not really working. The messages are not really working right?
+27
+
+28
+00:01:38,330 --> 00:01:40,580
+So let's get that working.
+28
+
+29
+00:01:40,730 --> 00:01:47,600
+Let's go to the http interceptor which is commented out. What is happening in here, is that they can
+29
+
+30
+00:01:47,600 --> 00:01:50,650
+be hard coded stuff and we don't really want it to break the .
+30
+
+31
+00:01:50,660 --> 00:01:51,650
+Good stuff.
+31
+
+32
+00:01:51,680 --> 00:01:55,190
+We want it to use the things which we have already provided.
+32
+
+33
+00:01:55,190 --> 00:02:00,230
+So we already stored those things into storage and they have methods to access them as well.
+33
+
+34
+00:02:00,230 --> 00:02:01,370
+So let's use that.
+34
+
+35
+00:02:01,370 --> 00:02:12,190
+So I would say basic authentication service... wait basic authentication service. let's import.
+35
+
+36
+00:02:12,570 --> 00:02:20,510
+This in. basic authentication service  import it in. Now, I can get basic authentication service to get all 
+36
+
+37
+00:02:20,510 --> 00:02:26,000
+this stuff. So I don't really need the user name and password now, because I can get the basic authentication
+37
+
+38
+00:02:26,000 --> 00:02:28,120
+service that's coming out.
+38
+
+39
+00:02:28,310 --> 00:02:32,610
+I can use the basic authentication service to do this right?
+39
+
+40
+00:02:32,630 --> 00:02:40,260
+So let's comment this, and basic authentication service. this. basic authentication service
+40
+
+41
+00:02:41,240 --> 00:02:42,770
+authenticated token
+41
+
+42
+00:02:43,250 --> 00:02:46,950
+So I'll say let basic authentication string = 
+42
+
+43
+00:02:47,030 --> 00:02:48,720
+This.basic
+43
+
+44
+00:02:48,810 --> 00:02:50,370
+I'll also get the user name.
+44
+
+45
+00:02:50,630 --> 00:03:00,540
+So to let username = this.basic authentication service. get authenticated
+45
+
+46
+00:03:00,790 --> 00:03:01,820
+users.
+46
+
+47
+00:03:02,250 --> 00:03:06,090
+And what they do is only if both of these are present.
+47
+
+48
+00:03:06,330 --> 00:03:08,970
+So actually it should be the method call.
+48
+
+49
+00:03:08,970 --> 00:03:10,580
+That's very important.
+49
+
+50
+00:03:10,920 --> 00:03:15,400
+If you don't have a method call, it actually returns the method reference.
+50
+
+51
+00:03:15,780 --> 00:03:20,220
+So make sure that you are using the method call, for both get authenticated token and get authenticated
+51
+
+52
+00:03:20,220 --> 00:03:20,950
+to use it.
+52
+
+53
+00:03:21,140 --> 00:03:29,690
+And now here you have this only if both these have a valid value.
+53
+
+54
+00:03:29,740 --> 00:03:40,640
+So if basic authenticated string and username , if both of these are having a proper value then add the
+54
+
+55
+00:03:40,700 --> 00:03:50,130
+authorization header. Otherwise do not do anything and let the next Http handler execute the request.
+55
+
+56
+00:03:50,180 --> 00:03:51,080
+Does that sound cool?
+56
+
+57
+00:03:51,130 --> 00:03:57,460
+It's basically you're checking if there is something related to the authentication string stored into
+57
+
+58
+00:03:57,460 --> 00:03:58,480
+our session.
+58
+
+59
+00:03:58,650 --> 00:04:02,800
+If it looks in, there would be a value in the session and that's what the basic authentication service
+59
+
+60
+00:04:02,860 --> 00:04:03,810
+is maintaining.
+60
+
+61
+00:04:04,020 --> 00:04:05,450
+And let's see what would happen.
+61
+
+62
+00:04:05,650 --> 00:04:09,150
+Let's go to todos. Let's go to home.
+62
+
+63
+00:04:10,120 --> 00:04:11,370
+Get welcome message.
+63
+
+64
+00:04:11,650 --> 00:04:14,350
+Still broken, todos still broken.
+64
+
+65
+00:04:14,380 --> 00:04:15,120
+Why?
+65
+
+66
+00:04:15,120 --> 00:04:16,360
+Why is it still broken?
+66
+
+67
+00:04:16,360 --> 00:04:17,370
+Think about it.
+67
+
+68
+00:04:17,380 --> 00:04:18,900
+Why is it still broken?
+68
+
+69
+00:04:19,810 --> 00:04:23,970
+The reason why it's still broken, is we are not really removed the commented code at all.
+69
+
+70
+00:04:23,980 --> 00:04:27,210
+Here http interceptor  are not still active.
+70
+
+71
+00:04:27,280 --> 00:04:29,220
+They are not in the providers list
+71
+
+72
+00:04:29,550 --> 00:04:31,720
+Let's go ahead and now,
+72
+
+73
+00:04:31,840 --> 00:04:33,850
+You can see that everything is working fine.
+73
+
+74
+00:04:33,850 --> 00:04:35,500
+Get a message.
+74
+
+75
+00:04:35,500 --> 00:04:38,950
+You can see that when you do an update and save.
+75
+
+76
+00:04:39,060 --> 00:04:40,510
+Everything is fine.
+76
+
+77
+00:04:40,510 --> 00:04:44,340
+Actually we did not really make a change, but even if you make a change you'd see that everything gets
+77
+
+78
+00:04:44,350 --> 00:04:47,020
+stored properly to the form in here.
+78
+
+79
+00:04:47,030 --> 00:04:51,750
+Delete and you can also try adding and logging out.
+79
+
+80
+00:04:51,760 --> 00:04:52,690
+Isn't this cool!
+80
+
+81
+00:04:52,860 --> 00:04:57,850
+But be able to move the hard coding off in28minutes in certain places.
+81
+
+82
+00:04:57,850 --> 00:05:02,310
+There might be certain other places where in28minutes is hardcoded.
+82
+
+83
+00:05:02,410 --> 00:05:10,480
+I leave it as an exercise for you to identify those places , and replace it with a call to the specific
+83
+
+84
+00:05:10,510 --> 00:05:11,550
+authentication.
+84
+
+85
+00:05:11,680 --> 00:05:19,040
+So you can inject this in, and replace the hard coding with a call to get authenticated user.
+85
+
+86
+00:05:19,120 --> 00:05:20,670
+I'll see you in the next step.
+86
+
+87
+00:05:20,720 --> 00:05:20,940
+Bye!

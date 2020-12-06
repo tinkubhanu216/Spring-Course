@@ -1,0 +1,454 @@
+0
+1
+00:00:01,860 --> 00:00:03,860
+Welcome back.
+1
+
+2
+00:00:03,930 --> 00:00:10,450
+We just started creating the execute authentications service method. In this step,
+2
+
+3
+00:00:10,500 --> 00:00:15,440
+Let try and connect this is authentication service method to the log in page.
+3
+
+4
+00:00:15,690 --> 00:00:20,830
+What are we calling that, calling it in the login page. login. component.
+4
+
+5
+00:00:20,970 --> 00:00:25,780
+Yes this is where we are calling the hardcoded  service, that authenticate method.
+5
+
+6
+00:00:26,100 --> 00:00:31,770
+What we want to do eventually, is we would want to use the basic authentication to restart execute authentication
+6
+
+7
+00:00:31,800 --> 00:00:33,320
+service.
+7
+
+8
+00:00:33,450 --> 00:00:36,850
+If you see that it's a synchronous call right?
+8
+
+9
+00:00:36,870 --> 00:00:43,280
+This is actually a synchronous call, in the sense that you call this method and it returns True or false.
+9
+
+10
+00:00:43,740 --> 00:00:49,200
+But what would happen in the case of service call? In the  case of a service calls.
+10
+
+11
+00:00:49,220 --> 00:00:50,890
+We would use observables.
+11
+
+12
+00:00:50,910 --> 00:00:53,930
+This will be an asynchronous call.
+12
+
+13
+00:00:54,330 --> 00:01:00,570
+So what we would need to do in the case of calling this service, is we would need to define the method
+13
+
+14
+00:01:00,960 --> 00:01:05,110
+to handle both the success and the failure
+14
+
+15
+00:01:05,400 --> 00:01:07,070
+So let's start with it right now.
+15
+
+16
+00:01:07,080 --> 00:01:13,070
+So what I'll do, is create a parallel  method, so I'll create a method called handle
+16
+
+17
+00:01:15,790 --> 00:01:20,950
+basic login.  I don't really want to change the method which are already there.
+17
+
+18
+00:01:21,370 --> 00:01:26,660
+What we'll do is we'll change the connection to use handle basic login, at a later point in time
+18
+
+19
+00:01:26,750 --> 00:01:32,470
+Now, what we want to do, is we would want to start using the basic authentication service.
+19
+
+20
+00:01:32,590 --> 00:01:41,100
+Now how can I start using the basic auth service? I need to first inject it into the constructor.
+20
+
+21
+00:01:41,110 --> 00:01:43,820
+Let's get started with that.
+21
+
+22
+00:01:43,850 --> 00:01:46,100
+So I would wanted to create an instance of that.
+22
+
+23
+00:01:46,100 --> 00:01:49,290
+So let's get this stuff out , private
+23
+
+24
+00:01:49,480 --> 00:01:56,330
+This may not be a good authentication, so this will be a basic authentication service and it's giving a
+24
+
+25
+00:01:56,360 --> 00:01:58,930
+compilation error... control-space 
+25
+
+26
+00:01:58,930 --> 00:02:03,950
+In so let's use the basic authentication service in here too.
+26
+
+27
+00:02:04,330 --> 00:02:10,060
+And now, instead of the authenticate, what we want to do, is we want to use the other method which is present in here.
+27
+
+28
+00:02:10,130 --> 00:02:12,630
+Execute authentication service.
+28
+
+29
+00:02:12,970 --> 00:02:17,670
+That's the one that you would want to use, so execute authentication service.
+29
+
+30
+00:02:18,110 --> 00:02:20,920
+Now we don't really want to use the return value of this.
+30
+
+31
+00:02:20,920 --> 00:02:23,920
+This would return observable back right.
+31
+
+32
+00:02:23,950 --> 00:02:32,380
+What we want to do is we want to subscribe to it, and observable execute only when we say subscribe in
+32
+
+33
+00:02:32,400 --> 00:02:33,600
+say subscribe.
+33
+
+34
+00:02:33,640 --> 00:02:40,350
+You can define the success scenario and the unsuccessful scenario.
+34
+
+35
+00:02:40,410 --> 00:02:42,330
+What is this success scenario for us?
+35
+
+36
+00:02:42,330 --> 00:02:52,060
+When the data comes back properly. So when data comes back properly, what we want to do let first log
+36
+
+37
+00:02:52,060 --> 00:02:56,230
+the data...log data that's the first step.
+37
+
+38
+00:02:56,230 --> 00:03:01,810
+After that what we do, is we send it out to the welcome page.
+38
+
+39
+00:03:01,830 --> 00:03:06,980
+The next thing, is if an error comes back what do we want to do?
+39
+
+40
+00:03:08,680 --> 00:03:13,200
+What you want to do is just set the flag.
+40
+
+41
+00:03:13,220 --> 00:03:14,780
+login = false.
+41
+
+42
+00:03:15,060 --> 00:03:19,810
+And you might also want to do console.log() of errors.
+42
+
+43
+00:03:20,340 --> 00:03:26,620
+Let's remove these lines of code which are present in here, and you see that everything compiles.
+43
+
+44
+00:03:26,710 --> 00:03:33,160
+This is right now what we're doing in here, is exactly the same as what we replaced.
+44
+
+45
+00:03:33,350 --> 00:03:38,710
+So in the handle login, we were exactly doing the same thing if this was returning true back, then it
+45
+
+46
+00:03:38,710 --> 00:03:43,590
+means valid user. we would never get to the welcome page on an invalid log in.
+46
+
+47
+00:03:43,840 --> 00:03:46,710
+Well one thing, if you are getting data back from the service.
+47
+
+48
+00:03:46,870 --> 00:03:51,480
+OK valid, calls otherwise invalid call invalid login.
+48
+
+49
+00:03:51,520 --> 00:03:52,230
+That's cool.
+49
+
+50
+00:03:52,390 --> 00:03:58,110
+But did we do everything that the old one was doing? In this method,
+50
+
+51
+00:03:59,140 --> 00:04:04,930
+What we're doing in here, is if the user ID is valid we are setting it in the session, we are setting
+51
+
+52
+00:04:04,930 --> 00:04:07,390
+authenticated user into the session.
+52
+
+53
+00:04:07,970 --> 00:04:10,550
+Are we doing it in this specific approach?
+53
+
+54
+00:04:10,770 --> 00:04:14,410
+Nope we are not really doing that right now.
+54
+
+55
+00:04:14,410 --> 00:04:17,170
+Now how do I define over here,  in the executeAuth service,
+55
+
+56
+00:04:17,200 --> 00:04:22,980
+that if this service succeeds then do a specific thing?
+56
+
+57
+00:04:23,110 --> 00:04:30,010
+If I can do that is by doing something called .pipe() what we are adding in is more declarations.
+57
+
+58
+00:04:30,430 --> 00:04:36,850
+We are saying if this thing is successful, then but this thing as well in the pipe we can define. If there
+58
+
+59
+00:04:36,850 --> 00:04:46,180
+is a proper response coming back, then map it and we get the data back successfully.
+59
+
+60
+00:04:46,180 --> 00:04:47,270
+What do we want to do?
+60
+
+61
+00:04:47,680 --> 00:04:53,980
+What we want to do, is we would want to set this. What we want to do, is we would want to set something
+61
+
+62
+00:04:53,980 --> 00:04:58,110
+into the session storage, this specific thing.
+62
+
+63
+00:04:58,690 --> 00:05:06,040
+session storage. set item authenticateduser, username. One of the important things about doing
+63
+
+64
+00:05:06,040 --> 00:05:09,540
+stuff when you are working on the observer.
+64
+
+65
+00:05:09,550 --> 00:05:13,960
+So here we are still working on the definition of the observer.
+65
+
+66
+00:05:13,980 --> 00:05:19,460
+But this observable is executed only when somebody subscribes to it.
+66
+
+67
+00:05:19,540 --> 00:05:22,750
+What you want to make sure we will subscribe to it.
+67
+
+68
+00:05:22,780 --> 00:05:24,700
+They would want to see the data.
+68
+
+69
+00:05:25,030 --> 00:05:26,010
+Thats the reason why.
+69
+
+70
+00:05:26,200 --> 00:05:31,030
+What you need to do is, in each of these methods you need to return that data back.
+70
+
+71
+00:05:31,030 --> 00:05:38,470
+So what we are doing is if that is a valid response, then set something into session and return the response
+71
+
+72
+00:05:38,470 --> 00:05:41,500
+back so that whoever is subscribing to it will get the data.
+72
+
+73
+00:05:41,680 --> 00:05:51,400
+Now lets import the map function to it,  import map from  rxjs/
+73
+
+74
+00:05:51,910 --> 00:05:57,880
+operators. And we can compile it. The code compiles.
+74
+
+75
+00:05:58,080 --> 00:05:59,600
+Everybody is happy.
+75
+
+76
+00:05:59,690 --> 00:06:04,060
+So we have the basic authentication stuff almost ready.
+76
+
+77
+00:06:04,390 --> 00:06:06,040
+There is a lot of coding that we have done.
+77
+
+78
+00:06:06,040 --> 00:06:12,330
+I would recommend you to check the code once before we would start executing it.
+78
+
+79
+00:06:12,330 --> 00:06:18,000
+So what are we doing in the http authentication service : passing the user name and password creating
+79
+
+80
+00:06:18,000 --> 00:06:20,100
+the basic string, executing it.
+80
+
+81
+00:06:20,430 --> 00:06:26,760
+And what we do is if it's successful? We're using a pipe method. The pipe method allows us to declare
+81
+
+82
+00:06:26,910 --> 00:06:32,230
+what should be done if the request succeeds or if the request fails.
+82
+
+83
+00:06:32,550 --> 00:06:37,770
+So if you are claiming that if the request succeeds, then set something into session storage and we are
+83
+
+84
+00:06:37,770 --> 00:06:43,750
+getting the data back, so that this is available to whoever is making use of this service where are we
+84
+
+85
+00:06:43,770 --> 00:06:45,400
+making of this service.
+85
+
+86
+00:06:45,900 --> 00:06:48,290
+This is where we are making use of the service.
+86
+
+87
+00:06:48,540 --> 00:06:55,470
+So we're calling the execute authentication.service. subscribe if this service call is successful.
+87
+
+88
+00:06:55,700 --> 00:07:00,140
+I'll route do welcome. otherwise Login.
+88
+
+89
+00:07:00,270 --> 00:07:03,970
+The thing is, we are not really connected to the welcome page.
+89
+
+90
+00:07:04,590 --> 00:07:06,410
+Let's do that in the next step.
+90
+
+91
+00:07:06,470 --> 00:07:07,290
+Until then, bye!

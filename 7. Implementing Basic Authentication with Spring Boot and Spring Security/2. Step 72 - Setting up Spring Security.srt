@@ -1,0 +1,359 @@
+0
+1
+00:00:02,950 --> 00:00:10,030
+Welcome back. In this step, we discuss the fact that our  REST services are not really secure, and we would want
+1
+
+2
+00:00:10,030 --> 00:00:11,360
+to make them very secure.
+2
+
+3
+00:00:11,380 --> 00:00:15,030
+How do we start with making something secure in the Spring world?
+3
+
+4
+00:00:15,040 --> 00:00:22,100
+The easiest way you can make something secure, is by adding a very simple dependency, spring boot starter
+4
+
+5
+00:00:22,130 --> 00:00:30,340
+Security. It is the spring boot starter for implementing security in web applications, as
+5
+
+6
+00:00:30,370 --> 00:00:32,990
+well as RESTful services.
+6
+
+7
+00:00:33,010 --> 00:00:38,410
+Let's save this. One of the important things is now, kill the application and restart, it because we are
+7
+
+8
+00:00:38,410 --> 00:00:40,540
+adding a new dependency.
+8
+
+9
+00:00:40,540 --> 00:00:44,060
+We will need to download the new JARs. The maven does that for us.
+9
+
+10
+00:00:44,230 --> 00:00:47,320
+So mavan downloads new JARs,  and we need to restart.
+10
+
+11
+00:00:47,320 --> 00:00:52,790
+I mean you need to really stop and restart the application, so that the changes would be picked up.
+11
+
+12
+00:00:53,020 --> 00:00:57,100
+Now they'd be unable to bring security by adding the dependency for spring boot starter.
+12
+
+13
+00:00:57,280 --> 00:01:00,310
+Let's see what magic spring Security brings in.
+13
+
+14
+00:01:00,370 --> 00:01:02,410
+Now I'm typing a URL local host.
+14
+
+15
+00:01:02,410 --> 00:01:05,900
+Using in28minutes/todos/1 in the browser.
+15
+
+16
+00:01:06,270 --> 00:01:13,700
+Now I see that it's taking me to log in page. Whatever logon page you are seeing is a form right.
+16
+
+17
+00:01:13,750 --> 00:01:17,020
+That's right, this is called a form based authentication.
+17
+
+18
+00:01:17,020 --> 00:01:22,050
+You would see that if you type in any URL to the services that we created earlier, you would be
+18
+
+19
+00:01:22,050 --> 00:01:30,190
+asked to log in, and provide a username and password the default user name is user and the default password
+19
+
+20
+00:01:30,460 --> 00:01:31,890
+is actually printed into.
+20
+
+21
+00:01:31,890 --> 00:01:36,570
+your console. You'll see a string like this in the logs, just look at it and find it.
+21
+
+22
+00:01:36,610 --> 00:01:42,910
+And that's the password just in there that in here. and click sign in and from here on you would be able
+22
+
+23
+00:01:42,910 --> 00:01:49,590
+to execute any number of other requests. So you can open up a new tab and also execute other requests.
+23
+
+24
+00:01:49,690 --> 00:01:52,240
+You'll see that for all these requests,
+24
+
+25
+00:01:52,240 --> 00:01:54,480
+you'd be able to see the details.
+25
+
+26
+00:01:54,490 --> 00:02:01,220
+So once you enter the user id and password with form based authentication, a session cookie is set.
+26
+
+27
+00:02:01,360 --> 00:02:06,490
+So there is a session for you which is created on the server side, and a cookie is now registered in
+27
+
+28
+00:02:06,490 --> 00:02:10,210
+your browser, and that cookie is sent along with every request.
+28
+
+29
+00:02:10,210 --> 00:02:13,300
+So you would see that as well as in the same browser.
+29
+
+30
+00:02:13,390 --> 00:02:16,720
+And keep opening table, all requests would continue succeeding.
+30
+
+31
+00:02:16,720 --> 00:02:24,520
+This is why it is called form based authentication, and this is enabled by default by spring security.
+31
+
+32
+00:02:24,520 --> 00:02:28,320
+Now let's close the browser. So close the browser and come back.
+32
+
+33
+00:02:28,320 --> 00:02:30,520
+Now I'm opening up the Chrome browser again.
+33
+
+34
+00:02:31,960 --> 00:02:38,260
+And now I would want to execute the same thing through the last step.
+34
+
+35
+00:02:38,520 --> 00:02:40,570
+So I'm trying to launch a client.
+35
+
+36
+00:02:40,710 --> 00:02:43,860
+It took a little while to launch up use without an account please.
+36
+
+37
+00:02:43,870 --> 00:02:44,360
+OK.
+37
+
+38
+00:02:44,410 --> 00:02:49,930
+They were the screen which launched up you'd want to send a GET request to this. You are a user
+38
+
+39
+00:02:49,960 --> 00:02:51,090
+in28minutes/todos
+39
+
+40
+00:02:51,420 --> 00:02:57,130
+And the origin, you already put it at localhost:4200.
+40
+
+41
+00:02:57,130 --> 00:03:06,760
+Now if I tried to send a request, you'll see a pop up make sure that you actually started the browser.
+41
+
+42
+00:03:06,770 --> 00:03:12,340
+Now it's asking me to enter the user id and password. If I enter a user id and password that this does.
+42
+
+43
+00:03:12,350 --> 00:03:14,720
+It becomes form based authentication.
+43
+
+44
+00:03:14,720 --> 00:03:19,650
+I didn't want to use form based authentication. Now what I would want to do is I would want to send in
+44
+
+45
+00:03:19,700 --> 00:03:25,850
+something called basic authentication header. I click Cancel here and you would see that I'm getting a 401
+45
+
+46
+00:03:26,050 --> 00:03:30,200
+response back User not authorized.
+46
+
+47
+00:03:30,200 --> 00:03:37,460
+Now I would want to add authorization, and I'm the one to choose the basic authentication approach and
+47
+
+48
+00:03:37,460 --> 00:03:42,160
+the user name is the user and the password is again the same thing.
+48
+
+49
+00:03:42,290 --> 00:03:46,590
+Make sure that you are taking the latest password from log.
+49
+
+50
+00:03:46,840 --> 00:03:52,020
+And if you scroll past, what you would be able to see the password that's not really important and clicks
+50
+
+51
+00:03:52,020 --> 00:03:53,500
+it enough.
+51
+
+52
+00:03:53,580 --> 00:03:55,290
+I would again click send.
+52
+
+53
+00:03:55,550 --> 00:04:00,380
+Now you see that there is 200 response coming back, and I can see the details of the response as well.
+53
+
+54
+00:04:00,600 --> 00:04:06,630
+What we are using in this specific circumstance is something called a basic authentication. Spring security
+54
+
+55
+00:04:06,730 --> 00:04:13,110
+enabled both basic and form based authentication. form because authentication is based on a session which
+55
+
+56
+00:04:13,110 --> 00:04:16,870
+is created on the server and a cookie which is in your browser.
+56
+
+57
+00:04:17,130 --> 00:04:24,600
+So this cookie identifies this session on the browser, and that will be used as the authentication mechanism
+57
+
+58
+00:04:25,380 --> 00:04:30,740
+for a form, because authentication needs a additional session which is created on the server side.
+58
+
+59
+00:04:30,750 --> 00:04:34,530
+So that's an overhead. In the case of a basic authentication,
+59
+
+60
+00:04:34,530 --> 00:04:40,590
+What we do is we keep sending something called a basic authorization header as part of the request.
+60
+
+61
+00:04:40,590 --> 00:04:45,900
+If you look at this basic authorization header it is little different from the user id and password
+61
+
+62
+00:04:45,900 --> 00:04:47,290
+that we include.
+62
+
+63
+00:04:47,580 --> 00:04:52,160
+This is an encoded form of the user id and password that we had created.
+63
+
+64
+00:04:52,170 --> 00:04:54,030
+We would talk about it a little later.
+64
+
+65
+00:04:54,150 --> 00:04:59,640
+But for now the important thing is to understand that there is a Small header, which represents the user
+65
+
+66
+00:04:59,640 --> 00:05:07,080
+id and password, and it needs to be sent along with every request. So each and every REST call you make,
+66
+
+67
+00:05:07,110 --> 00:05:09,280
+We should send this header as part of it.
+67
+
+68
+00:05:09,330 --> 00:05:12,430
+That's called basic authentication and in basic authentication,
+68
+
+69
+00:05:12,450 --> 00:05:17,970
+You don't really need a session created for you at the backend. In this quick step,
+69
+
+70
+00:05:18,080 --> 00:05:22,850
+We enable spring security, we looked at what basic authenticationis, and we look at what form authentication
+70
+
+71
+00:05:22,880 --> 00:05:27,050
+is. In the next step, we would look at more details about security.
+71
+
+72
+00:05:27,190 --> 00:05:27,940
+Until then, bye!

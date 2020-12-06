@@ -1,0 +1,329 @@
+0
+1
+00:00:02,270 --> 00:00:03,880
+Welcome back.
+1
+
+2
+00:00:04,050 --> 00:00:11,720
+One of the things that we have done across all the services, is hard coded the URL of the services.
+2
+
+3
+00:00:11,790 --> 00:00:16,880
+One  of the important things is, as we change from one environment to another environment,  this
+3
+
+4
+00:00:16,880 --> 00:00:19,340
+stuff can change.
+4
+
+5
+00:00:19,380 --> 00:00:24,750
+That's the reason why we would actually want to create constants for all this stuff.
+5
+
+6
+00:00:24,870 --> 00:00:27,700
+What we'll do now is we will create a constant right?
+6
+
+7
+00:00:27,780 --> 00:00:30,680
+Let's go to the root of the app.
+7
+
+8
+00:00:30,800 --> 00:00:42,040
+Over here, let's create a new file, call this app.constants.ts, and over here we can create.
+8
+
+9
+00:00:42,070 --> 00:00:45,890
+all the constants that we would want to use at a later point in time.
+9
+
+10
+00:00:45,970 --> 00:00:49,040
+We can replace this based on which environment
+10
+
+11
+00:00:49,060 --> 00:00:50,210
+We are working with.
+11
+
+12
+00:00:50,430 --> 00:00:57,840
+So what do we do? We define a constant,  just call it API URL =  and you can put the URL over here.
+12
+
+13
+00:00:57,890 --> 00:01:03,700
+the API in here, and copied and pasted in here.
+13
+
+14
+00:01:03,700 --> 00:01:05,620
+Now that we have created the constant, let.
+14
+
+15
+00:01:05,620 --> 00:01:09,730
+go to the todo data service, and I can make use of this constant.
+15
+
+16
+00:01:09,790 --> 00:01:14,640
+If you look at the data service,  we already have this URL  hard coded in here.
+16
+
+17
+00:01:14,950 --> 00:01:18,780
+So what I can do here is dollar with braces.
+17
+
+18
+00:01:18,850 --> 00:01:20,150
+Put that specific thing.
+18
+
+19
+00:01:20,250 --> 00:01:26,710
+It would give you a compilation error, control space command space and import the API so you can see
+19
+
+20
+00:01:26,710 --> 00:01:28,970
+that it's being imported from our content.
+20
+
+21
+00:01:28,990 --> 00:01:30,640
+Yep that's right.
+21
+
+22
+00:01:30,650 --> 00:01:35,840
+And now let's see retrieve all todos for the user page continues to work.
+22
+
+23
+00:01:35,930 --> 00:01:39,200
+You can see if I go to home and come back to todos, it's working.
+23
+
+24
+00:01:39,200 --> 00:01:42,590
+So the real change that we made is fine.
+24
+
+25
+00:01:42,590 --> 00:01:47,750
+So let's go out and replace this in all the other places where we have hardcoded it, in this specific
+25
+
+26
+00:01:47,750 --> 00:01:48,310
+thing.
+26
+
+27
+00:01:52,480 --> 00:01:54,290
+Cool.
+27
+
+28
+00:01:57,840 --> 00:02:03,100
+Over here actually may be a good idea to find and replace across all the files.
+28
+
+29
+00:02:06,810 --> 00:02:09,630
+Now, we have replaced it in this specific file.
+29
+
+30
+00:02:09,750 --> 00:02:17,390
+You do an update and save if you do want to do it, and you see that they all keep working.
+30
+
+31
+00:02:17,440 --> 00:02:20,370
+I have to learn to translate one of them.
+31
+
+32
+00:02:20,590 --> 00:02:22,210
+So the todos do work.
+32
+
+33
+00:02:22,240 --> 00:02:28,010
+The other thing we can do, is related to the authentication service and the basic authentication service.
+33
+
+34
+00:02:28,030 --> 00:02:34,990
+If you look at our tokens and the authenticated users which be setting in this session storage, there
+34
+
+35
+00:02:34,990 --> 00:02:37,850
+is a big chance that you might have typos.
+35
+
+36
+00:02:37,990 --> 00:02:41,320
+So you can use constants even to prevent that kind of stuff.
+36
+
+37
+00:02:41,320 --> 00:02:50,620
+So I'll say export constant, and I'll have token constant and I'll have authenticated user constant.
+37
+
+38
+00:02:50,620 --> 00:02:58,130
+Constant export constant authenticated user, that kind of constant.
+38
+
+39
+00:02:58,340 --> 00:03:00,780
+I don't really want to be imported from anywhere else.
+39
+
+40
+00:03:00,850 --> 00:03:02,620
+Export constraint is called.
+40
+
+41
+00:03:03,170 --> 00:03:07,050
+And I would want to use the strings which are present in here.
+41
+
+42
+00:03:07,470 --> 00:03:09,360
+So this is authenticated user.
+42
+
+43
+00:03:09,380 --> 00:03:15,690
+I just want to not make mistakes, so I want to copy it from here.
+43
+
+44
+00:03:17,250 --> 00:03:19,590
+Copied and pasted down here.
+44
+
+45
+00:03:20,120 --> 00:03:26,490
+So what we are doing here, is making sure that we are using a constant values are imported. This would ensure
+45
+
+46
+00:03:26,490 --> 00:03:31,640
+that they would not be any typos. If you make a mistake with the content you would get a compilation error.
+46
+
+47
+00:03:31,700 --> 00:03:39,530
+So that's better than finding problems at a later point in time because I made a mistake with that typo.
+47
+
+48
+00:03:39,650 --> 00:03:43,130
+So I would go for a TOKEN here as well.
+48
+
+49
+00:03:44,320 --> 00:03:47,440
+And the same thing with the authenticated user.
+49
+
+50
+00:03:47,900 --> 00:03:53,750
+So when you find yourself using the same kind of constants,  same kind of values multiple times, I
+50
+
+51
+00:03:53,750 --> 00:04:00,940
+would recommend you to use a constant to present the value, and use it cross the place.
+51
+
+52
+00:04:00,950 --> 00:04:01,470
+That's good.
+52
+
+53
+00:04:01,550 --> 00:04:06,870
+So we have just one more left to do that.
+53
+
+54
+00:04:07,170 --> 00:04:17,020
+Oh here you can see that I'm still using the all the other things, so let's while we're here, while you're
+54
+
+55
+00:04:17,040 --> 00:04:22,860
+at. And one of the most important thing is when the way you change, the way you I will make sure that
+55
+
+56
+00:04:23,100 --> 00:04:28,160
+we're using because we're using ticks over here, so would get the list.
+56
+
+57
+00:04:28,170 --> 00:04:36,420
+Now let's make sure that the application remains working. Update, you say delete and
+57
+
+58
+00:04:40,040 --> 00:04:47,180
+and log out, and then login. cool! Now, 
+58
+
+59
+00:04:47,350 --> 00:04:53,870
+we have the entire application up and running, and we have to practice a little bit to use constants.
+59
+
+60
+00:04:54,060 --> 00:04:57,810
+But the great thing about having url as a constant, at a later point in time.
+60
+
+61
+00:04:57,840 --> 00:05:00,010
+You can replace it with a variable.
+61
+
+62
+00:05:00,330 --> 00:05:05,520
+So app.constants.ts could be the single most place where you would put all the variables and
+62
+
+63
+00:05:05,610 --> 00:05:10,050
+when you're building something for a different environment, you can replace it with the specific value
+63
+
+64
+00:05:10,200 --> 00:05:11,760
+for a specific use, and be done with it.
+64
+
+65
+00:05:11,910 --> 00:05:15,760
+I'm having a great time and I hope you're having a great time with the Course as well.
+65
+
+66
+00:05:15,930 --> 00:05:17,510
+I'll see you in the next Video! Until then, bye!
